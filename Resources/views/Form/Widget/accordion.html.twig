@@ -1,0 +1,58 @@
+{% form_theme form with ['RohoCoreBundle:Form:fields.html.twig', 'RohoExtraFormBundle:Form:fields.html.twig'] %}
+
+
+<div class="widget-form">
+    {{ form_start(form) }}
+    
+    <div class="row">
+    <div class="col-md-10 col-md-offset-1 col-xs-12">
+        <div class="form-group">
+            {{form_label(form.title)}}
+            {{form_errors(form.title)}}
+            {{form_widget(form.title)}}
+        </div>
+    </div>
+    </div>
+    
+    <div class="text-left">
+        {{form_widget(form.elements)}}
+        
+    </div>
+    {% set addLinkId = 'addItem-'~uniqid() %}
+    <a href="#" class="clearfix btn btn-info" id="{{addLinkId}}"><i class="fa fa-arrow-up"></i> Ajouter un élément</a>
+    <div class="clearfix mb15"></div>
+    {{ form_row(form.display_mode) }}
+    {{ form_rest(form) }}
+    {{ form_end(form) }}
+</div>
+<script type="text/javascript">
+$(function(){
+    nb_items = '{{form.elements|length}}';
+    $('#{{addLinkId}}').click(function(e){
+        e.preventDefault();
+        
+        newItem = $( $('#collectionform_elements_form_group').attr('data-prototype').replace(/__name__/g, nb_items) );
+        nb_items++;
+        
+        $('#{{addLinkId}}').parent().find('.collection-items>.col-md-12').append( newItem );
+        newItem.find('a[data-collection-remove-btn]').text("Supprimer cet élément").toggleClass('btn-default btn-warning').click(function(e){
+            e.preventDefault();
+            $(e.target).parents('.collection-item').remove();
+        });
+    });
+{#    console.log($('#{{addLinkId}}').parent().find('a[data-collection-remove-btn]'));#}
+    $('#{{addLinkId}}').parent().find('a[data-collection-remove-btn]').each(function(){
+        $(this).text("Supprimer cet élément").toggleClass('btn-default btn-warning');
+        $(this).click(function(e){
+            console.log($(this).parents('.collection-item'));
+            e.preventDefault();
+            $(this).parents('.collection-item').remove();
+        });
+    });
+});  
+</script>
+<style type="text/css">
+    .collection-item>label{ display: none; }
+    .collection-item{ overflow: hidden; background: #ddd; margin-bottom: 2em; padding: 1em 0; }
+    .collection-items{ max-height: 500px; overflow-y: auto; }
+</style>

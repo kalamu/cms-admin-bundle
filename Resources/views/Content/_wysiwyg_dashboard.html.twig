@@ -1,0 +1,47 @@
+
+<th>Contenu</th>
+<td>
+    <section class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+            {% set datas = object.contenu|json_decode %}
+            {% set widget_controller = widget_controller is defined ? widget_controller : 'RohoDashboardBundle:API/WidgetApi:render' %}
+            {% for child in datas.childs %}
+                {% if child.type == 'row' %}
+                    {%set row = child.datas %}
+                    <div class="pi-section-transparent section-standard">
+                        <div class="pi-section">
+                            <div class="pi-row">
+                                {% for col in row.cols %}
+                                    <div class="pi-col-sm-{{col.md}}">
+                                        {% for widget in col.widgets %}
+                                            {{ render(controller('KalamuDashboardBundle:ElementApi:render', {
+                                                context: 'cms',
+                                                type: widget.type,
+                                                name: widget.identifier,
+                                                form: widget.params,
+                                                format: 'html'}))
+                                            }}
+                                        {% endfor %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                {% elseif child.type == 'section' %}
+                    {{ render(controller('KalamuDashboardBundle:ElementApi:render', {
+                        context: 'cms',
+                        type: child.datas.type,
+                        name: child.datas.identifier,
+                        form: child.datas.params,
+                        _content: (child.datas._content is defined ? child.datas._content : null),
+                        format: 'html'}))
+                    }}
+                {% endif %}
+            {% endfor %}
+
+            </div>
+        </div>
+    </section>
+</td>

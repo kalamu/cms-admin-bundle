@@ -1,0 +1,21 @@
+imports:
+    - { resource: services/admins.yml }
+    - { resource: services/forms.yml }
+    - { resource: services/widgets.yml }
+    - { resource: services/menus.yml }
+
+services:
+
+    # Twig
+    kalamu_cms.twig.extension:
+        class: Kalamu\CmsAdminBundle\Twig\CmsExtension
+        arguments: ['@roho_cms.content_type.manager', '@roho_cms.manager.context', '@roho_dynamique_config']
+        public: false
+        tags:
+            - { name: twig.extension }
+
+    kalamu_cms.twig.other_extension:
+        class: Kalamu\CmsAdminBundle\Twig\OtherExtension
+        public: false
+        tags:
+            - { name: twig.extension }

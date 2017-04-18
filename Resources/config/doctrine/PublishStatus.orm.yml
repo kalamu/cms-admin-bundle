@@ -1,0 +1,22 @@
+
+Kalamu\CmsAdminBundle\Entity\PublishStatus:
+    type: entity
+    table: roho_publish_status
+    gedmo:
+        loggable: true
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+
+    fields:
+        title:
+            type: string
+        class:
+            type: string
+        visible:
+            type: boolean
+            column: is_visible
+        default:
+            type: boolean
+            column: is_default

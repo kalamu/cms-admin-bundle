@@ -1,0 +1,28 @@
+
+<div class="col-md-12 pn">
+<div class="panel">
+    <div class="panel-heading">
+        <span class="panel-title">Derniers contenus publiés</span>
+    </div>
+    <div class="panel-body pn">
+        
+        <table class="table mbn">
+            <thead>
+                <tr class="hidden">
+                    <th>Titre</th>
+                    <th>Date publication</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for contenu in contenus %}
+                <tr>
+                    <td class="va-m fw600 text-muted"><a href="{{manager.getPublicReadLink(contenu)}}">{{contenu}}</a></td>
+                    <td class="text-right"><span class="label label-success">{{contenu.publishedAt ? contenu.publishedAt|date('d-m-Y H:i') : ''}}</span></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+    </div>
+</div>
+</div>

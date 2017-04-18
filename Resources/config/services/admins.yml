@@ -1,0 +1,45 @@
+
+services:
+
+    kalamu_cms.admin.page:
+        class: Kalamu\CmsAdminBundle\Admin\PageAdmin
+        arguments: [~, Kalamu\CmsAdminBundle\Entity\Page, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: cms, label: Page }
+
+    kalamu_cms_admin.admin.publish_status:
+        class: Kalamu\CmsAdminBundle\Admin\PublishStatusAdmin
+        arguments: [~, Kalamu\CmsAdminBundle\Entity\PublishStatus, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: cms, label: PublishStatus }
+
+    kalamu_cms_admin.admin.term:
+        class: Kalamu\CmsAdminBundle\Admin\TermAdmin
+        arguments: [~, Kalamu\CmsAdminBundle\Entity\Term, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: cms, label: Term }
+
+    kalamu_cms_admin.admin.taxonomy:
+        class: Kalamu\CmsAdminBundle\Admin\TaxonomyAdmin
+        arguments: [~, Kalamu\CmsAdminBundle\Entity\Taxonomy, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: cms, label: Taxonomy }
+
+    kalamu_cms_admin.admin.actualite:
+        class: Kalamu\CmsAdminBundle\Admin\ActualiteAdmin
+        arguments: [~, Kalamu\CmsAdminBundle\Entity\Actualite, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: cms, label: Actualite }
+
+    kalamu_cms_admin.admin.menu:
+        class: Kalamu\CmsAdminBundle\Admin\MenuAdmin
+        arguments: [~, Kalamu\CmsAdminBundle\Entity\Menu, KalamuCmsAdminBundle:Menu]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: cms, label: Menu }
+
+
+    kalamu_cms_admin.menu_item.index_picker:
+        class: Kalamu\CmsAdminBundle\Manager\MenuItemPickerManager
+        arguments: ['@doctrine', '@knp_paginator', '@roho_cms.content_type.manager', '@router']
+        tags:
+            - { name: roho.menu_item_picker, alias: index, label: Pages Index }

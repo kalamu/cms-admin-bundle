@@ -1,0 +1,15 @@
+
+Kalamu\CmsAdminBundle\Entity\ContextPublication:
+    type: entity
+    table: roho_context_publication
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+
+    fields:
+        name:
+            type: text
+            unique: true
+        title:
+            type: text

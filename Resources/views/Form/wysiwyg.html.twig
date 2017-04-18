@@ -1,0 +1,62 @@
+{% block wysiwyg_widget %}
+    {% spaceless %}
+        {% block textarea_widget %}{% endblock %}
+        <textarea id='{{id}}' name='{{full_name}}'>{{data|raw}}</textarea>
+
+        <script type="text/javascript">
+        function elFinderBrowser (callback, value, meta) {
+            tinymce.activeEditor.windowManager.open({
+              file: '{{path('el_finder_show')}}',// use an absolute path!
+              title: 'Sélecteur de fichier',
+              width: 900,
+              height: 450,
+              resizable: 'yes'
+            }, {
+              oninsert: function (file, elf) {
+                var url, reg, info;
+                // URL normalization
+                url = file.url;
+                reg = /\/[^/]+?\/\.\.\//;
+                while(url.match(reg)) {
+                  url = url.replace(reg, '/');
+                }
+
+                // Make file info
+                info = file.name + ' (' + elf.formatSize(file.size) + ')';
+
+                // Provide file and text for the link dialog
+                if (meta.filetype == 'file') {
+                  callback(url, {text: info, title: info});
+                }
+
+                // Provide image and alt text for the image dialog
+                if (meta.filetype == 'image') {
+                  callback(url, {alt: info});
+                }
+
+                // Provide alternative source and posted for the media dialog
+                if (meta.filetype == 'media') {
+                  callback(url);
+                }
+              }
+            });
+            return false;
+          }
+        </script>
+        {{ tinymce_init({tinymce_config: {selector: "#"~id, convert_urls: false, relative_urls:false, file_picker_callback: 'elFinderBrowser'}}, true) }}
+        <script type="text/javascript">
+            var link_api_url = '{{path('api_link_picker')}}';
+            $(function(){
+                $('#{{id}}').parents('form').find('input[type="submit"],button[type="submit"]').on('submit click', function(e) {
+                    tinymce.triggerSave();
+                });
+
+                if($('#{{id}}').parents('.modal').length){
+                    $('#{{id}}').parents('.modal').on('hidden.bs.modal', function(){
+                        tinymce.execCommand('mceRemoveEditor',true, '{{id}}');
+                    });
+                }
+            });
+        </script>
+    {% endspaceless %}
+{% endblock %}

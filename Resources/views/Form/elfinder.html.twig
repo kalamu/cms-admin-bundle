@@ -1,0 +1,64 @@
+{% block elfinder_widget %}
+    <input type="hidden" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %} data-type="elfinder-input-field" />
+    {% if enable and instance is defined %}
+
+        <link href="{{ asset("#{prefix}/elfinder/dist/css/elfinder.min.css") }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset("#{prefix}/elfinder/dist/css/theme.css") }}" rel="stylesheet" type="text/css">
+        <script src="{{ asset("#{prefix}/elfinder/dist/js/elfinder.min.js") }}"></script>
+        <script src="{{ asset("#{prefix}/elfinder/dist/js/i18n/elfinder.#{locale}.js") }}"></script>
+        <script type="text/javascript">
+            $(function(){
+                elDiv = $('<div id="{{ form.vars.id }}_elfinder">');
+
+                {% if form.vars.elfinder_select_mode == 'image' %}
+                    {% set id_displayer = form.vars.id~'_img' %}
+                    elDisplayer = $('<img id="{{ id_displayer }}" class="img-responsive center-block" style="max-height: 300px;" {% if value is not empty %}src="{{ value }}" {% endif %} />');
+                {% else %}
+                    {% set id_displayer = form.vars.id~'_url' %}
+                    elDisplayer = $('<a class="btn btn-info mb15" id="{{ id_displayer }}" {% if value is not empty %}href="{{ value }}" {% endif %} target="_blank"><i class="fa fa-file fa-3x fa-fw"></i> <strong></strong></a><br />');
+                {% endif %}
+                editLink = $('<a href="#" class="mr15"><i class="fa fa-exchange"></i> Changer</a>');
+                removeLink = $('<a href="#"><i class="fa fa-trash"></i> Retirer</a>');
+                divShow = $('<div class="text-center"></div>').append(elDisplayer).append(editLink).append(removeLink).hide();
+                $('#{{ form.vars.id }}').after(elDiv);
+                $('#{{ form.vars.id }}').after(divShow);
+                editLink.on('click', function(e){
+                   e.preventDefault();
+                   $(this).parent().hide();
+                   $('#{{ form.vars.id }}_elfinder').show();
+                });
+                removeLink.on('click', function(e){
+                   e.preventDefault();
+                   $(this).parent().hide();
+                   $('#{{ form.vars.id }}_elfinder').show();
+                   $('#{{ form.vars.id }}').val('');
+                });
+                elDiv.elfinder({
+                    url : '{{path('ef_connect', { 'instance': instance, 'homeFolder': homeFolder } )}}',
+                    lang : '{{locale}}',
+                    onlyMimes: {{ onlyMimes|raw }},
+                    getFileCallback: function(file) {
+                        console.log(file);
+
+                        $('#{{ form.vars.id }}_elfinder').hide();
+
+                        new_url = '{{ pathPrefix }}'+file.url.replace("{{ app.request.schemeAndHttpHost }}/", "");
+                        {% if form.vars.elfinder_select_mode == 'image' %}
+                            $('#{{ id_displayer }}').attr('src', new_url);
+                        {% else %}
+                            $('#{{ id_displayer }}').attr('href', new_url).find('strong').text(file.name+' ('+Math.round(file.size/1000)+' Ko)');
+                        {% endif %}
+
+                        $('#{{ form.vars.id }}').val( '{{ pathPrefix }}'+file.url.replace("{{ app.request.schemeAndHttpHost }}/", "") );
+                        $('#{{ id_displayer }}').parent().show();
+                    }
+                });
+                if($('#{{ form.vars.id }}').val()){
+                    $('#{{ form.vars.id }}_elfinder').hide();
+                    $('#{{ id_displayer }}').parent().show();
+                }
+            });
+
+        </script>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,7 @@
+
+<div class="col-md-12 text-center">
+    <a href="{{url|escape('html_attr')}}">
+        {% if image %}<img src="{{image|escape('html_attr')}}" class="img-responsive" alt="{{title|escape('html_attr')}}" title="{{title|escape('html_attr')}}" />{% endif %}
+        {{title}}
+    </a>
+</div>

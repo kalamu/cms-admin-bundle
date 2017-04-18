@@ -1,0 +1,23 @@
+{% set uid = uniqid()|slice(0, 5) %}
+<h3>{{title}}</h3>
+<div class="col-md-12">
+    <div class="panel-group" id="accordion-{{uid}}" role="tablist" aria-multiselectable="true">
+        {% for i, element in elements %}
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="heading-{{uid}}-{{i}}">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion-{{uid}}" href="#collapse-{{uid}}-{{i}}" aria-expanded="{{loop.first ? 'true' : 'false'}}" aria-controls="collapse-{{uid}}-{{i}}">
+                        {% if element.icon %}<span class="fa fa-fw {{element.icon|escape('html_attr')}}"></span>{% endif %}
+                        {{element.title}}
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse-{{uid}}-{{i}}" class="panel-collapse collapse{{loop.first ? ' in' : ''}}" role="tabpanel" aria-labelledby="heading-{{uid}}-{{i}}">
+                <div class="panel-body">
+                    {{element.contenu|nl2br}}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>

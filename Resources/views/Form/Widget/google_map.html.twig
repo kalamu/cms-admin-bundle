@@ -1,0 +1,66 @@
+{% form_theme form with ['RohoCoreBundle:Form:fields.html.twig', 'RohoExtraFormBundle:Form:fields.html.twig'] %}
+
+{% set uniq = uniqid() %}
+<div class="widget-form">
+    
+    <div class="embed-responsive embed-responsive-16by9">
+        <div id="map_picker_{{uniq}}" class='embed-responsive-item'></div>
+    </div>
+    
+    <div class="mt15">
+        {{ form(form) }}
+    </div>
+</div>
+<script type="text/javascript">
+    $(function(){
+        
+        var handleGoogleMapEditor = function(){
+            $('#collectionform_markers_form_group').parents('.form-group').eq(0).hide();
+            var iteratorMarker = $('#collectionform_markers_form_group .collection-item').length;
+
+            $('#map_picker_{{uniq}}').googleMapWidgetEditor({
+                center: {lat: {{ form.center_lat.vars.value ? form.center_lat.vars.value : '-12.8' }}, lng: {{ form.center_lon.vars.value ? form.center_lon.vars.value : '45.2' }}},
+                zoom: {{ form.zoom.vars.value ? form.zoom.vars.value : '12' }},
+                centerChanged: function(){
+                    $('#{{form.center_lat.vars.id}}').val( this.options.center.lat );
+                    $('#{{form.center_lon.vars.id}}').val( this.options.center.lng );
+                },
+                zoomChanged: function(){
+                    $('#{{form.zoom.vars.id}}').val( this.options.zoom );
+                },
+                mapClicked: function(event){
+                    iteratorMarker++;
+
+                    proto = $('#collectionform_markers_form_group').attr('data-prototype')
+                            .replace( new RegExp($('#collectionform_markers_form_group').attr('data-prototype-label'), 'g'), 'Marker' )
+                            .replace( new RegExp($('#collectionform_markers_form_group').attr('data-prototype-name'), 'g'), iteratorMarker );
+
+                    ui = $(proto);
+                    ui.appendTo( $('#collectionform_markers_form_group>div') );
+                    ui.find('input[name*=latitude]').val( event.latLng.lat() );
+                    ui.find('input[name*=longitude]').val( event.latLng.lng() );
+
+                    ui.googleMapMarkerWidgetEditor({ map: this.options.map });
+                }
+            });
+
+            $('#collectionform_markers_form_group .collection-item').each(function(){
+
+                if(!$(this).find('input[name*=latitude]').val().length || !$(this).find('input[name*=longitude]').val().length){
+                    return;
+                }
+
+                $(this).googleMapMarkerWidgetEditor({
+                    map: $('#map_picker_{{uniq}}').googleMapWidgetEditor('option', 'map')
+                });
+            });
+        }
+        
+        if(typeof $.fn.googleMapWidgetEditor == 'function'){
+            handleGoogleMapEditor();
+        }else{
+            $.getScript('{{asset('bundles/rohocms/js/jquery.kalamuGoogleMapEditor.js')}}', handleGoogleMapEditor);
+        }
+        
+    });
+</script>

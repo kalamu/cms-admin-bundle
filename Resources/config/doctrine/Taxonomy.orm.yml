@@ -1,0 +1,34 @@
+
+Kalamu\CmsAdminBundle\Entity\Taxonomy:
+    type: entity
+    table: roho_taxonomy
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+
+    fields:
+        libelle:
+            type: string
+        slug:
+            type: string
+            length: 512
+            gedmo:
+                slug:
+                    separator: -
+                    style: default
+                    updatable: false
+                    unique: true
+                    fields:
+                        - libelle
+            unique: true
+        apply_on:
+            type: json_array
+            nullable: true
+
+    oneToMany:
+        terms:
+            targetEntity: Kalamu\CmsAdminBundle\Entity\Term
+            mappedBy: taxonomy
+            orderBy:
+                libelle: ASC

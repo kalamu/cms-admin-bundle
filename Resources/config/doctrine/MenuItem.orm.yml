@@ -1,0 +1,70 @@
+
+Kalamu\CmsAdminBundle\Entity\MenuItem:
+    type: entity
+    table: roho_menu_item
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+
+    fields:
+        title:
+            type: text
+        url:
+            type: text
+        order:
+            type: integer
+            column: item_order
+        icon:
+            type: string
+            nullable: true
+        css_class:
+            type: string
+            nullable: true
+        type_label:
+            type: string
+            nullable: false
+            options:
+                comment: Le label du type de contenu. Ne pas confondre avec content_type qui est le type du ContentTypeManager.
+
+        content_type:
+            type: string
+            nullable: true
+            options:
+                comment: name permettant de sélectionner le ContentTypeManager
+        content_id:
+            type: string
+            nullable: true
+            options:
+                comment: id de l'entitée dans le ContentTypeManager
+        content_context:
+            type: string
+            nullable: true
+
+    manyToOne:
+        parent:
+            targetEntity: MenuItem
+            inversedBy: children
+            cascade: [persist]
+            joinColumn:
+                name: ref_item_parent
+                referencedColumnName: id
+                onDelete: CASCADE
+
+        menu:
+            targetEntity: Kalamu\CmsAdminBundle\Entity\Menu
+            inversedBy: items
+            joinColumn:
+                name: ref_menu
+                referencedColumnName: id
+                onDelete: CASCADE
+
+    oneToMany:
+        children:
+            targetEntity: MenuItem
+            mappedBy: parent
+            cascade: [persist]
+
+
+
+

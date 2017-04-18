@@ -1,0 +1,25 @@
+
+services:
+
+    ## Provider de menu pour KNP
+    kalamu_cms_admin.menu_provider:
+        class: Kalamu\CmsAdminBundle\Menu\MenuProvider
+        arguments: [%roho_cms.menus%, '@knp_menu.factory', '@doctrine']
+        tags:
+            - { name: knp_menu.provider }
+
+    # Abstract service pour les ItemPicker
+    kalamu_cms_admin.item_picker.base_manager:
+        abstract: true
+        class: Kalamu\CmsAdminBundle\Menu\DefaultMenuItemPicker
+
+    # Manager de référence pour les itemPicker de menu
+    kalamu_cms_admin.menu_item.manager:
+        class: Kalamu\CmsAdminBundle\Manager\MenuItemPickerManager
+
+    # MenuItemPicker dynamique pour les taxonomies
+    kalamu_cms_admin.menu_item.taxonomie_picker:
+        class: Kalamu\CmsAdminBundle\Menu\TaxonomieMenuItemProvider
+        arguments: ['@doctrine', '@knp_paginator', '@roho_cms.content_type.manager']
+        tags:
+            - { name: kalamu_cms_admin.menu_item_picker.provider }

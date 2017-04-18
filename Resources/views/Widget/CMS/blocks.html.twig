@@ -1,0 +1,13 @@
+{% set uid = uniqid()|slice(0, 5) %}
+<h3>{{title}}</h3>
+<div class="col-md-12 col m12">
+    <div class="row">
+        {% for element in elements %}
+        <div class="col-md-4 col m4">
+            {% if element.icon %}<span class="fa fa-fw {{element.icon|escape('html_attr')}} fa-3x pull-left"></span>{% endif %}
+            <strong>{{element.title}}</strong>
+            {{element.contenu|nl2br}}
+        </div>
+        {% endfor %}
+    </div>
+</div>

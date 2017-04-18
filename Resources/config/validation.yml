@@ -1,0 +1,3 @@
+Kalamu\CmsAdminBundle\Entity\Term:
+    constraints:
+        - Callback: [validate]

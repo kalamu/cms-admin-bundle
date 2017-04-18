@@ -1,0 +1,35 @@
+
+Kalamu\CmsAdminBundle\Entity\Menu:
+    type: entity
+    table: roho_menu
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+
+    fields:
+        title:
+            type: text
+        slug:
+            type: string
+            length: 512
+            gedmo:
+                slug:
+                    separator: -
+                    style: default
+                    updatable: false
+                    unique: true
+                    fields:
+                        - title
+            unique: true
+        place:
+            type: string
+            nullable: true
+
+    oneToMany:
+        items:
+            targetEntity: Kalamu\CmsAdminBundle\Entity\MenuItem
+            mappedBy: menu
+            orderBy:
+                order: ASC
+            cascade: [persist]

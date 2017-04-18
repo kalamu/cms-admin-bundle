@@ -1,0 +1,102 @@
+
+
+
+{% block cms_link_selector_widget %}
+{% spaceless %}
+
+    <div id="link_selector_widget">
+    {{form_widget(form.display)}}
+    {{form_widget(form.type)}}
+    {{form_widget(form.identifier)}}
+    {{form_widget(form.context)}}
+    </div>
+    <script src="{{ asset("bundles/rohocms/js/jquery.cmsLinkSelector.js") }}"></script>
+    <script type="text/javascript">
+    $(function(){
+        $('#{{form.display.vars.id}}').parent().cmsLinkSelector({picker_api: '{{path('api_link_picker_base')}}', required: {{form.vars.required ? 'true' : 'false'}}});
+    });
+    </script>
+
+{% endspaceless %}
+{% endblock cms_link_selector_widget %}
+
+
+{% block geolocalisation_map_widget %}
+{% spaceless %}
+
+    {% set widget_uid = uniqid() %}
+    <div class="col-md-12" id="geolocalisation_map_{{widget_uid}}">
+        <div class="row">
+            <div class="col-md-4">
+                {{form_errors(form.latitude)}}
+                {{form_label(form.latitude)}}
+                {{form_widget(form.latitude)}}
+            </div>
+            <div class="col-md-4">
+                {{form_errors(form.longitude)}}
+                {{form_label(form.longitude)}}
+                {{form_widget(form.longitude)}}
+            </div>
+            <div class="col-md-4">
+                {{form_errors(form.srid)}}
+                {{form_label(form.srid)}}
+                {{form_widget(form.srid)}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mt15">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <div id="map_picker_{{widget_uid}}" class='embed-responsive-item'></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript">
+        $(function(){
+            $(window).one('google-map-ready', function(){
+                var map = new google.maps.Map(document.getElementById('map_picker_{{widget_uid}}'), {
+                    {% if form.latitude.vars.value and form.longitude.vars.value %}
+                    center: {lat: {{form.latitude.vars.value}}, lng: {{form.longitude.vars.value}}},
+                    {% else %}
+                    center: {lat: -12.8, lng: 45.2},
+                    {% endif %}
+                    zoom: 12
+                });
+                
+                var marker = new google.maps.Marker({
+                    {% if form.latitude.vars.value and form.longitude.vars.value %}
+                    position: new google.maps.LatLng({lat: {{form.latitude.vars.value}}, lng: {{form.longitude.vars.value}}}),
+                    {% endif %}
+                    draggable: true,
+                    map: map
+                });
+                
+                marker.addListener('position_changed', function(){
+                    $('#{{form.latitude.vars.id}}').val(marker.position.lat());
+                    $('#{{form.longitude.vars.id}}').val(marker.position.lng());
+                });
+
+                map.addListener('click', function(e){
+                    marker.setMap(map);n
+                    marker.setPosition(e.latLng);
+                    map.panTo(e.latLng);
+                });
+
+            });
+
+            // mécanisme pour s'assurer que google map n'est chargé qu'une seule fois.
+            if(typeof google == 'undefined' && 'undefined' == typeof $('body').attr('data-google-map-requested')){
+                $('body').attr('data-google-map-requested', true);
+
+                $.getScript('https://maps.google.com/maps/api/js?sensor=false', function(){
+                    $(window).trigger('google-map-ready');
+                });
+            }else{
+                $(window).trigger('google-map-ready');
+            }
+        });
+    </script>
+
+{% endspaceless %}
+{% endblock geolocalisation_map_widget %}

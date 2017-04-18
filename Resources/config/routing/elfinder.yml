@@ -1,0 +1,4 @@
+el_finder_show:
+    path:     /show
+    defaults: { _controller: "KalamuCmsAdminBundle:ElFinder:show" }
+

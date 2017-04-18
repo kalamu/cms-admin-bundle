@@ -1,0 +1,218 @@
+{#
+
+This file is part of the Sonata package.
+
+(c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+
+{% extends 'SonataAdminBundle:CRUD:base_edit.html.twig' %}
+
+
+
+{% block sonata_tab_content %}
+    {{parent()}}
+
+    <div class="col-md-9">
+        <div class="box box-primary">
+            <div class="box-header">
+                <h4 class="box-title">
+                    Éléments de menu
+                </h4>
+            </div>
+            <div class="box-body">
+                <em>Ajoutez des éléments au menu depuis la colonne de gauche, puis déplacez les pour les organiser.</em>
+                <ul id="node_menu"></ul>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="panel-group accordion accordion-lg" id="accordion">
+                <div class="panel mn" id="content-picker-direct-link">
+                    <div class="panel-heading">
+                        <a aria-expanded="false" class="accordion-toggle accordion-icon link-unstyled collapsed" data-toggle="collapse" data-parent="#accordion" href="#content-picker-direct-link-content">
+                            Lien direct
+                        </a>
+                    </div>
+                    <div aria-expanded="false" id="content-picker-direct-link-content" class="panel-collapse collapse">
+                        <div class="panel-body content-picker">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="form-url-title">Titre du lien</label>
+                                    <input type="text" class="form-control" id="form-url-title" placeholder="Titre du lien">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="form-url-address">Adresse</label>
+                                    <input type="url" class="form-control" id="form-url-address" placeholder="http://">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <button type="submit" id="add-direct-link" class="btn btn-sm btn-info pull-right">Ajouter</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% for name, label in items_pickers_manager.itemPickers %}
+                {% set pickerManager = items_pickers_manager.itemPicker(name).manager %}
+                <div class="panel mn" id="content-picker-{{name}}">
+                    <div class="panel-heading">
+                        <a aria-expanded="false" class="accordion-toggle accordion-icon link-unstyled collapsed" data-toggle="collapse" data-parent="#accordion" href="#content-picker-{{name}}-content">
+                            {{label}}
+                        </a>
+                    </div>
+                    <div aria-expanded="false" id="content-picker-{{name}}-content" class="panel-collapse collapse">
+                        <div class="panel-body content-picker">
+                            <table class="table mbn tc-med-1 tc-bold-last">
+                                <thead>
+                                    <tr class="hidden">
+                                        <th>Titre</th>
+                                        <th>Ajouter</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                        {% if pickerManager and pickerManager.getContexts|length > 0  %}
+                        <div class="bg-white tab-block pn context-filter">
+                            <span class="tab-content hidden"></span>
+                            <ul class="nav nav-tabs tabs-border nav-justified">
+                                <li><a data-toggle="tab" data-context="" href="#">Tout</a></li>
+                                {% for context in pickerManager.getContexts %}
+                                    <li><a data-toggle="tab" data-context="{{context}}" href="#{{context}}">{{pickerManager.getContextTitle(context)}}</a></li>
+
+                                    {% if loop.length > 2 and loop.first %}
+                                        <li class="dropdown">
+                                            <a class="dropdown-toggle" data-toggle="dropdown" role="menu" href="#">Autres <i class="fa fa-caret-down pl5"></i></a>
+                                            <ul class="dropdown-menu">
+                                    {% endif %}
+
+                                    {% if loop.length > 2 and loop.last %}
+                                            </ul>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% endif %}
+                        <div class="panel-footer bg-white">
+
+                            <div class="form-group has-feedback">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                                    <input type="text" class="form-control search-input" id="search_{{name}}" aria-describedby="search_{{name}}Status" placeholder="Rechercher...">
+                                </div>
+                            </div>
+
+{#                            <hr class="clearfix m5 mb15" />#}
+
+                            <span class="text-muted">Total: <strong class="total-count"></strong></span>
+                            <div class="pull-right">
+                                <a href="#" class="btn btn-xs btn-default page-previous"><i class="fa fa-arrow-left"></i></a>
+                                Page <input type="number" value="" class="page-input" style="width: 50px" /> /<span class="page-count"></span>
+                                <a href="#" class="btn btn-xs btn-default page-next"><i class="fa fa-arrow-right"></i></a>
+                            </div>
+                            <span class="clearfix"></span>
+                        </div>
+                    </div>
+
+                </div>
+            {% endfor %}
+            </div>
+    </div>
+{% endblock %}
+
+
+{% block javascripts %}
+    {{parent()}}
+<link href="{{asset('bundles/kalamucmsadmin/css/nestable.css')}}" type="text/css" rel="stylesheet" media="screen" />
+<script type="text/javascript" src="{{asset('bundles/kalamucmsadmin/js/jquery.ui.pos.js')}}"></script>
+<script type="text/javascript" src="{{asset('bundles/kalamucmsadmin/js/iconpicker.js')}}"></script>
+<script type="text/javascript" src="{{asset('bundles/kalamucmsadmin/js/jquery.mjs.nestedSortable.js')}}"></script>
+<script type="text/javascript" src="{{asset('bundles/kalamucmsadmin/js/jquery.eticMenuBuilder.js')}}"></script>
+<script type="text/javascript" src="{{asset('bundles/kalamucmsadmin/js/jquery.eticMenuPickerApi.js')}}"></script>
+<script type="text/javascript">
+$(function(){
+    {% for name, label in items_pickers_manager.itemPickers %}
+        {% set pickerManager = items_pickers_manager.itemPicker(name).manager %}
+    $('#content-picker-{{name}}').MenuPickerApi({
+        label:  '{{label}}',
+        name:   '{{name}}',
+        {% if pickerManager %}type:   '{{pickerManager.name}}', {% endif %}
+        url:    '{{path('menu_manager_explore_content', {name: name})}}'
+    });
+    $(window).on('refresh-menu-item-{{name}}', function(e, data){
+        if(!data.content_id){
+            return;
+        }
+        params = {};
+        if(data.context_enabled && data.context){
+            params.context = data.context;
+        }
+        $.ajax({
+            url: '{{path('menu_manager_explore_content', {name: name})}}/'+data.content_id,
+            data: params,
+            success: function(datas){
+                $(window).trigger('menu-item-{{name}}-'+datas.id, datas);
+            }
+        });
+    });
+    {% endfor %}
+
+    $('#node_menu').menuBuilder({field: $('#{{form.json_items.vars.id}}')});
+
+    // gestion des liens en direct
+    $('#add-direct-link').click(function(e){
+        e.preventDefault();
+        $('#content-picker-direct-link-content input').map(function(ui){ $(this).val( $(this).val().trim() ); });
+        $('#content-picker-direct-link-content .has-error').removeClass('has-error');
+
+        if(!$('#form-url-title').val().length){
+            $('#form-url-title').parents('.form-group').addClass('has-error');
+        }
+
+        if(!$('#form-url-address').val().length || !document.getElementById('form-url-address').checkValidity()){
+            $('#form-url-address').parents('.form-group').addClass('has-error');
+        }
+
+        if($('#content-picker-direct-link-content .has-error').length){
+            return false;
+        }
+
+        $(window).trigger('add-menu-item', {
+            title: $('#form-url-title').val(),
+            url: $('#form-url-address').val(),
+            labelType: 'URL'
+        });
+        $('#content-picker-direct-link-content input').val('');
+    });
+
+    $(window).on('add-menu-item', function(e, data){
+        console.log(data);
+        item = {
+            title: data.title,
+            url: data.url,
+            type: data.labelType,
+            content_type: data.name,
+            content_id: data.id,
+        };
+
+        item.context_enabled = (typeof data.contexts == 'object');
+        if(item.context_enabled){
+            item.contexts = data.contexts;
+            item.context = data.context;
+        }
+
+        $('#node_menu').menuBuilder('addItem', item);
+    });
+
+});
+</script>
+{% endblock javascripts %}

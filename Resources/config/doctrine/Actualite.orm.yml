@@ -1,0 +1,116 @@
+
+Kalamu\CmsAdminBundle\Entity\Actualite:
+    type: entity
+    table: roho_actualite
+    gedmo:
+        loggable: true
+    lifecycleCallbacks:
+        prePersist: [updatePublishTimestamp]
+        preUpdate: [updatePublishTimestamp]
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+
+    fields:
+        title:
+            type: text
+            gedmo:
+                - versioned
+        slug:
+            type: string
+            length: 512
+            gedmo:
+                versioned: ~
+                slug:
+                    separator: -
+                    style: default
+                    updatable: false
+                    unique: true
+                    fields:
+                        - title
+            unique: true
+        resume:
+            type: text
+            nullable: true
+            gedmo:
+                versioned: ~
+        contenu:
+            type: text
+            nullable: true
+            gedmo:
+                versioned: ~
+        image:
+            type: text
+            nullable: true
+            gedmo:
+                versioned: ~
+        template:
+            type: text
+            nullable: true
+            gedmo:
+                versioned: ~
+
+        created_at:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updated_at:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        created_by:
+            type: string
+            gedmo:
+                blameable:
+                    on: create
+        updated_by:
+            type: string
+            gedmo:
+                blameable:
+                    on: update
+        published_at:
+            type: datetime
+            nullable: true
+        metas:
+            type: json_array
+            nullable: true
+            gedmo:
+                versioned: ~
+
+    manyToOne:
+        publish_status:
+            targetEntity: Kalamu\CmsAdminBundle\Entity\PublishStatus
+            joinColumn:
+                name: ref_status
+                referencedColumnName: id
+
+
+    manyToMany:
+        terms:
+            targetEntity: Kalamu\CmsAdminBundle\Entity\Term
+            joinTable:
+                name: actualite_aff_term
+                joinColumn:
+                    ref_actualite:
+                        referencedColumnName: id
+                        onDelete: CASCADE
+                inversedJoinColumn:
+                    ref_term:
+                        referencedColumnName: id
+                        onDelete: CASCADE
+
+        context_publication:
+            targetEntity: Kalamu\CmsAdminBundle\Entity\ContextPublication
+            joinTable:
+                name: roho_actualite_context
+                joinColumns:
+                    ref_actualite:
+                        referencedColumnName: id
+                        onDelete: CASCADE
+                inverseJoinColumns:
+                    ref_context:
+                        referencedColumnName: id
+                        onDelete: CASCADE

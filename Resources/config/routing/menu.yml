@@ -1,0 +1,12 @@
+
+menu_manager_explore_content:
+    path:   /content/{name}
+    defaults:
+        _controller: "KalamuCmsAdminBundle:Menu:exploreContent"
+        _sonata_admin: kalamu_cms_admin.admin.menu
+
+menu_manager_get_content:
+    path:   /content/{name}/{id}
+    defaults:
+        _controller: "KalamuCmsAdminBundle:Menu:getContent"
+        _sonata_admin: kalamu_cms_admin.admin.menu

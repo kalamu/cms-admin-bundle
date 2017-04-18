@@ -1,0 +1,23 @@
+category.standard: Standard
+category.media: Médias
+category.other: Autre
+category.tmp_aura: 'Thème Aura'
+category.default: Défaut
+cms.wysiwyg.title: 'Texte mis en forme'
+cms.wysiwyg.description: 'Saisissez votre texte et mettez le en forme comme sur un logiciel de traitement de texte.'
+cms.image.title: Image
+cms.image.description: 'Sélectionnez une image à insérer dans le contenu.'
+cms.embed.title: Vidéo
+cms.embed.description: 'Saisissez le code "<embed ...</embed>" fourni par Youtube, Dailymotion, ...'
+cms.menu.title: Menu
+cms.menu.description: 'Sélectionner un des menu existant pour l''insérer dans le contenu.'
+cms.google_map.title: 'Carte Google Maps'
+cms.google_map.description: 'Déplacez vous sur la zone à affichez, cliquez sur la carte pour ajouter des marquers.'
+cms.form_contact.title: 'Formulaire de contact'
+cms.form_contact.description: 'Ajoutez un formulaire de contact configurable pour recevoir les messages par mail'
+cms.section.section_standard.title: Section standard
+cms.section.section_standard.description: Section standard
+cms.section.section_parallax.title: Section parallax
+cms.section.section_parallax.description: Section avec une image de fond et une couleur opaque
+cms.section.section_slider.title: Section slider
+cms.section.section_slider.description: Section pour contenir un slider

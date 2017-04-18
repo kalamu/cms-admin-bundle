@@ -1,0 +1,34 @@
+{% block classifiable_widget %}
+    {% spaceless %}
+        
+        <div {{ block('widget_container_attributes') }}>
+            {% set options = form.vars.choices %}
+            {{- block('choice_term_widget_options') -}}
+        </div>
+        
+        <style type="text/css">
+            .checkbox-group{overflow: hidden; overflow-y: auto; max-height: 200px;border:1px solid #EEE;padding-left: 30px;}
+            .checkbox-group label{font-weight: normal;}
+        </style>
+        
+    {% endspaceless %}
+{% endblock %}
+
+{%- block choice_term_widget_options -%}
+    {% for group_label, choice in options %}
+        {%- if choice is iterable -%}
+            <h4>{{group_label}}</h4>
+            
+            <div class="checkbox-group">
+                {% set options = choice %}
+                {{- block('choice_term_widget_options') -}}
+            </div>
+        {%- else -%}
+            {% set checked = choice.data in form.vars.value %}
+            <label for="{{id~'-'~choice.value}}" class="checkbox mr10">
+                <input type="checkbox" id="{{id~'-'~choice.value}}" name="{{full_name}}[]" {% if choice.value is defined %} value="{{ choice.value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />
+                {{choice.label}}
+            </label>
+        {%- endif -%}
+    {% endfor %}
+{%- endblock choice_term_widget_options -%}

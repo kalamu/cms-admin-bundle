@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Sélecteur de fichier</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2" />
+        
+        {% stylesheets 
+            '@RohoCoreBundle/Resources/public/css/jquery-ui.min.css'
+            '@RohoCoreBundle/Resources/public/css/jquery-ui.structure.min.css'
+            '@RohoCoreBundle/Resources/public/css/jquery-ui.theme.min.css'
+            
+        %}
+            <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+        {% endstylesheets %}
+        <link href="{{ asset("#{prefix}/elfinder/dist/css/elfinder.min.css") }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset("#{prefix}/elfinder/dist/css/theme.css") }}" rel="stylesheet" type="text/css">
+        
+        
+        {% javascripts 
+            '@RohoCoreBundle/Resources/public/js/jquery-1.11.1.min.js'
+            '@RohoCoreBundle/Resources/public/js/jquery-ui.min.js'
+        %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+        <script src="{{ asset("#{prefix}/elfinder/dist/js/elfinder.min.js") }}"></script>
+        <script src="{{ asset("#{prefix}/elfinder/dist/js/i18n/elfinder.fr.js") }}"></script>
+
+        <script type="text/javascript" charset="utf-8">
+            var FileBrowserDialogue = {
+              init: function() { },
+              mySubmit: function (file, elf) {
+                // pass selected file data to TinyMCE
+                parent.tinymce.activeEditor.windowManager.getParams().oninsert(file, elf);
+                // close popup window
+                parent.tinymce.activeEditor.windowManager.close();
+              }
+            }
+            $(document).ready(function () {
+                var elf = $('#elfinder').elfinder({
+                    url : '{{path('ef_connect', { 'instance': 'docs_cms' } )}}',
+                    lang : 'fr',
+                    getFileCallback: function(file) {
+                        FileBrowserDialogue.mySubmit(file, elf);
+                    }
+                }).elfinder('instance');      
+            });
+        </script>
+    </head>
+    <body>
+        <div id="elfinder"></div>
+    </body>
+</html>

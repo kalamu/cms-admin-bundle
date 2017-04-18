@@ -1,0 +1,64 @@
+
+Kalamu\CmsAdminBundle\Entity\Term:
+    type: entity
+    table: roho_term
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+
+    fields:
+        libelle:
+            type: string
+        slug:
+            type: string
+            length: 512
+            gedmo:
+                slug:
+                    separator: -
+                    style: default
+                    updatable: false
+                    unique: true
+                    fields:
+                        - libelle
+            unique: true
+        image:
+            type: string
+            nullable: true
+        resume:
+            type: text
+            nullable: true
+        description:
+            type: text
+            nullable: true
+
+        metas:
+            type: json_array
+            nullable: true
+            gedmo:
+                versioned: ~
+
+
+    oneToMany:
+        children:
+            targetEntity: Kalamu\CmsAdminBundle\Entity\Term
+            mappedBy: parent
+
+    manyToOne:
+        taxonomy:
+            targetEntity: Kalamu\CmsAdminBundle\Entity\Taxonomy
+            inversedBy: terms
+            joinColumn:
+                name: ref_taxonomy
+                referencedColumnName: id
+                nullable: false
+
+        parent:
+            targetEntity: Kalamu\CmsAdminBundle\Entity\Term
+            inversedBy: children
+            joinColumn:
+                name: ref_parent
+                referencedColumnName: id
+                nullable: true
+                onDelete: SET NULL
+

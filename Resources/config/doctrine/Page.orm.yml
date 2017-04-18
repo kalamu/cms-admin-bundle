@@ -1,0 +1,92 @@
+
+Kalamu\CmsAdminBundle\Entity\Page:
+    type: entity
+    table: roho_page
+    gedmo:
+        loggable: true
+    lifecycleCallbacks:
+        prePersist: [updatePublishTimestamp]
+        preUpdate: [updatePublishTimestamp]
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+
+    fields:
+        title:
+            type: text
+            gedmo:
+                - versioned
+        slug:
+            type: string
+            length: 512
+            gedmo:
+                versioned: ~
+                slug:
+                    separator: -
+                    style: default
+                    updatable: false
+                    unique: true
+                    fields:
+                        - title
+            unique: true
+        contenu:
+            type: text
+            nullable: true
+            gedmo:
+                versioned: ~
+        template:
+            type: text
+            nullable: true
+            gedmo:
+                versioned: ~
+
+        created_at:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updated_at:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        published_at:
+            type: datetime
+            nullable: true
+        created_by:
+            type: string
+            gedmo:
+                blameable:
+                    on: create
+        updated_by:
+            type: string
+            gedmo:
+                blameable:
+                    on: update
+        metas:
+            type: json_array
+            nullable: true
+            gedmo:
+                versioned: ~
+
+    manyToOne:
+        publish_status:
+            targetEntity: Kalamu\CmsAdminBundle\Entity\PublishStatus
+            joinColumn:
+                name: ref_status
+                referencedColumnName: id
+
+    manyToMany:
+        context_publication:
+            targetEntity: Kalamu\CmsAdminBundle\Entity\ContextPublication
+            joinTable:
+                name: roho_page_context
+                joinColumns:
+                    ref_page:
+                        referencedColumnName: id
+                        onDelete: CASCADE
+                inverseJoinColumns:
+                    ref_context:
+                        referencedColumnName: id
+                        onDelete: CASCADE

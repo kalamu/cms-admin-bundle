@@ -1,0 +1,34 @@
+{
+    "name": "kalamu/cms-admin-bundle",
+    "type": "library",
+    "description": "Interface admin du CMS Kalamu. Copyright (c) 2017 ETIC Services",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Johan DESMYTER",
+            "email": "johan@etic.yt"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@gitlab.etic.yt:roho/cms-bundle.git"
+        }
+    ],
+    "require": {
+        "symfony/symfony": "~2.8",
+        "sonata-project/admin-bundle": "^3.16",
+        "gibilogic/tinymce-bundle": "1.3.*",
+        "knplabs/knp-paginator-bundle": "2.4.*",
+        "kalamu/dashboard-bundle": "dev-master",
+        "helios-ag/fm-elfinder-bundle": "^6.0.2"
+    },
+    "autoload": {
+         "psr-4": { "Kalamu\\CmsAdminBundle\\": "" }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}

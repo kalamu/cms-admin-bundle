@@ -1,0 +1,85 @@
+parameters:
+
+    # Templates des widgets
+    kalamu_cms.element.cms.last_content.template: KalamuCmsAdminBundle:Widget:last_content.html.twig
+    kalamu_cms.element.cms.form_contact.template: KalamuCmsAdminBundle:Widget:form_contact.html.twig
+    kalamu_cms.element.cms.wysiwyg.template: KalamuCmsAdminBundle:Widget/CMS:wysiwyg.html.twig
+    kalamu_cms.element.cms.menu.template: KalamuCmsAdminBundle:Widget/CMS:menu.html.twig
+    kalamu_cms.element.cms.image.template: KalamuCmsAdminBundle:Widget/CMS:image.html.twig
+    kalamu_cms.element.cms.card_link.template: KalamuCmsAdminBundle:Widget/CMS:card_link.html.twig
+    kalamu_cms.element.cms.accordion.templates:
+        accordion:
+            title: 'Accordéon déroulant'
+            template: 'KalamuCmsAdminBundle:Widget/CMS:accordion.html.twig'
+        blocks:
+            title: 'Blocks'
+            template: 'KalamuCmsAdminBundle:Widget/CMS:blocks.html.twig'
+    kalamu_cms.element.cms.isotope_cards.template: KalamuCmsAdminBundle:Widget/CMS:isotope_cards.html.twig
+    kalamu_cms.element.cms.embed.template: KalamuCmsAdminBundle:Widget/CMS:embed.html.twig
+    kalamu_cms.element.cms.google_map.template: KalamuCmsAdminBundle:Widget/CMS:google_map.html.twig
+
+services:
+
+    # Widgets
+    kalamu_cms.element.cms.last_content:
+        class: Kalamu\CmsAdminBundle\Widget\LastContentWidget
+        arguments: ['@roho_cms.content_type.manager', %kalamu_cms.element.cms.last_content.template%]
+        tags:
+            - { name: dashboard.widget }
+
+    kalamu_cms.element.cms.form_contact:
+        class: Kalamu\CmsAdminBundle\Widget\FormContactWidget
+        arguments: ['@form.factory', %kalamu_cms.element.cms.form_contact.template%, '@mailer']
+        calls:
+            - [setRequestStack, ['@request_stack']]
+        tags:
+            - { name: dashboard.widget }
+
+    kalamu_cms.element.cms.wysiwyg:
+        class: Kalamu\CmsAdminBundle\Widget\CMS\WysiwygWidget
+        arguments: [%kalamu_cms.element.cms.wysiwyg.template%]
+        tags:
+            - { name: dashboard.widget }
+
+    kalamu_cms.element.cms.menu:
+        class: Kalamu\CmsAdminBundle\Widget\CMS\MenuWidget
+        arguments: [%kalamu_cms.element.cms.menu.template%]
+        tags:
+            - { name: dashboard.widget }
+
+    kalamu_cms.element.cms.image:
+        class: Kalamu\CmsAdminBundle\Widget\CMS\ImageWidget
+        arguments: [%kalamu_cms.element.cms.image.template%]
+        tags:
+            - { name: dashboard.widget }
+
+    kalamu_cms.element.cms.accordion:
+        class: Kalamu\CmsAdminBundle\Widget\CMS\AccordionWidget
+        arguments: [%kalamu_cms.element.cms.accordion.templates%]
+        tags:
+            - { name: dashboard.widget }
+
+    kalamu_cms.element.cms.card_link:
+        class: Kalamu\CmsAdminBundle\Widget\CMS\CardLinkWidget
+        arguments: [%kalamu_cms.element.cms.card_link.template%]
+        tags:
+            - { name: dashboard.widget }
+
+    kalamu_cms.element.cms.isotope_cards:
+        class: Kalamu\CmsAdminBundle\Widget\CMS\IsotopeCardsWidget
+        arguments: [%kalamu_cms.element.cms.isotope_cards.template%]
+        tags:
+            - { name: dashboard.widget }
+
+    kalamu_cms.element.cms.embed:
+        class: Kalamu\CmsAdminBundle\Widget\CMS\EmbedWidget
+        arguments: [%kalamu_cms.element.cms.embed.template%]
+        tags:
+            - { name: dashboard.widget }
+
+    kalamu_cms.element.cms.google_map:
+        class: Kalamu\CmsAdminBundle\Widget\CMS\GoogleMapWidget
+        arguments: [%kalamu_cms.element.cms.google_map.template%]
+        tags:
+            - { name: dashboard.widget }
+

@@ -1,0 +1,3 @@
+
+{% set alignClass = (align in ['left', 'right']) ? 'pull-'~align : (align == 'center' ? 'center-block' : '')  %}
+<img src="{{url|escape('html_attr')}}" class="img-responsive {{alignClass}}" alt="{{alt ? alt : title|escape('html_attr')}}" title="{{title|escape('html_attr')}}" />

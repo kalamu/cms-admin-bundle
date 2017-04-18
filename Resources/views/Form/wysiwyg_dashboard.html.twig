@@ -1,0 +1,82 @@
+{% block wysiwyg_dashboard_widget %}
+    {% spaceless %}
+        {% block textarea_widget %}{% endblock %}
+
+        {% set uuid = uniqid() %}
+        <div id="wysiwyg_dashboard_{{uuid}}"></div>
+        {% stylesheets '@KalamuDashboardBundle/Resources/public/css/dashboard.css'
+            '@KalamuCmsAdminBundle/Resources/public/css/wysiwyg_dashboard.css'
+        %}
+            <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+        {% endstylesheets %}
+
+        <script src="{{ asset('bundles/bazingajstranslation/js/translator.min.js') }}"></script>
+        <script src="{{ url('bazinga_jstranslation_js', {'domain': 'kalamu'}) }}"></script>
+
+        {% javascripts
+            '@KalamuDashboardBundle/Resources/public/js/dashboard/col.js'
+            '@KalamuDashboardBundle/Resources/public/js/dashboard/explorer.js'
+            '@KalamuDashboardBundle/Resources/public/js/dashboard/generic-row.js'
+            '@KalamuDashboardBundle/Resources/public/js/dashboard/row.js'
+            '@KalamuDashboardBundle/Resources/public/js/dashboard/section.js'
+            '@KalamuDashboardBundle/Resources/public/js/dashboard/widget.js'
+            '@KalamuDashboardBundle/Resources/public/js/dashboard.js'
+            '@KalamuCmsAdminBundle/Resources/public/js/jquery.kalamuCmsDashboard.js'
+        %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+        <script type="text/javascript">
+            $(function(){
+                Translator.locale = '{{app.request.getLocale()}}';
+
+                // Explorer for widgets
+                explorerWidget = $('<div>').appendTo('body').kalamuElementExplorer({
+                    element_api: '{{path('api_element_base_url')}}',
+                    element_context: 'cms',
+                    type: 'cms.content',
+                    modalOptions: {backdrop: 'static'}
+                });
+                // Explorer for sections
+                explorerSection = $('<div>').appendTo('body').kalamuElementExplorer({
+                    element_api: '{{path('api_element_base_url')}}',
+                    element_context: 'cms',
+                    type: 'cms.section',
+                    modalOptions: {backdrop: 'static'}
+                });
+
+                $('#wysiwyg_dashboard_{{uuid}}').kalamuDashboard({
+                    explorerWidget: explorerWidget,
+                    explorerSection: explorerSection,
+                    enable_widget: true,
+                    enable_section: true,
+                    editing: true,
+                    textarea: $('#{{id}}')
+                });
+
+                $('#wysiwyg_dashboard_{{uuid}}').parents('form').on('submit', function(event){
+                    console.log("IL FAUT ENREGISTRER !!!!!!");
+                    active = $(document.activeElement);
+                    $('#wysiwyg_dashboard_{{uuid}}').kalamuDashboard('save');
+                    $(this).off(event);
+
+                    if(active.length && active.is('[type=submit]')){ // dans la mesure du possible on re-clic sur le même bouton
+                        active.trigger('click');
+                    }else{
+                        $(this).trigger('submit');
+                    }
+                });
+
+
+                $(window).on('kalamu.dashboard.row_added '
+                            + 'kalamu.dashboard.section_added '
+                            + 'kalamu.dashboard.widget_added ', function(){
+                    $('#wysiwyg_dashboard_{{uuid}}').kalamuDashboard('save');
+                });
+
+                if($('#{{id}}').val().length){
+                    $('#wysiwyg_dashboard_{{uuid}}').kalamuDashboard('import', JSON.parse($('#{{id}}').val()));
+                }
+            });
+        </script>
+    {% endspaceless %}
+{% endblock %}

@@ -1,0 +1,103 @@
+{% set uid = uniqid() %}    
+<div class="tab-block mb25">
+    <ul class="nav tabs-left tabs-border link-pickers">
+        {% for name, label in items_pickers_manager.itemPickers %}
+        <li{{loop.first ? ' class="active"' : ''}}>
+            <a href="#link-picker-{{name~uid}}" data-toggle="tab">{{label}}</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <div class="tab-content">
+        {% for name, label in items_pickers_manager.itemPickers %}
+            {% set manager = items_pickers_manager.itemPicker(name).manager %}
+        <div id="link-picker-{{name~uid}}" class="tab-pane{{loop.first ? ' active' : ''}}">
+            <div class="panel-body content-picker">
+                <table class="table mbn tc-bold-first">
+                    <thead>
+                        <tr class="hidden">
+                            <th>Titre</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            {% if manager and manager.getContexts|length > 0  %}
+                <div class="bg-white tab-block pn context-filter">
+                    <span class="tab-content hidden"></span>
+                    <ul class="nav nav-tabs tabs-border nav-justified">
+                        <li><a data-toggle="tab" data-context="" href="#">Tout</a></li>
+                            {% for context in manager.getContexts %}
+                            <li><a data-toggle="tab" data-context="{{context}}" href="#{{context}}">{{manager.getContextTitle(context)}}</a></li>
+
+                            {% if loop.length > 2 and loop.first %}
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" role="menu" href="#">Autres <i class="fa fa-caret-down pl5"></i></a>
+                                    <ul class="dropdown-menu">
+                                    {% endif %}
+
+                                    {% if loop.length > 2 and loop.last %}
+                                    </ul>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+            <div class="panel-footer bg-white">
+
+                <div class="form-group has-feedback">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                        <input type="text" class="form-control search-input" id="search_{{name}}" aria-describedby="search_{{name}}Status" placeholder="Rechercher...">
+                    </div>
+                </div>
+
+                <span class="text-muted">Total: <strong class="total-count"></strong></span>
+                <div class="pull-right">
+                    <a href="#" class="btn btn-xs btn-default page-previous"><i class="fa fa-arrow-left"></i></a>
+                    Page <input type="number" value="" class="page-input" style="width: 50px" /> /<span class="page-count"></span>
+                    <a href="#" class="btn btn-xs btn-default page-next"><i class="fa fa-arrow-right"></i></a>
+                </div>
+                <span class="clearfix"></span>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script type="text/javascript" src="{{asset('bundles/rohocms/js/jquery.eticMenuPickerApi.js')}}"></script>
+<script type="text/javascript">
+$(function(){
+    {% for name, label in items_pickers_manager.itemPickers %}
+        {% set pickerManager = items_pickers_manager.itemPicker(name).manager %}
+    $('#link-picker-{{name~uid}}').one('selectecd-tab', function(){
+        $('#link-picker-{{name~uid}}').MenuPickerApi({
+            label:  '{{label}}',
+            name:   '{{name}}',
+            {% if pickerManager %}type:   '{{pickerManager.name}}', {% endif %}
+            url:    '{{path('menu_manager_explore_content', {name: name})}}',
+            displayItem: function(i, item){
+                link = $('<a href="#">'+item.title+'</a>');
+                item.type = typeof item.type !== 'undefined' ? item.type : this.options.type;
+                item.labelType = this.options.label;
+                link.data('menu-item', item);
+                link.click(function(e){
+                    e.preventDefault();
+                    $(window).trigger('select-link', $(this).data('menu-item'));
+                });
+
+                row = $('<tr><td></td></tr>');
+                row.find('td').append(link);
+                row.appendTo( this.element.find('.content-picker tbody') );
+            }
+        });
+    });
+    {% endfor %}
+
+    $('.link-pickers a[data-toggle="tab"]').on('show.bs.tab', function(e){
+        $( $(e.target).attr('href') ).trigger('selectecd-tab');
+    });
+    $('#link-picker-{{(items_pickers_manager.itemPickers|keys|first)~uid}}').trigger('selectecd-tab');
+});  
+</script>
