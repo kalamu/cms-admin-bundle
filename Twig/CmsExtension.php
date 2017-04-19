@@ -62,7 +62,9 @@ class CmsExtension extends \Twig_Extension
 
         switch($base_route){
             case 'read' :
-                $content = $manager->getPublicContent($parameters['identifier'], $parameters['context'] ?: null);
+                if(is_string($content)){
+                    $content = $manager->getPublicContent($parameters['identifier'], $parameters['context'] ?: null);
+                }
                 return $manager->getPublicReadLink($content, $parameters, $referenceType);
             case 'index' :
                 return $manager->getPublicIndexLink($parameters, $referenceType);
