@@ -56,6 +56,9 @@ class CmsExtension extends \Twig_Extension
     public function cmsLink($base_route, $content, $parameters = array(), $referenceType = null){
         if(is_string($content)){
             $manager = $this->contentTypeManager->getType($content);
+            if($parameters['identifier']){
+                $content = $manager->getPublicContent($parameters['identifier'], $parameters['context'] ?: null);
+            }
         }else{
             $manager = $this->contentTypeManager->getManagerForContent($content);
         }
