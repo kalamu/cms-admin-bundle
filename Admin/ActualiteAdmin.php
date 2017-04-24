@@ -85,7 +85,7 @@ class ActualiteAdmin extends AbstractAdmin
         $formMapper
             ->with("Actualité", ['class' => 'col-md-9'])
                 ->add('title', TextType::class)
-                ->add('slug', TextType::class)
+                ->add('slug', TextType::class, ['required' => false])
                 ->add('resume')
                 ->add('contenu', WysiwygDashboardType::class)
                 ->add('image', ElfinderType::class, ['instance' => 'img_cms', 'required' => false, 'elfinder_select_mode' => 'image'])

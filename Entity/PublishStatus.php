@@ -2,10 +2,12 @@
 
 namespace Kalamu\CmsAdminBundle\Entity;
 
+use Roho\CmsBundle\Model\PublishStatusInterface;
+
 /**
  * PublishStatus
  */
-class PublishStatus
+class PublishStatus implements PublishStatusInterface
 {
     /**
      * @var integer

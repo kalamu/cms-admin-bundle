@@ -75,7 +75,7 @@ class PageAdmin extends AbstractAdmin
         $formMapper
             ->with("Page", ['class' => 'col-md-9'])
                 ->add('title', TextType::class)
-                ->add('slug')
+                ->add('slug', TextType::class, ['required' => false])
                 ->add('contenu', WysiwygDashboardType::class)
             ->end()
             ->with("Infos", ['class' => 'col-md-3'])
