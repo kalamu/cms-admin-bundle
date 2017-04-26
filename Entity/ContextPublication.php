@@ -2,10 +2,12 @@
 
 namespace Kalamu\CmsAdminBundle\Entity;
 
+use Roho\CmsBundle\Model\ContextPublicationInterface;
+
 /**
  * ContextPublication
  */
-class ContextPublication
+class ContextPublication implements ContextPublicationInterface
 {
     /**
      * @var integer

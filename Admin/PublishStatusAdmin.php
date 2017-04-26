@@ -2,7 +2,7 @@
 
 namespace Kalamu\CmsAdminBundle\Admin;
 
-use Kalamu\CmsAdminBundle\ContentType\Interfaces\PublishStatusInterface;
+use Roho\CmsBundle\ContentType\Interfaces\PublishStatusInterface;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
