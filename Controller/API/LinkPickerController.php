@@ -18,7 +18,7 @@ class LinkPickerController extends Controller
     public function indexAction(){
 
         return $this->render('KalamuCmsAdminBundle:LinkPicker:index.html.twig', array(
-            'items_pickers_manager' => $this->get('roho_cms.menu_item.manager'),
+            'items_pickers_manager' => $this->get('kalamu_cms_admin.menu_item.manager'),
         ));
     }
 
@@ -28,7 +28,7 @@ class LinkPickerController extends Controller
     public function baseAction(){
 
         return $this->render('KalamuCmsAdminBundle:LinkPicker:base.html.twig', array(
-            'items_pickers_manager' => $this->get('roho_cms.menu_item.manager'),
+            'items_pickers_manager' => $this->get('kalamu_cms_admin.menu_item.manager'),
         ));
     }
 
