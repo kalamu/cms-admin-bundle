@@ -1,5 +1,4 @@
 (function($) {
-
     /**
      * Widget chargé de récupérer des items à ajouter dans le menu
      */
@@ -91,8 +90,6 @@
                     $(obj.contenus).each($.proxy(disaply_method, this));
                     
                     this.element.find('.panel-controls .fa-spinner').remove();
-                    this.element.find('.content-picker').scroller("reset");
-                    this.element.find('.content-picker').scroller().scroller("scroll", 0, 0);
                 },
                 error: function(){
                     this.element.find('.panel-controls .fa-spinner').remove();

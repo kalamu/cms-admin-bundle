@@ -23,7 +23,7 @@ $.widget("kalamu.cmsLinkSelector", {
             this.options.removeLink = $('<a href="#" class="mr10"><i class="fa fa-trash"></i> Retirer</a>');
         }
 
-        this.options.modal = $('<div class="modal fade" tabindex="-1" role="dialog">'
+        this.options.modal = $('<div class="modal fade modal-cms-link-selecter" tabindex="-1" role="dialog">'
             +'<div class="modal-dialog modal-lg">'
                 +'<div class="modal-content"><div class="modal-header">'
                     +'<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>'

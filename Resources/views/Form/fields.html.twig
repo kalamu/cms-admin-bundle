@@ -10,7 +10,6 @@
     {{form_widget(form.identifier)}}
     {{form_widget(form.context)}}
     </div>
-    <script src="{{ asset("bundles/rohocms/js/jquery.cmsLinkSelector.js") }}"></script>
     <script type="text/javascript">
     $(function(){
         $('#{{form.display.vars.id}}').parent().cmsLinkSelector({picker_api: '{{path('api_link_picker_base')}}', required: {{form.vars.required ? 'true' : 'false'}}});
