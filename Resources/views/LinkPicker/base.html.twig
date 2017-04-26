@@ -1,4 +1,4 @@
-{% set uid = uniqid() %}    
+{% set uid = uniqid() %}
 <div class="tab-block mb25">
     <ul class="nav tabs-left tabs-border link-pickers">
         {% for name, label in items_pickers_manager.itemPickers %}
@@ -82,12 +82,12 @@ $(function(){
                 link.data('menu-item', item);
                 link.click(function(e){
                     e.preventDefault();
-                    $(window).trigger('select-link', $(this).data('menu-item'));
+                    $(window).trigger('select_link', $(this).data('menu-item'));
                 });
-
                 row = $('<tr><td></td></tr>');
                 row.find('td').append(link);
                 row.appendTo( this.element.find('.content-picker tbody') );
+
             }
         });
     });
@@ -97,5 +97,5 @@ $(function(){
         $( $(e.target).attr('href') ).trigger('selectecd-tab');
     });
     $('#link-picker-{{(items_pickers_manager.itemPickers|keys|first)~uid}}').trigger('selectecd-tab');
-});  
+});
 </script>

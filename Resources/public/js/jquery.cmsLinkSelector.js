@@ -40,7 +40,7 @@ $.widget("kalamu.cmsLinkSelector", {
         if(!this.options.required){
             this.element.append(this.options.removeLink);
         }
-        
+
         this.element.append(this.options.modal);
 
         this.options.modal.one('show.bs.modal', $.proxy(function(){
@@ -50,23 +50,23 @@ $.widget("kalamu.cmsLinkSelector", {
         this._on( this.options.editLink, {
             click: "openModal"
         });
-        
+
         if(!this.options.required){
             this._on( this.options.removeLink, {
                 click: "removeLink"
             });
         }
-        
+
         // On écoute les sélection de lien seulement quand c'est notre modal qui est ouverte
         this.options.modal.on('show.bs.modal', $.proxy(this.listenSelect, this));
         this.options.modal.on('hide.bs.modal', $.proxy(this.stopListenSelect, this));
-        
+
         this._on( this.element.find('input[name*="[display]"]'), {
             change: 'updateDisplay'
         });
         this.element.find('input[name*="[display]"]').trigger('change');
     },
-    
+
     updateDisplay: function(){
         this.options.label.html( this.element.find('input[name*="[display]"]').val().length ? this.element.find('input[name*="[display]"]').val() : '...' );
         if(this.options.removeLink){
@@ -82,15 +82,15 @@ $.widget("kalamu.cmsLinkSelector", {
         e.preventDefault();
         this.options.modal.modal('show');
     },
-    
+
     listenSelect: function(){
         this._on( $(window), {
-            'select-link': "selectLink"
+            select_link: "selectLink"
         });
     },
-    
+
     stopListenSelect: function(){
-        this._off( $(window), 'select-link');
+        this._off( $(window), 'select_link');
     },
 
     selectLink: function(e, item){
@@ -108,12 +108,11 @@ $.widget("kalamu.cmsLinkSelector", {
 
         this.options.modal.modal('hide');
     },
-    
+
     removeLink: function(e){
         e.preventDefault();
-        
+
         this.element.find('input').val('').trigger('change');
     }
 
 });
-    
