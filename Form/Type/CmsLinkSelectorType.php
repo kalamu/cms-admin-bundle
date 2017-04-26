@@ -3,17 +3,18 @@
 namespace Kalamu\CmsAdminBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CmsLinkSelectorType extends AbstractType {
 
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-            ->add('display', 'hidden')
-            ->add('type', 'hidden')
-            ->add('identifier', 'hidden')
-            ->add('context', 'hidden');
+            ->add('display', HiddenType::class)
+            ->add('type', HiddenType::class)
+            ->add('identifier', HiddenType::class)
+            ->add('context', HiddenType::class);
 
     }
 
@@ -25,5 +26,5 @@ class CmsLinkSelectorType extends AbstractType {
     public function getName() {
         return 'cms_link_selector';
     }
-    
+
 }
