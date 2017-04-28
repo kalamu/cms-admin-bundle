@@ -14,6 +14,17 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class PageAdmin extends AbstractAdmin
 {
+    
+    public function getTemplate($name) {
+        switch($name){
+            case 'show':
+                return 'KalamuCmsAdminBundle:Page:base_show.html.twig';
+        }
+
+        return parent::getTemplate($name);
+    }
+    
+    
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -122,6 +133,7 @@ class PageAdmin extends AbstractAdmin
                 ->add('published_at')
                 ->add('created_by')
                 ->add('updated_by')
+                ->add('', null, ['template' => 'KalamuCmsAdminBundle:Page:show_in_front.html.twig'])
             ->end()
         ;
     }
