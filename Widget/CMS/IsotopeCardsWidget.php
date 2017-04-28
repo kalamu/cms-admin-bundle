@@ -2,8 +2,11 @@
 
 namespace Kalamu\CmsAdminBundle\Widget\CMS;
 
+use Kalamu\CmsAdminBundle\Form\Type\IsotopeItemType;
 use Kalamu\DashboardBundle\Model\AbstractConfigurableElement;
 use Symfony\Bundle\TwigBundle\TwigEngine;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Form;
 
 /**
@@ -27,10 +30,10 @@ class IsotopeCardsWidget extends AbstractConfigurableElement
     }
 
     public function getForm(Form $form){
-        $form->add("title", 'text', array('label' => 'Titre', 'required' => true, 'horizontal'=>false, 'label_attr' => array('class' => 'center-block text-left')));
+        $form->add("title", TextType::class, array('label' => 'Titre', 'required' => true, 'horizontal'=>false, 'label_attr' => array('class' => 'center-block text-left')));
 
-        $form->add("elements", 'collection', array(
-            'type'  => 'isotope_item',
+        $form->add("elements", CollectionType::class, array(
+            'type'  => IsotopeItemType::class,
             'label' => 'Elements',
             'allow_add' => true,
             'allow_delete' => true,

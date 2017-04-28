@@ -2,15 +2,12 @@
 
 namespace Kalamu\CmsAdminBundle\Form\Type;
 
-use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\FormView;
-use Symfony\Component\Form\FormInterface;
-use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\OptionsResolver\Options;
 use Doctrine\Bundle\DoctrineBundle\Registry;
-use Kalamu\CmsAdminBundle\Manager\ContentTypeManager;
 use Doctrine\ORM\EntityRepository;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\OptionsResolver\Options;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Formulaire pour sélectionner les termes d'une entitiée classifiable
@@ -19,7 +16,7 @@ class ClassifiableType extends AbstractType
 {
 
     /**
-     * @var \Doctrine\Bundle\DoctrineBundle\Registry
+     * @var Registry
      */
     protected $doctrine;
 
@@ -69,26 +66,7 @@ class ClassifiableType extends AbstractType
      */
     public function getParent()
     {
-        if (method_exists('Symfony\Component\Form\AbstractType', 'getBlockPrefix')) {
-            return 'Symfony\Component\Form\Extension\Core\Type\ChoiceType';
-        }
-
-        return 'entity';
+        return ChoiceType::class;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getName()
-    {
-        return $this->getBlockPrefix();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getBlockPrefix()
-    {
-        return 'classifiable';
-    }
 }

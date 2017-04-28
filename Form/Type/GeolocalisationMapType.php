@@ -3,8 +3,10 @@
 namespace Kalamu\CmsAdminBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Range;
 
 /**
@@ -14,36 +16,30 @@ use Symfony\Component\Validator\Constraints\Range;
  */
 class GeolocalisationMapType extends AbstractType
 {
-    
+
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-                ->add('latitude', 'text', array('required' => $options['required'], 'constraints' => [
+                ->add('latitude', TextType::class, array('required' => $options['required'], 'constraints' => [
                     new Range(['min' => -180, 'max' => 180])
                 ]))
-                ->add('longitude', 'text', array('required' => $options['required'], 'constraints' => [
+                ->add('longitude', TextType::class, array('required' => $options['required'], 'constraints' => [
                     new Range(['min' => -180, 'max' => 180])
                 ]))
-                ->add('srid', 'text', array('required' => $options['required'], 'label' => 'SRID'));
-        
+                ->add('srid', TextType::class, array('required' => $options['required'], 'label' => 'SRID'));
+
     }
-    
+
     public function configureOptions(OptionsResolver $resolver)
     {
     }
-    
+
     public function getParent()
     {
-        return 'form';
+        return FormType::class;
     }
 
-    public function getName()
-    {
-        return 'geolocalisation_map';
-    }
-    
-    
 }

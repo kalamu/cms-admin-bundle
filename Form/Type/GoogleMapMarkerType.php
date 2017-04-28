@@ -3,23 +3,28 @@
 namespace Kalamu\CmsAdminBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class GoogleMapMarkerType extends AbstractType
 {
-    
+
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-                ->add('latitude', 'hidden', array('required' => true))
-                ->add('longitude', 'hidden', array('required' => true))
-                ->add('titre', 'text', array('required' => false, 'label' => 'Titre'))
-                ->add('description', 'textarea', array('required' => false))
-                ->add('default_open', 'choice', array(
+                ->add('latitude', HiddenType::class, array('required' => true))
+                ->add('longitude', HiddenType::class, array('required' => true))
+                ->add('titre', TextType::class, array('required' => false, 'label' => 'Titre'))
+                ->add('description', TextareaType::class, array('required' => false))
+                ->add('default_open', ChoiceType::class, array(
                     'label'     => "Ouvert par défaut",
                     'choices'   => array('Oui' => true, 'Non' => false),
                     'choices_as_values' => true,
@@ -27,20 +32,15 @@ class GoogleMapMarkerType extends AbstractType
                     'data'      => true,
                     'required' => false
                 ));
-        
+
     }
-    
+
     public function configureOptions(OptionsResolver $resolver)
     {
     }
-    
+
     public function getParent()
     {
-        return 'form';
-    }
-
-    public function getName()
-    {
-        return 'google_map_marker';
+        return FormType::class;
     }
 }

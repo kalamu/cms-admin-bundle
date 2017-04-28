@@ -29,8 +29,4 @@ class CmsMetasGroupType extends AbstractType {
         ));
     }
 
-    public function getName() {
-        return 'cms_metas_group';
-    }
-
 }

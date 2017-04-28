@@ -16,10 +16,10 @@
         }
     ],
     "require": {
-        "symfony/symfony": "~2.8",
+        "symfony/symfony": "~2.8||~3.0",
         "sonata-project/admin-bundle": "^3.16",
         "gibilogic/tinymce-bundle": "1.3.*",
-        "knplabs/knp-paginator-bundle": "2.4.*",
+        "knplabs/knp-paginator-bundle": "~2.4",
         "kalamu/dashboard-bundle": "dev-master",
         "helios-ag/fm-elfinder-bundle": "^6.0.2"
     },

@@ -2,8 +2,12 @@
 
 namespace Kalamu\CmsAdminBundle\Widget\CMS;
 
+use Kalamu\CmsAdminBundle\Form\Type\AccordionItemType;
 use Kalamu\DashboardBundle\Model\AbstractConfigurableElement;
 use Symfony\Bundle\TwigBundle\TwigEngine;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Form;
 
 /**
@@ -36,9 +40,9 @@ class AccordionWidget extends AbstractConfigurableElement
     }
 
     public function getForm(Form $form){
-        $form->add('title', 'text', array('label' => 'Titre'));
-        $form->add("elements", 'collection', array(
-            'type'  => 'accordion_item',
+        $form->add('title', TextType::class, array('label' => 'Titre'));
+        $form->add("elements", CollectionType::class, array(
+            'type'  => AccordionItemType::class,
             'label_render' => false,
             'allow_add' => true,
             'allow_delete' => true,
@@ -54,7 +58,7 @@ class AccordionWidget extends AbstractConfigurableElement
         foreach($this->default_display_modes as $key => $info){
             $choices[$info['title']] = $key;
         }
-        $form->add('display_mode', 'choice', array(
+        $form->add('display_mode', ChoiceType::class, array(
             'choices' => $choices,
             'choices_as_values' => true,
             'label' => "Type d'affichage"

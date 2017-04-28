@@ -3,6 +3,7 @@
 namespace Kalamu\CmsAdminBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -30,11 +31,7 @@ class AccordionItemType extends AbstractType
 
     public function getParent()
     {
-        return 'form';
+        return FormType::class;
     }
 
-    public function getName()
-    {
-        return 'accordion_item';
-    }
 }

@@ -59,6 +59,7 @@ class KalamuCmsAdminExtension extends Extension implements PrependExtensionInter
                 'KalamuCmsAdminBundle:Form:wysiwyg_dashboard.html.twig',
                 'KalamuCmsAdminBundle:Form:elfinder.html.twig',
                 'KalamuCmsAdminBundle:Form:classifiable.html.twig',
+                'KalamuCmsAdminBundle:Form:fields.html.twig'
                 )),
             'globals' => array(
                 'tinymce_included' => false

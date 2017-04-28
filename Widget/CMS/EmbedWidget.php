@@ -4,6 +4,7 @@ namespace Kalamu\CmsAdminBundle\Widget\CMS;
 
 use Kalamu\DashboardBundle\Model\AbstractConfigurableElement;
 use Symfony\Bundle\TwigBundle\TwigEngine;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Form;
 /**
  * Widget pour afficher des Vidéo ou autre comptenu
@@ -26,7 +27,7 @@ class EmbedWidget extends AbstractConfigurableElement
     }
 
     public function getForm(Form $form){
-        $form->add("embed", 'textarea', array('label' => 'Code à intégrer',
+        $form->add("embed", TextareaType::class, array('label' => 'Code à intégrer',
             'sonata_field_description' => "Copiez-collez le code fourni pour intégrer la vidéo ou fonctionnalitée souhaitée.",
             'horizontal'=>false, 'label_attr' => array('class' => 'center-block text-left')));
 

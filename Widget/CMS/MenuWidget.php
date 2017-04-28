@@ -3,6 +3,7 @@
 namespace Kalamu\CmsAdminBundle\Widget\CMS;
 
 use Kalamu\DashboardBundle\Model\AbstractConfigurableElement;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\TwigBundle\TwigEngine;
 use Symfony\Component\Form\Form;
 /**
@@ -26,7 +27,7 @@ class MenuWidget extends AbstractConfigurableElement
     }
 
     public function getForm(Form $form){
-        $form->add("menu", 'entity', array('label' => 'Menu',
+        $form->add("menu", EntityType::class, array('label' => 'Menu',
             'class' => 'KalamuCmsAdminBundle:Menu',
         ));
 

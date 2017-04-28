@@ -2,9 +2,11 @@
 
 namespace Kalamu\CmsAdminBundle\Widget;
 
-use Kalamu\DashboardBundle\Model\AbstractConfigurableElement;
 use Kalamu\CmsAdminBundle\Manager\ContentTypeManager;
+use Kalamu\DashboardBundle\Model\AbstractConfigurableElement;
 use Symfony\Bundle\TwigBundle\TwigEngine;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Form;
 use Symfony\Component\Validator\Constraints\Range;
 /**
@@ -33,12 +35,12 @@ class LastContentWidget extends AbstractConfigurableElement
     }
 
     public function getForm(Form $form){
-        $form->add("type", 'choice', array(
+        $form->add("type", ChoiceType::class, array(
             'choices' => array_flip($this->manager->getLabels()),
             'choices_as_values' => true,
             'label' => 'Type de contenu',
         ));
-        $form->add("max", 'integer', array(
+        $form->add("max", IntegerType::class, array(
             'constraints' => array(
                 new Range(array(
                     'min'   => 1,

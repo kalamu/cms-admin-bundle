@@ -23,8 +23,4 @@ class CmsLinkSelectorType extends AbstractType {
         ));
     }
 
-    public function getName() {
-        return 'cms_link_selector';
-    }
-
 }

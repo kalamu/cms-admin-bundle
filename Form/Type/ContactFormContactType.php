@@ -30,8 +30,4 @@ class ContactFormContactType extends AbstractType {
         $resolver->setDefaults(array());
     }
 
-    public function getName() {
-        return 'cms_contact_form_contact';
-    }
-
 }

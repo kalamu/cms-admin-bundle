@@ -2,6 +2,7 @@
 
 namespace Kalamu\CmsAdminBundle\Widget\CMS;
 
+use Kalamu\CmsAdminBundle\Form\Type\WysiwygType;
 use Kalamu\DashboardBundle\Model\AbstractConfigurableElement;
 use Symfony\Bundle\TwigBundle\TwigEngine;
 use Symfony\Component\Form\Form;
@@ -26,7 +27,7 @@ class WysiwygWidget extends AbstractConfigurableElement
     }
 
     public function getForm(Form $form){
-        $form->add("content", 'wysiwyg', array('label' => 'Contenu', 'label_attr' => array('class' => 'center-block text-left')));
+        $form->add("content", WysiwygType::class, array('label' => 'Contenu', 'label_attr' => array('class' => 'center-block text-left')));
 
         return $form;
     }
