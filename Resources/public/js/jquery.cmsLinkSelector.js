@@ -7,7 +7,9 @@ $.widget("kalamu.cmsLinkSelector", {
         editLink: null,
         label: null,
         modal: null,
-        required : null
+        embedModal: false,
+        required : null,
+        modalContent: null
     },
 
     /**
@@ -23,16 +25,6 @@ $.widget("kalamu.cmsLinkSelector", {
             this.options.removeLink = $('<a href="#" class="mr10"><i class="fa fa-trash"></i> Retirer</a>');
         }
 
-        this.options.modal = $('<div class="modal fade modal-cms-link-selecter" tabindex="-1" role="dialog">'
-            +'<div class="modal-dialog modal-lg">'
-                +'<div class="modal-content"><div class="modal-header">'
-                    +'<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>'
-                    +'<h4 class="modal-title">Sélectionner un contenu</h4>'
-                +'</div>'
-                +'<div class="modal-body"><i class="fa fa-spin fa-spinner"></i> Chargement...</div>'
-                +'<div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button></div></div>'
-            +'</div></div>');
-
         this.element.append('<div class="clearfix"></div>');
         this.element.append(this.options.label);
         this.element.append('<div class="clearfix"></div>');
@@ -41,14 +33,34 @@ $.widget("kalamu.cmsLinkSelector", {
             this.element.append(this.options.removeLink);
         }
 
-        this.element.append(this.options.modal);
+        tmplModalContent = '<div class="modal-header">'
+                                +'<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>'
+                                +'<h4 class="modal-title">Sélectionner un contenu</h4>'
+                            +'</div>'
+                            +'<div class="modal-body"><i class="fa fa-spin fa-spinner"></i> Chargement...</div>'
+                            +'<div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button></div>';
 
-        this.options.modal.one('show.bs.modal', $.proxy(function(){
-            this.options.modal.find('.modal-body').load(this.options.picker_api);
+        if(this.element.parents('.modal').length){
+            this.options.embedModal = true;
+            this.options.modal = this.element.parents('.modal');
+            this.options.modalContent = $('<div class="modal-content">'+tmplModalContent+'</div>');
+        }else{
+            this.options.modal = $('<div class="modal fade modal-cms-link-selecter" tabindex="-1" role="dialog">'
+                +'<div class="modal-dialog modal-lg">'
+                    +'<div class="modal-content">'+tmplModalContent+'</div>'
+                +'</div></div>');
+            this.element.append(this.options.modal);
+            this.options.modalContent = this.options.modal.find('.modal-content');
+        }
+
+        // charge l'interface Link Picker uniquement une fois
+        this.element.one('do-load-picker', $.proxy(function(){
+            this.options.modalContent.find('.modal-body').load(this.options.picker_api);
         }, this));
 
+        // lorsque l'utilisateur clique sur "Modifier"
         this._on( this.options.editLink, {
-            click: "openModal"
+            click: "displayPicker"
         });
 
         if(!this.options.required){
@@ -56,10 +68,6 @@ $.widget("kalamu.cmsLinkSelector", {
                 click: "removeLink"
             });
         }
-
-        // On écoute les sélection de lien seulement quand c'est notre modal qui est ouverte
-        this.options.modal.on('show.bs.modal', $.proxy(this.listenSelect, this));
-        this.options.modal.on('hide.bs.modal', $.proxy(this.stopListenSelect, this));
 
         this._on( this.element.find('input[name*="[display]"]'), {
             change: 'updateDisplay'
@@ -78,9 +86,43 @@ $.widget("kalamu.cmsLinkSelector", {
         }
     },
 
-    openModal: function(e){
+    /**
+     * Affiche la page de sélection de lien
+     * @param {type} e
+     * @returns {undefined}
+     */
+    displayPicker: function(e){
         e.preventDefault();
-        this.options.modal.modal('show');
+
+        this.listenSelect();
+
+        if(this.options.embedModal){
+
+            // On masque la modal d'origine et on remplace par la notre
+            this.options.modal.find('.modal-content')
+                    .addClass('original-content')
+                    .hide()
+                    .after(this.options.modalContent);
+
+            this.options.modalEventHandler = $.proxy(this.preventCloseModal, this);
+            this.options.modal.on('hide.bs.modal', this.options.modalEventHandler);
+        }else{
+            this.options.modal.modal('show');
+            this.options.modal.on('hide.bs.modal', $.proxy(this.stopListenSelect, this));
+        }
+
+        this.element.trigger('do-load-picker');
+    },
+
+    // Dans le cas où on est dans une modal imbriqué, la fermeture est remplacé par la bascule vers l'ancienne modal
+    preventCloseModal: function(e){
+        e.preventDefault();
+
+        this.options.modalContent.detach();
+        this.options.modal.find('.original-content').removeClass('original-content').show();
+        this.options.modal.off('hide.bs.modal', this.options.modalEventHandler);
+
+        this.stopListenSelect();
     },
 
     listenSelect: function(){
@@ -106,7 +148,14 @@ $.widget("kalamu.cmsLinkSelector", {
         this.element.find('input[name*="[context]"]').val(item.context);
         this.element.find('input[name*="[display]"]').val(display).trigger('change');
 
-        this.options.modal.modal('hide');
+        if(this.options.embedModal){
+            this.options.modal.find('.original-content').removeClass('original-content').show();
+            this.options.modalContent.detach();
+
+            this.options.modal.off('hide.bs.modal', this.options.modalEventHandler);
+        }else{
+            this.options.modal.modal('hide');
+        }
     },
 
     removeLink: function(e){
