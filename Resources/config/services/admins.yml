@@ -38,8 +38,3 @@ services:
             - { name: sonata.admin, manager_type: orm, group: cms, label: Menu }
 
 
-    kalamu_cms_admin.menu_item.index_picker:
-        class: Kalamu\CmsAdminBundle\Manager\MenuItemPickerManager
-        arguments: ['@doctrine', '@knp_paginator', '@roho_cms.content_type.manager', '@router']
-        tags:
-            - { name: roho.menu_item_picker, alias: index, label: Pages Index }

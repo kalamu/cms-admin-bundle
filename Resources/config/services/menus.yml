@@ -23,3 +23,9 @@ services:
         arguments: ['@doctrine', '@knp_paginator', '@roho_cms.content_type.manager']
         tags:
             - { name: kalamu_cms_admin.menu_item_picker.provider }
+
+    kalamu_cms_admin.menu_item.index_picker:
+        class: Kalamu\CmsAdminBundle\Menu\IndexMenuItemPicker
+        arguments: ['@doctrine', '@knp_paginator', '@roho_cms.content_type.manager', '@router']
+        tags:
+            - { name: kalamu_cms_admin.menu_item_picker, alias: index, label: Pages Index }
