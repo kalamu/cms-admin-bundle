@@ -39,7 +39,7 @@ class EmbedWidget extends AbstractConfigurableElement
      * @return string
      */
     public function render(TwigEngine $templating){
-        $embed = $this->paramaters['embed'];
+        $embed = $this->parameters['embed'];
 
         return $templating->render($this->template, array('embed' => $embed));
     }

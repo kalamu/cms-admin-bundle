@@ -137,18 +137,18 @@ Email: {$mail['email']}
 EOL;
                 $message->setBody($body);
 
-                if($this->paramaters['selectable_destinataire']){
-                    $emails = $this->paramaters['choix_destinataire'][$mail['destinataire']]['emails'];
+                if($this->parameters['selectable_destinataire']){
+                    $emails = $this->parameters['choix_destinataire'][$mail['destinataire']]['emails'];
                     $destinataires = explode(';', $emails);
                 }else{
-                    $destinataires = $this->paramaters['destinataire_simple'];
+                    $destinataires = $this->parameters['destinataire_simple'];
                 }
                 foreach($destinataires as $destinataire){
                     $message->addTo($destinataire);
                 }
 
                 $status = $this->mailer->send($message) ? 'success' : 'error';
-                $message = $this->paramaters[$status];
+                $message = $this->parameters[$status];
                 if($status == 'success'){
                     $form = $this->createFormContact();
                 }
@@ -156,7 +156,7 @@ EOL;
 
             return $templating->render($this->template, array('form' => $form->createView(), 'status' => $status, 'message' => $message));
         }else{
-            return $templating->render('KalamuCmsAdminBundle:Widget:form_contact_admin.html.twig', array('paramaters' => $this->paramaters));
+            return $templating->render('KalamuCmsAdminBundle:Widget:form_contact_admin.html.twig', array('parameters' => $this->parameters));
         }
     }
 
@@ -188,10 +188,10 @@ EOL;
             )
         ));
 
-        if($this->paramaters['selectable_destinataire']){
+        if($this->parameters['selectable_destinataire']){
 
             $choice_list = array();
-            foreach($this->paramaters['choix_destinataire'] as $i => $choix){
+            foreach($this->parameters['choix_destinataire'] as $i => $choix){
                 $choice_list[$choix['label']] = $i;
             }
 
@@ -200,7 +200,7 @@ EOL;
                 'choices_as_values' => true,
                 'expanded'  => true,
                 'required'  => true,
-                'label' => $this->paramaters['label_choix_destinataire']
+                'label' => $this->parameters['label_choix_destinataire']
             ));
 
         }

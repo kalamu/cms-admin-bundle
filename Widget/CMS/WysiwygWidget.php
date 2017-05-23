@@ -37,7 +37,7 @@ class WysiwygWidget extends AbstractConfigurableElement
      * @return string
      */
     public function render(TwigEngine $templating){
-        $content = $this->paramaters['content'];
+        $content = $this->parameters['content'];
 
         return $templating->render($this->template, array('content' => $content));
     }

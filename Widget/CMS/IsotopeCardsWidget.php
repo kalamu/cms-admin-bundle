@@ -70,21 +70,21 @@ class IsotopeCardsWidget extends AbstractConfigurableElement
             $template = 'KalamuCmsAdminBundle:Widget/CMS:isotope_cards.html.twig';
         }
 
-        $this->paramaters['types'] = array();
+        $this->parameters['types'] = array();
         $x = 0;
-        foreach($this->paramaters['elements'] as $i => $element){
+        foreach($this->parameters['elements'] as $i => $element){
 //            var_dump($element['type']);
             $types = array_filter(explode(';', $element['type']), 'trim');
-            $this->paramaters['elements'][$i]['types'] = $types;
+            $this->parameters['elements'][$i]['types'] = $types;
             foreach($types as $type){
-                if(!isset($this->paramaters['types'][$type])){
-                    $this->paramaters['types'][$type] = 'isotop-cat-'.$x++;
+                if(!isset($this->parameters['types'][$type])){
+                    $this->parameters['types'][$type] = 'isotop-cat-'.$x++;
                 }
             }
         }
-//        var_dump($this->paramaters['types']);die();
+//        var_dump($this->parameters['types']);die();
 
-        return $templating->render($template, $this->paramaters);
+        return $templating->render($template, $this->parameters);
     }
 
 }

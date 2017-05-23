@@ -2,17 +2,17 @@
 <div class="col-md-12">
     <div class="jumbotron text-center">
         <p>Formulaire de contact</p>
-        {% if paramaters.selectable_destinataire %}
+        {% if parameters.selectable_destinataire %}
             <strong>Destinataires sélectionnables :</strong>
             <div class="center-block col-md-6">
             <ul class="text-left">
-                {% for choix in paramaters.choix_destinataire %}
+                {% for choix in parameters.choix_destinataire %}
                     <li><strong>{{choix.label}}</strong> : {{choix.emails}}</li>
                 {% endfor %}
             </ul>
             </div>
         {% else %}
-            <span class="text-muted">Destinataire{{(paramaters.destinataire_simple|length) > 1 ? 's' : '' }} : {{paramaters.destinataire_simple|join('; ')}}</span>
+            <span class="text-muted">Destinataire{{(parameters.destinataire_simple|length) > 1 ? 's' : '' }} : {{parameters.destinataire_simple|join('; ')}}</span>
         {% endif %}
     </div>
 </div>

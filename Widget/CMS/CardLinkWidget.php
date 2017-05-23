@@ -47,7 +47,7 @@ class CardLinkWidget extends AbstractConfigurableElement
             $template = 'KalamuCmsAdminBundle:Widget/CMS:card_link.html.twig';
         }
 
-        return $templating->render($template, $this->paramaters);
+        return $templating->render($template, $this->parameters);
     }
 
 }

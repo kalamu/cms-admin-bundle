@@ -59,14 +59,14 @@ class LastContentWidget extends AbstractConfigurableElement
      * @return string
      */
     public function render(TwigEngine $templating){
-        $typeManager = $this->manager->getType($this->paramaters['type']);
+        $typeManager = $this->manager->getType($this->parameters['type']);
 
         $baseQuery = $typeManager->getBasePublicQuery();
         if($typeManager->getReflectionClass()->implementsInterface('Kalamu\CmsAdminBundle\ContentType\Interfaces\PublishStatusInterface')){
             $baseQuery->orderBy('c.published_at', 'DESC');
         }
 
-        $contenus = $baseQuery->setMaxResults($this->paramaters['max'])
+        $contenus = $baseQuery->setMaxResults($this->parameters['max'])
                 ->getQuery()
                 ->getResult();
 

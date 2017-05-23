@@ -60,15 +60,15 @@ class GoogleMapWidget extends AbstractConfigurableElement
      */
     public function render(TwigEngine $templating, $intention = 'publish'){
         $center = array(
-            'lat'   => $this->paramaters['center_lat'],
-            'lon'   => $this->paramaters['center_lon']
+            'lat'   => $this->parameters['center_lat'],
+            'lon'   => $this->parameters['center_lon']
         );
 
         return $templating->render($this->template, array(
             'center' => $center,
-            'zoom' => $this->paramaters['zoom'],
+            'zoom' => $this->parameters['zoom'],
             'intention' => $intention,
-            'markers' => is_array($this->paramaters['markers']) ? $this->paramaters['markers'] : array()));
+            'markers' => is_array($this->parameters['markers']) ? $this->parameters['markers'] : array()));
     }
 
 }

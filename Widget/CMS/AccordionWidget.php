@@ -81,8 +81,8 @@ class AccordionWidget extends AbstractConfigurableElement
      * @return string
      */
     public function render(TwigEngine $templating, $intention = 'edit'){
-        $elements = $this->paramaters['elements'];
-        $display = $this->paramaters['display_mode'];
+        $elements = $this->parameters['elements'];
+        $display = $this->parameters['display_mode'];
 
         if('publish' == $intention){
             $template = isset($this->templates[$display]) ? $this->templates[$display]['template'] : $this->default_display_modes[$display]['template'];
@@ -90,7 +90,7 @@ class AccordionWidget extends AbstractConfigurableElement
             $template = isset($this->default_display_modes[$display]) ? $this->default_display_modes[$display]['template'] : $this->templates[$display]['template'];
         }
 
-        return $templating->render($template, array('elements' => $elements, 'title' => $this->paramaters['title']));
+        return $templating->render($template, array('elements' => $elements, 'title' => $this->parameters['title']));
     }
 
 }

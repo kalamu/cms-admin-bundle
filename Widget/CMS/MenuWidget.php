@@ -39,7 +39,7 @@ class MenuWidget extends AbstractConfigurableElement
      * @return string
      */
     public function render(TwigEngine $templating){
-        $menu = $this->paramaters['menu'];
+        $menu = $this->parameters['menu'];
 
         return $templating->render($this->template, array('menu' => $menu));
     }
