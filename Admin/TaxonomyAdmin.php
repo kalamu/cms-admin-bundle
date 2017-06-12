@@ -2,7 +2,7 @@
 
 namespace Kalamu\CmsAdminBundle\Admin;
 
-use Kalamu\CmsAdminBundle\ContentType\Interfaces\ClassifiableInterface;
+use Roho\CmsBundle\ContentType\Interfaces\ClassifiableInterface;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;

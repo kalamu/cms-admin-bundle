@@ -96,10 +96,6 @@ class ActualiteAdmin extends AbstractAdmin
                     'choices_as_values'  => true,
                     'required' => false
                 ])
-    //            ->add('created_at')
-    //            ->add('updated_at')
-    //            ->add('created_by')
-    //            ->add('updated_by')
                 ->add('publishStatus', EntityType::class, [
                     'class' => 'KalamuCmsAdminBundle:PublishStatus',
                     'query_builder' => function($repository) use ($admin){
@@ -109,7 +105,14 @@ class ActualiteAdmin extends AbstractAdmin
                     }
                 ])
                 ->add('published_at', DateTimePickerType::class, ['required' => false])
-    //            ->add('metas')
+                ->add('terms', EntityType::class, [
+                    'label' => 'Classification',
+                    'class' => 'KalamuCmsAdminBundle:Term',
+                    'choice_label' => function($term){
+                        return $term->getTaxonomy().'::'.$term;
+                    },
+                    'multiple' => true
+                ])
             ->end()
         ;
     }
