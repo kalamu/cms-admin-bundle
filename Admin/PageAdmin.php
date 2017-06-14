@@ -10,11 +10,12 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\CoreBundle\Form\Type\DateTimePickerType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class PageAdmin extends AbstractAdmin
 {
-    
+
     public function getTemplate($name) {
         switch($name){
             case 'show':
@@ -23,8 +24,8 @@ class PageAdmin extends AbstractAdmin
 
         return parent::getTemplate($name);
     }
-    
-    
+
+
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -76,12 +77,18 @@ class PageAdmin extends AbstractAdmin
         $ContentTypeManager = $this->getConfigurationPool()->getContainer()->get('roho_cms.content_type.manager');
         $managerType = $ContentTypeManager->getType('page');
 
-        if(($templates = $managerType->getTemplates())){
+        if($managerType->getTemplates()){
+            $templates = [];
+            foreach($managerType->getTemplates() as $key => $template){
+                $templates[$template['title']] = $key;
+            }
+
             foreach($managerType->getContexts() as $context){
-                $templates = array_merge($templates, $managerType->getTemplates($context));
+                foreach($managerType->getTemplates($context) as $key =>  $template){
+                    $templates[$template['title']] = $key;
+                }
             }
         }
-
 
         $formMapper
             ->with("Page", ['class' => 'col-md-9'])
@@ -90,8 +97,8 @@ class PageAdmin extends AbstractAdmin
                 ->add('contenu', WysiwygDashboardType::class)
             ->end()
             ->with("Infos", ['class' => 'col-md-3'])
-                ->add('template', \Symfony\Component\Form\Extension\Core\Type\ChoiceType::class, [
-                    'choices' => array_flip($templates),
+                ->add('template', ChoiceType::class, [
+                    'choices' => $templates,
                     'choices_as_values'  => true,
                     'required' => false
                 ])
