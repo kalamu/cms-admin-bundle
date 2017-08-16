@@ -153,6 +153,7 @@ $.widget("kalamu.cmsLinkSelector", {
             this.options.modalContent.detach();
 
             this.options.modal.off('hide.bs.modal', this.options.modalEventHandler);
+            this.stopListenSelect();
         }else{
             this.options.modal.modal('hide');
         }
