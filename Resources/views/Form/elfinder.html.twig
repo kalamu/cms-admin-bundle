@@ -56,6 +56,7 @@
                 if($('#{{ form.vars.id }}').val()){
                     $('#{{ form.vars.id }}_elfinder').hide();
                     $('#{{ id_displayer }}').parent().show();
+                    $('#{{ id_displayer }}').find('strong').text('{{form.vars.value|split('/')|last}}');
                 }
             });
 
