@@ -28,6 +28,7 @@ class ActualiteAdmin extends AbstractAdmin
             ->add('contenu')
             ->add('image')
             ->add('template')
+            ->add('context_publication')
             ->add('created_at')
             ->add('updated_at')
             ->add('created_by')
