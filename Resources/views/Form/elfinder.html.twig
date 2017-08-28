@@ -38,25 +38,23 @@
                     lang : '{{locale}}',
                     onlyMimes: {{ onlyMimes|raw }},
                     getFileCallback: function(file) {
-                        console.log(file);
-
                         $('#{{ form.vars.id }}_elfinder').hide();
 
-                        new_url = '{{ pathPrefix }}'+file.url.replace("{{ app.request.schemeAndHttpHost }}/", "");
+                        new_url = '{{ pathPrefix }}'+file.baseUrl.replace("{{ app.request.schemeAndHttpHost }}/", "")+file.name;
                         {% if form.vars.elfinder_select_mode == 'image' %}
                             $('#{{ id_displayer }}').attr('src', new_url);
                         {% else %}
                             $('#{{ id_displayer }}').attr('href', new_url).find('strong').text(file.name+' ('+Math.round(file.size/1000)+' Ko)');
                         {% endif %}
 
-                        $('#{{ form.vars.id }}').val( '{{ pathPrefix }}'+file.url.replace("{{ app.request.schemeAndHttpHost }}/", "") );
+                        $('#{{ form.vars.id }}').val( new_url );
                         $('#{{ id_displayer }}').parent().show();
                     }
                 });
                 if($('#{{ form.vars.id }}').val()){
                     $('#{{ form.vars.id }}_elfinder').hide();
                     $('#{{ id_displayer }}').parent().show();
-                    $('#{{ id_displayer }}').find('strong').text('{{form.vars.value|split('/')|last}}');
+                    $('#{{ id_displayer }}').find('strong').html('{{form.vars.value|split('/')|last|escape('js')}}');
                 }
             });
 
