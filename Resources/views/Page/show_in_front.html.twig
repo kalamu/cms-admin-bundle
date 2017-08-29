@@ -1,7 +1,7 @@
-    
+
 <td></td>
 <td>
-    <a href="{{path('public_read_page', {identifier: object.slug})}}" target="_blanck" class="btn btn-sm btn-default view_link pull-right" title="{{ 'action_show'|trans({}, 'SonataAdminBundle') }}">
+    <a href="{{cms_link('read', 'page', {identifier: object.slug})}}" target="_blanck" class="btn btn-sm btn-default view_link pull-right" title="{{ 'action_show'|trans({}, 'SonataAdminBundle') }}">
         <i class="fa fa-eye" aria-hidden="true"></i>
         Voir le resultat
     </a>
