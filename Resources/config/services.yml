@@ -1,5 +1,6 @@
 imports:
     - { resource: services/admins.yml }
+    - { resource: services/admins_extensions.yml }
     - { resource: services/forms.yml }
     - { resource: services/widgets.yml }
     - { resource: services/menus.yml }

@@ -45,17 +45,8 @@ class ActualiteAdmin extends AbstractAdmin
         $listMapper
             ->addIdentifier('title')
             ->add('slug')
-//            ->add('resume')
-//            ->add('contenu')
-//            ->add('image')
-//            ->add('template')
-//            ->add('created_at')
-//            ->add('created_by')
-//            ->add('updated_at')
-//            ->add('updated_by')
             ->add('publishStatus')
             ->add('published_at')
-//            ->add('metas')
             ->add('_action', null, array(
                 'actions' => array(
                     'show' => array(),
