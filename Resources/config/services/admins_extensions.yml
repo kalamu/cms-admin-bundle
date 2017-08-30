@@ -1,0 +1,6 @@
+
+services:
+
+    kalamu_cms.admin_extension.contextualizable:
+        class: Kalamu\CmsAdminBundle\Admin\Extension\ContextualizableExtension
+        arguments: ['@roho_cms.content_type.manager']

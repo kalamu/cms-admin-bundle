@@ -35,14 +35,10 @@ class PageAdmin extends AbstractAdmin
             ->add('title')
             ->add('slug')
             ->add('contenu')
-            ->add('context_publication')
-//            ->add('template')
             ->add('created_at')
-//            ->add('updated_at')
             ->add('published_at')
             ->add('created_by')
             ->add('updated_by')
-//            ->add('metas')
         ;
     }
 
