@@ -81,12 +81,17 @@ class ActualiteAdmin extends AbstractAdmin
                 ->add('contenu', WysiwygDashboardType::class)
                 ->add('image', ElfinderType::class, ['instance' => 'img_cms', 'required' => false, 'elfinder_select_mode' => 'image'])
             ->end()
-            ->with("Infos", ['class' => 'col-md-3'])
-                ->add('template', ChoiceType::class, [
+            ->with("Infos", ['class' => 'col-md-3']);
+        
+        if($templates){
+            $formMapper->add('template', ChoiceType::class, [
                     'choices' => array_flip($templates),
                     'choices_as_values'  => true,
                     'required' => false
-                ])
+                ]);
+        }
+                
+        $formMapper
                 ->add('publishStatus', EntityType::class, [
                     'class' => 'KalamuCmsAdminBundle:PublishStatus',
                     'query_builder' => function($repository) use ($admin){

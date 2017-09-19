@@ -93,12 +93,18 @@ class PageAdmin extends AbstractAdmin
                 ->add('slug', TextType::class, ['required' => false])
                 ->add('contenu', WysiwygDashboardType::class)
             ->end()
-            ->with("Infos", ['class' => 'col-md-3'])
+            ->with("Infos", ['class' => 'col-md-3']);
+        
+        if(isset($templates) && count($templates)){
+            $formMapper
                 ->add('template', ChoiceType::class, [
                     'choices' => $templates,
                     'choices_as_values'  => true,
                     'required' => false
-                ])
+                ]);
+        }
+        
+        $formMapper
                 ->add('contextPublication', EntityType::class, [
                     'class' => 'KalamuCmsAdminBundle:ContextPublication',
                     'required' => false,
