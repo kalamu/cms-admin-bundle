@@ -5,24 +5,15 @@
         <title>Sélecteur de fichier</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2" />
 
-        {#{% stylesheets
-            '@RohoCoreBundle/Resources/public/css/jquery-ui.min.css'
-            '@RohoCoreBundle/Resources/public/css/jquery-ui.structure.min.css'
-            '@RohoCoreBundle/Resources/public/css/jquery-ui.theme.min.css'
-
-        %}
-            <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
-        {% endstylesheets %}#}
+        <link href="{{ asset("#{prefix}/jquery-ui/themes/base/jquery-ui.min.css") }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset("#{prefix}/jquery-ui/themes/base/jquery-ui.structure.min.css") }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset("#{prefix}/jquery-ui/themes/base/jquery-ui.theme.min.css") }}" rel="stylesheet" type="text/css">
         <link href="{{ asset("#{prefix}/elfinder/dist/css/elfinder.min.css") }}" rel="stylesheet" type="text/css">
         <link href="{{ asset("#{prefix}/elfinder/dist/css/theme.css") }}" rel="stylesheet" type="text/css">
 
 
-        {#{% javascripts
-            '@RohoCoreBundle/Resources/public/js/jquery-1.11.1.min.js'
-            '@RohoCoreBundle/Resources/public/js/jquery-ui.min.js'
-        %}
-        <script type="text/javascript" src="{{ asset_url }}"></script>
-        {% endjavascripts %}#}
+        <script src="{{ asset("#{prefix}/jquery/jquery.min.js") }}"></script>
+        <script src="{{ asset("#{prefix}/jquery-ui/jquery-ui.min.js") }}"></script>
         <script src="{{ asset("#{prefix}/elfinder/dist/js/elfinder.min.js") }}"></script>
         <script src="{{ asset("#{prefix}/elfinder/dist/js/i18n/elfinder.fr.js") }}"></script>
 
