@@ -79,12 +79,12 @@ class KalamuCmsAdminExtension extends Extension implements PrependExtensionInter
                 'external_plugins' => array(
                     'kalamuLink' => array(
                         'url'   => 'asset[bundles/kalamucmsadmin/js/tinymce_link/plugin.js]'
-                    )
+                    ),
                 ),
                 'theme'         => array(
                     'simple'        => array(
-                        'plugins'   => 'table link kalamuLink hr searchreplace fullscreen paste',
-                        'toolbar'  => 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | kalamuLink link unlink '
+                        'plugins'   => 'lists advlist table link kalamuLink hr searchreplace fullscreen paste',
+                        'toolbar'  => 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist | outdent indent | kalamuLink link unlink '
                     )
                 )
             )
