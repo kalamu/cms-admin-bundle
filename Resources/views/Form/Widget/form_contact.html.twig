@@ -3,6 +3,7 @@
 
 <div class="widget-form text-left">
     {{ form_start(form) }}
+    {{ form_errors(form) }}
 
     {{form_row(form.selectable_destinataire)}}
     <div id="destinataire_simple">
@@ -14,6 +15,9 @@
     </div>
     {{form_row(form.success)}}
     {{form_row(form.error)}}
+
+    <hr />
+    <div><button type="submit" class="btn btn-success">Ajouter</button></div>
 
     {{ form_rest(form) }}
     {{ form_end(form) }}

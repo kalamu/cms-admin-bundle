@@ -2,6 +2,7 @@
 
 namespace Kalamu\CmsAdminBundle\Widget;
 
+use Kalamu\CmsAdminBundle\Form\Type\ContactFormContactType;
 use Kalamu\CmsAdminBundle\Model\RequestAwareWidgetInterface;
 use Kalamu\DashboardBundle\Model\AbstractConfigurableElement;
 use Sonata\AdminBundle\Form\Type\CollectionType;
@@ -72,14 +73,15 @@ class FormContactWidget extends AbstractConfigurableElement implements RequestAw
             'allow_add' => true,
             'allow_delete' => true,
             'label' => 'Adresses de destination',
-            'sonata_help'    => "Adresse de destination pour les mails qui seront envoyés depuis ce formulaire."
+            'sonata_help'    => "Adresse de destination pour les mails qui seront envoyés depuis ce formulaire.",
+            'constraints' => new Constraints\Count(['min' => 1, 'minMessage' => 'Il doit y avoir au minimum {{ limit }} adresse de destination.|Il doit y avoir au minimum {{ limit }} adresses de destination.'])
         ));
         $form->add("label_choix_destinataire", TextType::class, array(
             'label' => 'Label du sélecteur de destinataire',
             'data'  => "Sélectionnez la personne que vous souhaitez contacter",
             'required' => true));
         $form->add("choix_destinataire", CollectionType::class, array(
-            'type' => 'cms_contact_form_contact',
+            'type' => ContactFormContactType::class,
             'label' => 'Liste des destinataires',
             'allow_add' => true,
             'allow_delete' => true));
@@ -121,35 +123,38 @@ class FormContactWidget extends AbstractConfigurableElement implements RequestAw
             $status = null;
             $message = null;
             if($form->isValid()){
-                $mail = $form->getData();
+                $datas = $form->getData();
 
-                $message = \Swift_Message::newInstance();
-                $message->setSubject( $mail['objet'] );
-                $message->setFrom( $mail['email'], $mail['nom']);
-
-                $body = <<<EOL
-Le message suivant a été envoyé depuis le formulaire de contact du site.
-Nom prénom : {$mail['nom']}
-Email: {$mail['email']}
-
-
-{$mail['message']}
-EOL;
-                $message->setBody($body);
+                $mail = \Swift_Message::newInstance();
 
                 if($this->parameters['selectable_destinataire']){
-                    $emails = $this->parameters['choix_destinataire'][$mail['destinataire']]['emails'];
-                    $destinataires = explode(';', $emails);
+                    $destinataires = $this->parameters['choix_destinataire'][$datas['destinataire']]['emails'];
+                    $destinataires = explode(';', $destinataires);
                 }else{
                     $destinataires = $this->parameters['destinataire_simple'];
                 }
                 foreach($destinataires as $destinataire){
-                    $message->addTo($destinataire);
+                    $mail->addTo($destinataire);
                 }
 
-                $status = $this->mailer->send($message) ? 'success' : 'error';
+                $mail->setSubject( $datas['objet'] );
+                $mail->setFrom( current($destinataires), $datas['nom']);
+                $mail->setReplyTo($datas['email']);
+
+                $body = <<<EOL
+Le message suivant a été envoyé depuis le formulaire de contact du site.
+Nom prénom : {$datas['nom']}
+Email: {$datas['email']}
+
+
+{$datas['message']}
+EOL;
+                $mail->setBody($body);
+
+
+                $status = $this->mailer->send($mail) ? 'success' : 'error';
                 $message = $this->parameters[$status];
-                if($status == 'success'){
+                if($status === 'success'){
                     $form = $this->createFormContact();
                 }
             }
@@ -220,9 +225,6 @@ EOL;
                 new Constraints\NotBlank(),
                 new Constraints\Length(array('min' => 10))
             )
-        ));
-        $form->add("submit", 'submit', array(
-            'label' => 'Envoyer',
         ));
 
         return $form->getForm();
