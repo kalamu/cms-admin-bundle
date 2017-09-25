@@ -41,7 +41,7 @@ class MenuAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('title')
+            ->addIdentifier('title')
             ->add('slug')
             ->add('place')
             ->add('_action', null, array(

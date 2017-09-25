@@ -16,7 +16,7 @@ class TermAdmin extends AbstractAdmin
 {
 
     protected $translationDomain = 'kalamu';
-    
+
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -39,7 +39,7 @@ class TermAdmin extends AbstractAdmin
     {
         $listMapper
 //            ->add('id')
-            ->add('libelle')
+            ->addIdentifier('libelle')
             ->add('slug')
 //            ->add('image')
 //            ->add('resume')

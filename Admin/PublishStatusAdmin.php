@@ -14,7 +14,7 @@ class PublishStatusAdmin extends AbstractAdmin
 {
 
     protected $translationDomain = 'kalamu';
-    
+
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -34,7 +34,7 @@ class PublishStatusAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('title')
+            ->addIdentifier('title')
             ->add('class')
             ->add('visible')
             ->add('default')
