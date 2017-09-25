@@ -21,3 +21,48 @@ cms.section.section_parallax.title: Section parallax
 cms.section.section_parallax.description: Section avec une image de fond et une couleur opaque
 cms.section.section_slider.title: Section slider
 cms.section.section_slider.description: Section pour contenir un slider
+Action: Action
+Actualite: Actualité
+Actualité: Actualité
+Actualite Create: Nouvelle actualité
+Actualite List: Liste des actualités
+Apply On: S'applique à
+Class: Classe
+Classification: Classification
+Contenu: Contenu
+Context Publication: Contexte de publication
+Created At: Créé le
+Created By: Créé par
+Default: Défaut
+Description: Description
+Entité: Entitée
+Id: ID
+Image: Image
+Infos: Informations
+Libelle: Libelle
+Menu: Menu
+Menu Create: Nouveau menu
+Menu List: Liste des menus
+Metas: Métadonnées
+Page: Page
+Page List: Liste des pages
+Parent: Parent
+Place: Emplacement
+Published At: Publié le
+PublishStatus: Statut de publication
+Publish Status: Statut de publication
+Publish Status Create: Nouveau statut de publication
+Publish Status List: Liste des statut de publication
+Resume: Résumé
+Slug: Identifiant
+Taxonomy: Taxonomie
+Taxonomy Create: Nouvelle taxonomies
+Taxonomy List: Liste des taxonomies
+Template: Template
+Term: Terme
+Term Create: Nouveau terme
+Term List: Liste des termes
+Title: Titre
+Updated At: Mis à jour le
+Updated By: Mis à jour par
+Visible: Visible

@@ -12,6 +12,9 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class PublishStatusAdmin extends AbstractAdmin
 {
+
+    protected $translationDomain = 'kalamu';
+    
     /**
      * @param DatagridMapper $datagridMapper
      */

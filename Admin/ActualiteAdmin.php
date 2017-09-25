@@ -16,6 +16,9 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class ActualiteAdmin extends AbstractAdmin
 {
+
+    protected $translationDomain = 'kalamu';
+
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -82,7 +85,7 @@ class ActualiteAdmin extends AbstractAdmin
                 ->add('image', ElfinderType::class, ['instance' => 'img_cms', 'required' => false, 'elfinder_select_mode' => 'image'])
             ->end()
             ->with("Infos", ['class' => 'col-md-3']);
-        
+
         if($templates){
             $formMapper->add('template', ChoiceType::class, [
                     'choices' => array_flip($templates),
@@ -90,7 +93,7 @@ class ActualiteAdmin extends AbstractAdmin
                     'required' => false
                 ]);
         }
-                
+
         $formMapper
                 ->add('publishStatus', EntityType::class, [
                     'class' => 'KalamuCmsAdminBundle:PublishStatus',

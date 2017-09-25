@@ -16,6 +16,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 class PageAdmin extends AbstractAdmin
 {
 
+    protected $translationDomain = 'kalamu';
+
     public function getTemplate($name) {
         switch($name){
             case 'show':
@@ -94,7 +96,7 @@ class PageAdmin extends AbstractAdmin
                 ->add('contenu', WysiwygDashboardType::class)
             ->end()
             ->with("Infos", ['class' => 'col-md-3']);
-        
+
         if(isset($templates) && count($templates)){
             $formMapper
                 ->add('template', ChoiceType::class, [
@@ -103,7 +105,7 @@ class PageAdmin extends AbstractAdmin
                     'required' => false
                 ]);
         }
-        
+
         $formMapper
                 ->add('contextPublication', EntityType::class, [
                     'class' => 'KalamuCmsAdminBundle:ContextPublication',

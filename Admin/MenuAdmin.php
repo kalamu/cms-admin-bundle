@@ -13,6 +13,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 class MenuAdmin extends AbstractAdmin
 {
 
+    protected $translationDomain = 'kalamu';
+
     public function getTemplate($name) {
         if($name === 'edit'){
             return 'KalamuCmsAdminBundle:Menu:base_edit.html.twig';

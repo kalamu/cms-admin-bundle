@@ -14,6 +14,9 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class TermAdmin extends AbstractAdmin
 {
+
+    protected $translationDomain = 'kalamu';
+    
     /**
      * @param DatagridMapper $datagridMapper
      */

@@ -13,6 +13,9 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class TaxonomyAdmin extends AbstractAdmin
 {
+
+    protected $translationDomain = 'kalamu';
+    
     /**
      * @param DatagridMapper $datagridMapper
      */
