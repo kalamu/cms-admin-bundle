@@ -3,6 +3,7 @@
 namespace Kalamu\CmsAdminBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Roho\CmsBundle\ContentType\Interfaces\ContextualizableInterface;
 use Roho\CmsBundle\ContentType\Interfaces\PublishStatusInterface;
 use Roho\CmsBundle\ContentType\Interfaces\PublishTimestampInterface;
@@ -67,6 +68,16 @@ class Page implements ContentTypeInterface, PublishStatusInterface, Templateable
      */
     private $updated_by;
 
+    /**
+     * @var Collection
+     */
+    private $children;
+
+    /**
+     * @var Page
+     */
+    private $parent;
+
 
     public function __toString(){
         return sprintf('%s', $this->getTitle());
@@ -78,6 +89,7 @@ class Page implements ContentTypeInterface, PublishStatusInterface, Templateable
     public function __construct()
     {
         $this->context_publication = new ArrayCollection();
+        $this->children = new ArrayCollection();
     }
 
     /**
@@ -282,4 +294,61 @@ class Page implements ContentTypeInterface, PublishStatusInterface, Templateable
         return $this->updated_by;
     }
 
+    /**
+     * Add child
+     *
+     * @param Page $child
+     *
+     * @return Page
+     */
+    public function addChild(Page $child)
+    {
+        $this->children[] = $child;
+
+        return $this;
+    }
+
+    /**
+     * Remove child
+     *
+     * @param Page $child
+     */
+    public function removeChild(Page $child)
+    {
+        $this->children->removeElement($child);
+    }
+
+    /**
+     * Get children
+     *
+     * @return Collection
+     */
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
+    /**
+     * Set parent
+     *
+     * @param Page $parent
+     *
+     * @return Page
+     */
+    public function setParent(Page $parent = null)
+    {
+        $this->parent = $parent;
+
+        return $this;
+    }
+
+    /**
+     * Get parent
+     *
+     * @return Page
+     */
+    public function getParent()
+    {
+        return $this->parent;
+    }
 }

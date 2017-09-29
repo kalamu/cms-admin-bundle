@@ -113,6 +113,11 @@ class PageAdmin extends AbstractAdmin
                     'multiple' => true,
                     'expanded' => true
                 ])
+                ->add('parent', EntityType::class, [
+                    'class' => 'KalamuCmsAdminBundle:Page',
+                    'required' => false,
+                    'label' => 'Page parent'
+                ])
                 ->add('publishStatus', EntityType::class, [
                     'class' => 'KalamuCmsAdminBundle:PublishStatus',
                     'query_builder' => function($repository) use ($admin){

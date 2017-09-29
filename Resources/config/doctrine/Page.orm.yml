@@ -70,12 +70,24 @@ Kalamu\CmsAdminBundle\Entity\Page:
             gedmo:
                 versioned: ~
 
+    oneToMany:
+        children:
+            targetEntity: Kalamu\CmsAdminBundle\Entity\Page
+            mappedBy: parent
+
     manyToOne:
         publish_status:
             targetEntity: Kalamu\CmsAdminBundle\Entity\PublishStatus
             joinColumn:
                 name: ref_status
                 referencedColumnName: id
+
+        parent:
+            targetEntity: Kalamu\CmsAdminBundle\Entity\Page
+            joinColumn:
+                name: ref_parent
+                referencedColumnName: id
+                onDelete: SET NULL
 
     manyToMany:
         context_publication:
