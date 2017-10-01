@@ -2,14 +2,10 @@
 
 namespace Kalamu\CmsAdminBundle\Widget;
 
-use Kalamu\CmsAdminBundle\Form\Type\ContactFormContactType;
+use Kalamu\CmsAdminBundle\Form\Type\FormContactType;
 use Kalamu\CmsAdminBundle\Model\RequestAwareWidgetInterface;
 use Kalamu\DashboardBundle\Model\AbstractConfigurableElement;
-use Sonata\AdminBundle\Form\Type\CollectionType;
 use Symfony\Bundle\TwigBundle\TwigEngine;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Form;
 use Symfony\Component\Form\FormFactory;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -53,58 +49,7 @@ class FormContactWidget extends AbstractConfigurableElement implements RequestAw
     }
 
     public function getForm(Form $form){
-        $form->add('selectable_destinataire', ChoiceType::class, array(
-            'label' => 'Destinataire sélectionnable',
-            'choices'   => array('Oui' => true, 'Non' => false),
-            'choices_as_values' => true,
-            'data'  => false,
-            'sonata_help'    => "Permettre à l'utilisateur de sélectionner le destinataire du message"
-        ));
-
-        $form->add("destinataire_simple", CollectionType::class, array(
-            'type' => EmailType::class,
-            'options' => array(
-                'required' => true,
-                'constraints' => array(
-                    new Constraints\NotBlank(),
-                    new Constraints\Email()
-                ),
-            ),
-            'allow_add' => true,
-            'allow_delete' => true,
-            'label' => 'Adresses de destination',
-            'sonata_help'    => "Adresse de destination pour les mails qui seront envoyés depuis ce formulaire.",
-            'constraints' => new Constraints\Count(['min' => 1, 'minMessage' => 'Il doit y avoir au minimum {{ limit }} adresse de destination.|Il doit y avoir au minimum {{ limit }} adresses de destination.'])
-        ));
-        $form->add("label_choix_destinataire", TextType::class, array(
-            'label' => 'Label du sélecteur de destinataire',
-            'data'  => "Sélectionnez la personne que vous souhaitez contacter",
-            'required' => true));
-        $form->add("choix_destinataire", CollectionType::class, array(
-            'type' => ContactFormContactType::class,
-            'label' => 'Liste des destinataires',
-            'allow_add' => true,
-            'allow_delete' => true));
-
-
-        $form->add("success", TextType::class, array(
-            'label' => 'Message en cas de succès de l\'envoie',
-            'data'  => "Votre message a bien été envoyé.",
-            'required' => true,
-            'constraints' => array(
-                new Constraints\NotBlank(),
-            )
-        ));
-        $form->add("error", TextType::class, array(
-            'label' => "Message en cas d'erreur de l'envoie",
-            'data'  => "Nous sommes désolés, un problème technique est survenue et votre mail n'a pu être envoyé.",
-            'required' => true,
-            'constraints' => array(
-                new Constraints\NotBlank(),
-            )
-        ));
-
-        return $form;
+        return FormContactType::class;
     }
 
     public function setRequestStack(RequestStack $RequestStack) {

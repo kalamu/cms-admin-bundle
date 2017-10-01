@@ -3,9 +3,9 @@
     <div class="jumbotron text-center">
         <p>Formulaire de contact</p>
         {% if parameters.selectable_destinataire %}
+            <div class="col-md-12 text-left">
             <strong>Destinataires sélectionnables :</strong>
-            <div class="center-block col-md-6">
-            <ul class="text-left">
+            <ul>
                 {% for choix in parameters.choix_destinataire %}
                     <li><strong>{{choix.label}}</strong> : {{choix.emails}}</li>
                 {% endfor %}

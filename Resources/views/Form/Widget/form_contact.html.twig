@@ -35,36 +35,7 @@ $(function(){
         }
     }).trigger('change');
 
-    var handleCollection = function(){
-        addBtns = $('a[data-collection-add-btn]').not('.handleCollectionReadyAdd').addClass('handleCollectionReadyAdd');
-        addBtns.each(function(){
-            $(this).attr('data-iterator', $( $(this).attr('data-collection-add-btn') ).find('>div>.collection-item').length);
-        });
-        addBtns.text('Ajouter').click(function(e){
-            e.preventDefault();
-            protoDiv = $( $(e.target).attr('data-collection-add-btn') );
-            $(e.target).attr('data-iterator', parseInt($(e.target).attr('data-iterator')) +1 );
-            protoHtml = protoDiv.attr('data-prototype')
-                    .replace( new RegExp(protoDiv.attr('data-prototype-label'), 'g'), $(e.target).parent()[0].childNodes[0].nodeValue.replace('*', '')+' '+$(e.target).attr('data-iterator') )
-                    .replace( new RegExp(protoDiv.attr('data-prototype-name'), 'g'), $(e.target).attr('data-iterator') );
-            $( protoHtml )
-                    .find('a[data-collection-remove-btn]').each(function(){
-                        $(this).parents('.collection-item').eq(0).find('>label').removeClass('col-sm-3').addClass('col-sm-12').append( $(this).detach() );
-                    })
-                    .end()
-                    .appendTo( protoDiv.find('>div') );
-            handleCollection();
-        });
-
-        delBtns =  $('a[data-collection-remove-btn]').not('.handleCollectionReadyDel').addClass('handleCollectionReadyDel');
-        delBtns.text('Supprimer').click(function(e){
-            e.preventDefault();
-            $(e.target).parents('.collection-item').eq(0).remove();
-        });
-    };
-
-    handleCollection();
-
+    $(document).trigger('sonata-admin-append-form-element');
 });
 </script>
 <style>
