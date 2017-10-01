@@ -6,6 +6,7 @@ use Kalamu\CmsAdminBundle\Form\Type\FormContactType;
 use Kalamu\CmsAdminBundle\Model\RequestAwareWidgetInterface;
 use Kalamu\DashboardBundle\Model\AbstractConfigurableElement;
 use Symfony\Bundle\TwigBundle\TwigEngine;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Form\Form;
 use Symfony\Component\Form\FormFactory;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -34,10 +35,16 @@ class FormContactWidget extends AbstractConfigurableElement implements RequestAw
      */
     protected $mailer;
 
-    public function __construct(FormFactory $formFactory, $template, \Swift_Mailer $mailer){
+    /**
+     * @var EventDispatcherInterface
+     */
+    protected $eventDispatcher;
+
+    public function __construct(FormFactory $formFactory, $template, \Swift_Mailer $mailer, EventDispatcherInterface $eventDispatcher){
         $this->formFactory = $formFactory;
         $this->template = $template;
         $this->mailer = $mailer;
+        $this->eventDispatcher = $eventDispatcher;
     }
 
     public function getTitle() {
@@ -101,6 +108,7 @@ EOL;
                 $message = $this->parameters[$status];
                 if($status === 'success'){
                     $form = $this->createFormContact();
+                    $this->eventDispatcher->dispatch('widget.form_contact.send');
                 }
             }
 
@@ -148,9 +156,10 @@ EOL;
             $form->add('destinataire', 'choice', array(
                 'choices' => $choice_list,
                 'choices_as_values' => true,
-                'expanded'  => true,
+                'expanded'  => false,
                 'required'  => true,
-                'label' => $this->parameters['label_choix_destinataire']
+                'label' => $this->parameters['label_choix_destinataire'],
+                'placeholder' => '...'
             ));
 
         }

@@ -29,7 +29,7 @@ services:
 
     kalamu_cms.element.cms.form_contact:
         class: Kalamu\CmsAdminBundle\Widget\FormContactWidget
-        arguments: ['@form.factory', %kalamu_cms.element.cms.form_contact.template%, '@mailer']
+        arguments: ['@form.factory', %kalamu_cms.element.cms.form_contact.template%, '@mailer', '@event_dispatcher']
         calls:
             - [setRequestStack, ['@request_stack']]
         tags:
