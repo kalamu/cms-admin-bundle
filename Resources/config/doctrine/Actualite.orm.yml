@@ -74,6 +74,9 @@ Kalamu\CmsAdminBundle\Entity\Actualite:
         published_at:
             type: datetime
             nullable: true
+        published_until:
+            type: datetime
+            nullable: true
         metas:
             type: json_array
             nullable: true

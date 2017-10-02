@@ -36,6 +36,7 @@ class ActualiteAdmin extends AbstractAdmin
             ->add('created_by')
             ->add('updated_by')
             ->add('published_at')
+            ->add('published_until')
             ->add('metas')
         ;
     }
@@ -104,6 +105,7 @@ class ActualiteAdmin extends AbstractAdmin
                     }
                 ])
                 ->add('published_at', DateTimePickerType::class, ['required' => false])
+                ->add('published_until', DateTimePickerType::class, ['required' => false])
                 ->add('terms', EntityType::class, [
                     'label' => 'Classification',
                     'class' => 'KalamuCmsAdminBundle:Term',
@@ -134,6 +136,7 @@ class ActualiteAdmin extends AbstractAdmin
                 ->add('created_at')
                 ->add('updated_at')
                 ->add('published_at')
+                ->add('published_until')
                 ->add('created_by')
                 ->add('updated_by')
             ->end()

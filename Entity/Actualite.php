@@ -8,18 +8,20 @@ use Roho\CmsBundle\ContentType\Interfaces\ContextualizableInterface;
 use Roho\CmsBundle\ContentType\Interfaces\IllustrableInterface;
 use Roho\CmsBundle\ContentType\Interfaces\PublishStatusInterface;
 use Roho\CmsBundle\ContentType\Interfaces\PublishTimestampInterface;
+use Roho\CmsBundle\ContentType\Interfaces\PublishUntilTimestampInterface;
 use Roho\CmsBundle\ContentType\Interfaces\TemplateableInterface;
 use Roho\CmsBundle\ContentType\Traits\ClassifiableTrait;
 use Roho\CmsBundle\ContentType\Traits\ContextualizableTrait;
 use Roho\CmsBundle\ContentType\Traits\IllustrableTrait;
 use Roho\CmsBundle\ContentType\Traits\PublishTimestampTrait;
+use Roho\CmsBundle\ContentType\Traits\PublishUntilTimestampTrait;
 use Roho\CmsBundle\ContentType\Traits\TemplateableTrait;
 use Roho\CmsBundle\Model\ContentTypeInterface;
 
 /**
  * Actualite
  */
-class Actualite implements ContentTypeInterface, PublishStatusInterface, TemplateableInterface, IllustrableInterface, ClassifiableInterface, PublishTimestampInterface, ContextualizableInterface
+class Actualite implements ContentTypeInterface, PublishStatusInterface, TemplateableInterface, IllustrableInterface, ClassifiableInterface, PublishTimestampInterface, PublishUntilTimestampInterface, ContextualizableInterface
 {
 
     use TemplateableTrait;
@@ -27,6 +29,7 @@ class Actualite implements ContentTypeInterface, PublishStatusInterface, Templat
     use ClassifiableTrait;
     use PublishTimestampTrait;
     use ContextualizableTrait;
+    use PublishUntilTimestampTrait;
 
     /**
      * @var integer
