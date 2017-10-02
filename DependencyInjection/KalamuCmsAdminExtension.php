@@ -83,8 +83,9 @@ class KalamuCmsAdminExtension extends Extension implements PrependExtensionInter
                 ),
                 'theme'         => array(
                     'simple'        => array(
-                        'plugins'   => 'lists advlist table link kalamuLink hr searchreplace fullscreen paste',
-                        'toolbar'  => 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist | outdent indent | kalamuLink link unlink '
+                        'plugins'   => 'lists advlist table link kalamuLink hr searchreplace fullscreen paste textcolor code',
+                        'toolbar1'  => 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist | outdent indent ',
+                        'toolbar2'  => 'kalamuLink link unlink | forecolor backcolor | code'
                     )
                 )
             )
