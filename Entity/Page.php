@@ -8,20 +8,23 @@ use Roho\CmsBundle\ContentType\Interfaces\ContextualizableInterface;
 use Roho\CmsBundle\ContentType\Interfaces\PublishStatusInterface;
 use Roho\CmsBundle\ContentType\Interfaces\PublishTimestampInterface;
 use Roho\CmsBundle\ContentType\Interfaces\TemplateableInterface;
+use Roho\CmsBundle\ContentType\Interfaces\NestableInterface;
 use Roho\CmsBundle\ContentType\Traits\ContextualizableTrait;
 use Roho\CmsBundle\ContentType\Traits\PublishTimestampTrait;
 use Roho\CmsBundle\ContentType\Traits\TemplateableTrait;
+use Roho\CmsBundle\ContentType\Traits\NestableTrait;
 use Roho\CmsBundle\Model\ContentTypeInterface;
 
 /**
  * Page
  */
-class Page implements ContentTypeInterface, PublishStatusInterface, TemplateableInterface, PublishTimestampInterface, ContextualizableInterface
+class Page implements ContentTypeInterface, PublishStatusInterface, TemplateableInterface, PublishTimestampInterface, ContextualizableInterface, NestableInterface
 {
 
     use TemplateableTrait;
     use PublishTimestampTrait;
     use ContextualizableTrait;
+    use NestableTrait;
 
     /**
      * @var integer
@@ -67,16 +70,6 @@ class Page implements ContentTypeInterface, PublishStatusInterface, Templateable
      * @var string
      */
     private $updated_by;
-
-    /**
-     * @var Collection
-     */
-    private $children;
-
-    /**
-     * @var Page
-     */
-    private $parent;
 
 
     public function __toString(){
@@ -294,61 +287,4 @@ class Page implements ContentTypeInterface, PublishStatusInterface, Templateable
         return $this->updated_by;
     }
 
-    /**
-     * Add child
-     *
-     * @param Page $child
-     *
-     * @return Page
-     */
-    public function addChild(Page $child)
-    {
-        $this->children[] = $child;
-
-        return $this;
-    }
-
-    /**
-     * Remove child
-     *
-     * @param Page $child
-     */
-    public function removeChild(Page $child)
-    {
-        $this->children->removeElement($child);
-    }
-
-    /**
-     * Get children
-     *
-     * @return Collection
-     */
-    public function getChildren()
-    {
-        return $this->children;
-    }
-
-    /**
-     * Set parent
-     *
-     * @param Page $parent
-     *
-     * @return Page
-     */
-    public function setParent(Page $parent = null)
-    {
-        $this->parent = $parent;
-
-        return $this;
-    }
-
-    /**
-     * Get parent
-     *
-     * @return Page
-     */
-    public function getParent()
-    {
-        return $this->parent;
-    }
 }

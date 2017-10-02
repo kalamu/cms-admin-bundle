@@ -84,6 +84,7 @@ Kalamu\CmsAdminBundle\Entity\Page:
 
         parent:
             targetEntity: Kalamu\CmsAdminBundle\Entity\Page
+            inversedBy: children
             joinColumn:
                 name: ref_parent
                 referencedColumnName: id
