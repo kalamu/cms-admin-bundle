@@ -1,3 +1,9 @@
 
 {% set alignClass = (align in ['left', 'right']) ? 'pull-'~align : (align == 'center' ? 'center-block' : '')  %}
+{% if lien %}
+    <a href="{{lien == 'self' ? url : cms_link_url(cms_link)}}">
+{% endif %}
 <img src="{{url|escape('html_attr')}}" class="img-responsive {{alignClass}}" alt="{{alt ? alt : title|escape('html_attr')}}" title="{{title|escape('html_attr')}}" />
+{% if lien %}
+    </a>
+{% endif %}

@@ -2,10 +2,12 @@
 
 namespace Kalamu\CmsAdminBundle\Widget\CMS;
 
+use Kalamu\CmsAdminBundle\Form\Type\CmsLinkSelectorType;
 use Kalamu\CmsAdminBundle\Form\Type\ElfinderType;
 use Kalamu\DashboardBundle\Model\AbstractConfigurableElement;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Sonata\AdminBundle\Form\Type\ChoiceFieldMaskType;
 use Symfony\Bundle\TwigBundle\TwigEngine;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Form;
 
@@ -31,8 +33,15 @@ class ImageWidget extends AbstractConfigurableElement
 
     public function getForm(Form $form){
         $form->add("title", TextType::class, array('label' => 'Titre'));
-        $form->add("url", ElfinderType::class, array('label' => '', 'instance' => 'img_cms', 'elfinder_select_mode' => 'image', 'label_render' => false, 'label_attr' => array('class' => 'center-block text-left')));
+        $form->add("url", ElfinderType::class, array('label' => 'Image', 'instance' => 'img_cms', 'elfinder_select_mode' => 'image', 'label_render' => false, 'label_attr' => array('class' => 'center-block text-left')));
         $form->add("alt", TextType::class, array('label' => 'Texte alternatif', 'required' => false, 'extra_fields_message' => "Texte affiché si l'image ne se charge pas."));
+        $form->add("lien", ChoiceFieldMaskType::class, [
+            'label' => "Lien sur l'image",
+            'choices' => ["Pas de lien" => false, "Lien vers l'image originale" => 'self', "Autre lien" => 'other'],
+            'choices_as_values' => true,
+            'map' => ['other' => ['cms_link']]
+        ]);
+        $form->add('cms_link', CmsLinkSelectorType::class, ['label' => 'Lien']);
         $form->add("align", ChoiceType::class, array(
             'label'     => 'Alignement',
             'choices'   => array(
