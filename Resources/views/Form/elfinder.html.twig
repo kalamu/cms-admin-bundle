@@ -40,7 +40,7 @@
                     getFileCallback: function(file) {
                         $('#{{ form.vars.id }}_elfinder').hide();
 
-                        new_url = '{{ pathPrefix }}'+file.baseUrl.replace("{{ app.request.schemeAndHttpHost }}/", "")+file.name;
+                        new_url = file.url.replace("{{ app.request.schemeAndHttpHost }}", '');
                         {% if form.vars.elfinder_select_mode == 'image' %}
                             $('#{{ id_displayer }}').attr('src', new_url);
                         {% else %}
