@@ -35,7 +35,10 @@
                         type: child.datas.type,
                         name: child.datas.identifier,
                         form: child.datas.params,
-                        _content: (child.datas._content is defined ? child.datas._content : null),
+                        additional: {
+                            _content: (child.datas._content is defined ? child.datas._content : null),
+                            _responsive: (child.datas.responsive is defined ? child.datas.responsive : null)
+                        },
                         format: 'html'}))
                     }}
                 {% endif %}
