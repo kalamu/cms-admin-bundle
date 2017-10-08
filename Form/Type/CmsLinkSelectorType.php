@@ -14,7 +14,8 @@ class CmsLinkSelectorType extends AbstractType {
             ->add('display', HiddenType::class)
             ->add('type', HiddenType::class)
             ->add('identifier', HiddenType::class)
-            ->add('context', HiddenType::class);
+            ->add('context', HiddenType::class)
+            ->add('url', HiddenType::class);
 
     }
 

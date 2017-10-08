@@ -9,6 +9,7 @@
     {{form_widget(form.type)}}
     {{form_widget(form.identifier)}}
     {{form_widget(form.context)}}
+    {{form_widget(form.url)}}
     </div>
     <script type="text/javascript">
     $(function(){
@@ -62,7 +63,7 @@
                     {% endif %}
                     zoom: 12
                 });
-                
+
                 var marker = new google.maps.Marker({
                     {% if form.latitude.vars.value and form.longitude.vars.value %}
                     position: new google.maps.LatLng({lat: {{form.latitude.vars.value}}, lng: {{form.longitude.vars.value}}}),
@@ -70,7 +71,7 @@
                     draggable: true,
                     map: map
                 });
-                
+
                 marker.addListener('position_changed', function(){
                     $('#{{form.latitude.vars.id}}').val(marker.position.lat());
                     $('#{{form.longitude.vars.id}}').val(marker.position.lng());

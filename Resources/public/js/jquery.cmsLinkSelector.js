@@ -146,6 +146,7 @@ $.widget("kalamu.cmsLinkSelector", {
         this.element.find('input[name*="[type]"]').val(item.type);
         this.element.find('input[name*="[identifier]"]').val(item.identifier);
         this.element.find('input[name*="[context]"]').val(item.context);
+        this.element.find('input[name*="[url]"]').val(item.url);
         this.element.find('input[name*="[display]"]').val(display).trigger('change');
 
         if(this.options.embedModal){
