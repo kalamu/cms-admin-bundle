@@ -26,18 +26,18 @@
     background: #e5e5e5 !important;
 }
 
-.visible-editing-row{
+/*.visible-editing-row{
     position: absolute;
     left: 12px;
     text-align: left !important;
     padding: 0;
     width: 25px;
-}
+}*/
 .visible-editing-row>a{
     display: block;
 }
 
-.visible-editing-row .link-label, 
+.visible-editing-row .link-label,
 .roho-dashboard-col>.visible-editing .link-label,
 .roho-dashboard.editing .visible-editing  .link-label{
     display: none;

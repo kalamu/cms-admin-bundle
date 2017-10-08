@@ -10,24 +10,20 @@
             {% for child in datas.childs %}
                 {% if child.type == 'row' %}
                     {%set row = child.datas %}
-                    <div class="pi-section-transparent section-standard">
-                        <div class="pi-section">
-                            <div class="pi-row">
-                                {% for col in row.cols %}
-                                    <div class="pi-col-sm-{{col.md}}">
-                                        {% for widget in col.widgets %}
-                                            {{ render(controller('KalamuDashboardBundle:ElementApi:render', {
-                                                context: 'cms',
-                                                type: widget.type,
-                                                name: widget.identifier,
-                                                form: widget.params,
-                                                format: 'html'}))
-                                            }}
-                                        {% endfor %}
-                                    </div>
+                    <div {% if row.responsive.id is defined %}id="{{row.responsive.id}}" {% endif %} class="row {% for size in row.responsive.visible %}visible-{{size}} {% endfor %}">
+                        {% for col in row.cols %}
+                            <div class="pi-col-sm-{{col.md}}">
+                                {% for widget in col.widgets %}
+                                    {{ render(controller('KalamuDashboardBundle:ElementApi:render', {
+                                        context: 'cms',
+                                        type: widget.type,
+                                        name: widget.identifier,
+                                        form: widget.params,
+                                        format: 'html'}))
+                                    }}
                                 {% endfor %}
                             </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 {% elseif child.type == 'section' %}
                     {{ render(controller('KalamuDashboardBundle:ElementApi:render', {

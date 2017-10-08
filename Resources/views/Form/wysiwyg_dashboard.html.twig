@@ -56,7 +56,6 @@
                 });
 
                 $('#wysiwyg_dashboard_{{uuid}}').parents('form').on('submit', function(event){
-                    console.log("IL FAUT ENREGISTRER !!!!!!");
                     active = $(document.activeElement);
                     $('#wysiwyg_dashboard_{{uuid}}').kalamuDashboard('save');
                     $(this).off(event);
