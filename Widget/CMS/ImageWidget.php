@@ -9,6 +9,7 @@ use Sonata\AdminBundle\Form\Type\ChoiceFieldMaskType;
 use Symfony\Bundle\TwigBundle\TwigEngine;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\Form;
 
 /**
@@ -37,11 +38,20 @@ class ImageWidget extends AbstractConfigurableElement
         $form->add("alt", TextType::class, array('label' => 'Texte alternatif', 'required' => false, 'extra_fields_message' => "Texte affiché si l'image ne se charge pas."));
         $form->add("lien", ChoiceFieldMaskType::class, [
             'label' => "Lien sur l'image",
-            'choices' => ["Pas de lien" => false, "Lien vers l'image originale" => 'self', "Autre lien" => 'other'],
+            'choices' => [
+                "Pas de lien" => false,
+                "Lien vers l'image originale" => 'self',
+                "Lien vers une page interne" => 'other',
+                "Lien direct" => 'url'
+            ],
             'choices_as_values' => true,
-            'map' => ['other' => ['cms_link']]
+            'map' => [
+                'other' => ['cms_link'],
+                'url' => ['direct_url']
+            ]
         ]);
         $form->add('cms_link', CmsLinkSelectorType::class, ['label' => 'Lien']);
+        $form->add('direct_url', UrlType::class, ['label' => 'URL du lien']);
         $form->add("align", ChoiceType::class, array(
             'label'     => 'Alignement',
             'choices'   => array(

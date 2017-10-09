@@ -1,7 +1,14 @@
 
 {% set alignClass = (align in ['left', 'right']) ? 'pull-'~align : (align == 'center' ? 'center-block' : '')  %}
 {% if lien %}
-    <a href="{{lien == 'self' ? url : cms_link_url(cms_link)}}">
+    {% if lien == 'self' %}
+        {% set href = url %}
+    {% else if lien == 'other' %}
+        {% set href = cms_link_url(cms_link) %}
+    {% else if lien == 'url' %}
+        {% set href = direct_url %}
+    {% endif %}
+    <a href="{{href is defined ? href : '#'}}">
 {% endif %}
 <img src="{{url|escape('html_attr')}}" class="img-responsive {{alignClass}}" alt="{{alt ? alt : title|escape('html_attr')}}" title="{{title|escape('html_attr')}}" />
 {% if lien %}
