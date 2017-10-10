@@ -21,6 +21,8 @@ cms.section.section_parallax.title: Section parallax
 cms.section.section_parallax.description: Section avec une image de fond et une couleur opaque
 cms.section.section_slider.title: Section slider
 cms.section.section_slider.description: Section pour contenir un slider
+cms.alert.title: Block alerte
+cms.alert.description: Affiche un block de type alerte sur un fond coloré
 Action: Action
 Actualite: Actualité
 Actualité: Actualité

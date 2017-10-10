@@ -17,6 +17,7 @@ parameters:
     kalamu_cms.element.cms.isotope_cards.template: KalamuCmsAdminBundle:Widget/CMS:isotope_cards.html.twig
     kalamu_cms.element.cms.embed.template: KalamuCmsAdminBundle:Widget/CMS:embed.html.twig
     kalamu_cms.element.cms.google_map.template: KalamuCmsAdminBundle:Widget/CMS:google_map.html.twig
+    kalamu_cms.element.cms.alert.template: KalamuCmsAdminBundle:Widget/CMS:alert.html.twig
 
 services:
 
@@ -80,6 +81,12 @@ services:
     kalamu_cms.element.cms.google_map:
         class: Kalamu\CmsAdminBundle\Widget\CMS\GoogleMapWidget
         arguments: [%kalamu_cms.element.cms.google_map.template%]
+        tags:
+            - { name: dashboard.widget }
+
+    kalamu_cms.element.cms.alert:
+        class: Kalamu\CmsAdminBundle\Widget\CMS\AlertWidget
+        arguments: [%kalamu_cms.element.cms.alert.template%]
         tags:
             - { name: dashboard.widget }
 
