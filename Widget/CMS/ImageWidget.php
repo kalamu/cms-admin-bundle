@@ -50,8 +50,8 @@ class ImageWidget extends AbstractConfigurableElement
                 'url' => ['direct_url']
             ]
         ]);
-        $form->add('cms_link', CmsLinkSelectorType::class, ['label' => 'Lien']);
-        $form->add('direct_url', UrlType::class, ['label' => 'URL du lien']);
+        $form->add('cms_link', CmsLinkSelectorType::class, ['label' => 'Lien', 'required' => false]);
+        $form->add('direct_url', UrlType::class, ['label' => 'URL du lien', 'required' => false]);
         $form->add("align", ChoiceType::class, array(
             'label'     => 'Alignement',
             'choices'   => array(
@@ -71,6 +71,7 @@ class ImageWidget extends AbstractConfigurableElement
      * @return string
      */
     public function render(TwigEngine $templating){
+        dump($this->template, $this->parameters);
         return $templating->render($this->template, $this->parameters);
     }
 
