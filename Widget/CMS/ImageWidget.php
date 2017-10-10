@@ -71,7 +71,6 @@ class ImageWidget extends AbstractConfigurableElement
      * @return string
      */
     public function render(TwigEngine $templating){
-        dump($this->template, $this->parameters);
         return $templating->render($this->template, $this->parameters);
     }
 
