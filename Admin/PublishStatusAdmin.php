@@ -2,6 +2,7 @@
 
 namespace Kalamu\CmsAdminBundle\Admin;
 
+use Kalamu\CmsAdminBundle\Form\Filter\CaseInsensitiveStringFilter;
 use Roho\CmsBundle\ContentType\Interfaces\PublishStatusInterface;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -21,7 +22,7 @@ class PublishStatusAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('title')
+            ->add('title', CaseInsensitiveStringFilter::class)
             ->add('class')
             ->add('visible')
             ->add('default')

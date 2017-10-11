@@ -2,6 +2,7 @@
 
 namespace Kalamu\CmsAdminBundle\Admin;
 
+use Kalamu\CmsAdminBundle\Form\Filter\CaseInsensitiveStringFilter;
 use Kalamu\CmsAdminBundle\Form\Type\ElfinderType;
 use Kalamu\CmsAdminBundle\Form\Type\WysiwygDashboardType;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
@@ -23,12 +24,8 @@ class TermAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('libelle')
-            ->add('slug')
-//            ->add('image')
-//            ->add('resume')
-//            ->add('description')
-//            ->add('metas')
+            ->add('libelle', CaseInsensitiveStringFilter::class)
+            ->add('slug', CaseInsensitiveStringFilter::class)
         ;
     }
 
@@ -38,13 +35,8 @@ class TermAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-//            ->add('id')
             ->addIdentifier('libelle')
             ->add('slug')
-//            ->add('image')
-//            ->add('resume')
-//            ->add('description')
-//            ->add('metas')
             ->add('_action', null, array(
                 'actions' => array(
                     'show' => array(),

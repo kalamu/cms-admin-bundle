@@ -2,6 +2,7 @@
 
 namespace Kalamu\CmsAdminBundle\Admin;
 
+use Kalamu\CmsAdminBundle\Form\Filter\CaseInsensitiveStringFilter;
 use Kalamu\CmsAdminBundle\Form\Type\WysiwygDashboardType;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -34,9 +35,9 @@ class PageAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('title')
-            ->add('slug')
-            ->add('contenu')
+            ->add('title', CaseInsensitiveStringFilter::class)
+            ->add('slug', CaseInsensitiveStringFilter::class)
+            ->add('contenu', CaseInsensitiveStringFilter::class)
             ->add('created_at')
             ->add('published_at')
             ->add('created_by')

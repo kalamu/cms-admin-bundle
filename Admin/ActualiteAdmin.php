@@ -2,6 +2,7 @@
 
 namespace Kalamu\CmsAdminBundle\Admin;
 
+use Kalamu\CmsAdminBundle\Form\Filter\CaseInsensitiveStringFilter;
 use Kalamu\CmsAdminBundle\Form\Type\ElfinderType;
 use Kalamu\CmsAdminBundle\Form\Type\WysiwygDashboardType;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
@@ -25,19 +26,16 @@ class ActualiteAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('title')
-            ->add('slug')
-            ->add('resume')
-            ->add('contenu')
-            ->add('image')
-            ->add('template')
+            ->add('title', CaseInsensitiveStringFilter::class)
+            ->add('slug', CaseInsensitiveStringFilter::class)
+            ->add('resume', CaseInsensitiveStringFilter::class)
+            ->add('contenu', CaseInsensitiveStringFilter::class)
             ->add('created_at')
             ->add('updated_at')
             ->add('created_by')
             ->add('updated_by')
             ->add('published_at')
             ->add('published_until')
-            ->add('metas')
         ;
     }
 
