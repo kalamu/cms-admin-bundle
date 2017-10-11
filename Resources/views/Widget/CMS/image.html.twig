@@ -3,9 +3,9 @@
 {% if lien %}
     {% if lien == 'self' %}
         {% set href = url %}
-    {% else if lien == 'other' %}
+    {% elseif lien == 'other' %}
         {% set href = cms_link_url(cms_link) %}
-    {% else if lien == 'url' %}
+    {% elseif lien == 'url' %}
         {% set href = direct_url %}
     {% endif %}
     <a href="{{href is defined ? href : '#'}}">
