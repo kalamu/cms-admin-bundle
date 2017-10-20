@@ -6,37 +6,23 @@
             <div class="col-md-12">
 
             {% set datas = object.contenu|json_decode %}
-            {% set widget_controller = widget_controller is defined ? widget_controller : 'RohoDashboardBundle:API/WidgetApi:render' %}
             {% for child in datas.childs if child is not empty %}
                 {% if child.type == 'row' %}
                     {%set row = child.datas %}
-                    <div{{kalamu_id_class(row.responsive, {class: 'row'})}}">
+                    <div{{kalamu_id_class(row.responsive, {class: 'row'})}}>
                         {% for col in row.cols %}
-                            <div{{kalamu_id_class(col.responsive, {class: 'row'})}}>
+                            <div{{kalamu_id_class(col.responsive)}}>
                                 {% for widget in col.widgets %}
-                                    {{ render(controller('KalamuDashboardBundle:ElementApi:render', {
-                                        context: 'cms',
-                                        type: widget.type,
-                                        name: widget.identifier,
-                                        form: widget.params,
-                                        format: 'html'}))
-                                    }}
+                                    {{render_dashboard_element('cms', widget.type, widget.identifier, widget.params)}}
                                 {% endfor %}
                             </div>
                         {% endfor %}
                     </div>
                 {% elseif child.type == 'section' %}
-                    {{ render(controller('KalamuDashboardBundle:ElementApi:render', {
-                        context: 'cms',
-                        type: child.datas.type,
-                        name: child.datas.identifier,
-                        form: child.datas.params,
-                        additional: {
-                            _content: (child.datas._content is defined ? child.datas._content : null),
-                            _responsive: (child.datas.responsive is defined ? child.datas.responsive : null)
-                        },
-                        format: 'html'}))
-                    }}
+                    {{render_dashboard_element('cms', child.datas.type, child.datas.identifier, child.datas.params, {
+                        _content: (child.datas._content is defined ? child.datas._content : null),
+                        _responsive: (child.datas.responsive is defined ? child.datas.responsive : null)
+                    })}}
                 {% endif %}
             {% endfor %}
 
