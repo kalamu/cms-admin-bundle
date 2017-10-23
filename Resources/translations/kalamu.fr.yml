@@ -7,8 +7,8 @@ cms.wysiwyg.title: 'Texte mis en forme'
 cms.wysiwyg.description: 'Saisissez votre texte et mettez le en forme comme sur un logiciel de traitement de texte.'
 cms.image.title: Image
 cms.image.description: 'Sélectionnez une image à insérer dans le contenu.'
-cms.embed.title: Vidéo
-cms.embed.description: 'Saisissez le code "<embed ...</embed>" fourni par Youtube, Dailymotion, ...'
+cms.youtube.title: Vidéo
+cms.youtube.description: 'Insérer une vidéo YouTube dans votre page'
 cms.menu.title: Menu
 cms.menu.description: 'Sélectionner un des menu existant pour l''insérer dans le contenu.'
 cms.google_map.title: 'Carte Google Maps'

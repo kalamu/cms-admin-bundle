@@ -15,7 +15,7 @@ parameters:
             title: 'Blocks'
             template: 'KalamuCmsAdminBundle:Widget/CMS:blocks.html.twig'
     kalamu_cms.element.cms.isotope_cards.template: KalamuCmsAdminBundle:Widget/CMS:isotope_cards.html.twig
-    kalamu_cms.element.cms.embed.template: KalamuCmsAdminBundle:Widget/CMS:embed.html.twig
+    kalamu_cms.element.cms.youtube.template: KalamuCmsAdminBundle:Widget/CMS:youtube.html.twig
     kalamu_cms.element.cms.google_map.template: KalamuCmsAdminBundle:Widget/CMS:google_map.html.twig
     kalamu_cms.element.cms.alert.template: KalamuCmsAdminBundle:Widget/CMS:alert.html.twig
 
@@ -72,9 +72,9 @@ services:
         tags:
             - { name: dashboard.widget }
 
-    kalamu_cms.element.cms.embed:
-        class: Kalamu\CmsAdminBundle\Widget\CMS\EmbedWidget
-        arguments: [%kalamu_cms.element.cms.embed.template%]
+    kalamu_cms.element.cms.youtube:
+        class: Kalamu\CmsAdminBundle\Widget\CMS\YoutubeWidget
+        arguments: [%kalamu_cms.element.cms.youtube.template%]
         tags:
             - { name: dashboard.widget }
 
