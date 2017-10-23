@@ -1,0 +1,13 @@
+{% if intention == "publish" %}
+    <div class="embed-responsive embed-responsive-4by3">
+        <iframe
+            class="embed-responsive-item"
+            src="{{url|escape('html_attr')}}"
+            frameborder="0"
+            allowfullscreen>
+        </iframe>
+    </div>
+{% else %}
+    Vidéo Youtube : <a href="{{url|escape('html_attr')}}" target="_blank">{{url}}</a>
+    <img src="{{thumbnail}}" class="img-responsive">
+{% endif %}
