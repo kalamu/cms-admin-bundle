@@ -7,6 +7,9 @@ $.widget( "kalamu.googleMapMarkerWidgetEditor", {
     },
 
     _create: function() {
+        if('undefined' === typeof google.maps){
+            console.error("La google.maps n'est pas disponible");
+        }
 
         this.options.marker = new google.maps.Marker({
             position: new google.maps.LatLng({
@@ -87,7 +90,7 @@ $.widget( "kalamu.googleMapWidgetEditor", {
     _create: function() {
 
         this.options.markers = [];
-        if(typeof google == 'undefined'){
+        if(typeof google === 'undefined'){
             $.getScript('https://maps.google.com/maps/api/js?sensor=false'+(this.options.api_key ? '&key='+this.options.api_key : ''), $.proxy(this.implements, this));
         }else{
             this.implements();
@@ -96,7 +99,7 @@ $.widget( "kalamu.googleMapWidgetEditor", {
     },
 
     implements: function(){
-        if(typeof google == 'undefined'){ console.log("Google Map n'est pas encore chargé"); return; }
+        if(typeof google === 'undefined'){ console.log("Google Map n'est pas encore chargé"); return; }
 
         this.options.map = new google.maps.Map(this.element.get()[0], {
             center: this.options.center,
@@ -106,13 +109,13 @@ $.widget( "kalamu.googleMapWidgetEditor", {
         this.options.map.addListener('center_changed', $.proxy(this.centerChanged, this));
         this.options.map.addListener('zoom_changed', $.proxy(this.zoomChanged, this));
 
-        if(typeof this.options.centerChanged == 'function'){
+        if(typeof this.options.centerChanged === 'function'){
             this.options.map.addListener('center_changed', $.proxy(this.options.centerChanged, this));
         }
-        if(typeof this.options.zoomChanged == 'function'){
+        if(typeof this.options.zoomChanged === 'function'){
             this.options.map.addListener('zoom_changed', $.proxy(this.options.zoomChanged, this));
         }
-        if(typeof this.options.mapClicked == 'function'){
+        if(typeof this.options.mapClicked === 'function'){
             this.options.map.addListener('click', $.proxy(this.options.mapClicked, this));
         }
 

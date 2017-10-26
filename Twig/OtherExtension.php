@@ -17,12 +17,16 @@ class OtherExtension extends \Twig_Extension
 
     public function getFunctions() {
         return array(
-            new \Twig_SimpleFunction('uniqid', 'uniqid')
+            new \Twig_SimpleFunction('uniqid', [$this, 'uniqid'])
         );
     }
 
     public function jsonDecode($data){
         return json_decode($data, true);
+    }
+
+    public function uniqid(){
+        return str_replace('.', '-', uniqid("kalamu_", true));
     }
 
     public function getName(){
