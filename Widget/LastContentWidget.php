@@ -2,8 +2,9 @@
 
 namespace Kalamu\CmsAdminBundle\Widget;
 
-use Kalamu\CmsAdminBundle\Manager\ContentTypeManager;
 use Kalamu\DashboardBundle\Model\AbstractConfigurableElement;
+use Roho\CmsBundle\ContentType\Interfaces\PublishStatusInterface;
+use Roho\CmsBundle\Manager\ContentTypeManager;
 use Symfony\Bundle\TwigBundle\TwigEngine;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -62,7 +63,7 @@ class LastContentWidget extends AbstractConfigurableElement
         $typeManager = $this->manager->getType($this->parameters['type']);
 
         $baseQuery = $typeManager->getBasePublicQuery();
-        if($typeManager->getReflectionClass()->implementsInterface('Kalamu\CmsAdminBundle\ContentType\Interfaces\PublishStatusInterface')){
+        if($typeManager->getReflectionClass()->implementsInterface(PublishStatusInterface::class)){
             $baseQuery->orderBy('c.published_at', 'DESC');
         }
 
