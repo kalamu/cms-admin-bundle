@@ -1,3 +1,10 @@
 Kalamu\CmsAdminBundle\Entity\Term:
     constraints:
         - Callback: [validate]
+
+
+Kalamu\CmsAdminBundle\Entity\Menu:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: place
+            message: error_two_menu_on_same_place

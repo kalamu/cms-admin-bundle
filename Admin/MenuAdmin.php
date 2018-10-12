@@ -7,6 +7,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
@@ -67,10 +68,12 @@ class MenuAdmin extends AbstractAdmin
                 ->add('json_items', HiddenType::class)
             ->end()
             ->with('Infos', ['class' => 'col-md-3'])
-                ->add('place', \Symfony\Component\Form\Extension\Core\Type\ChoiceType::class, [
+                ->add('place', ChoiceType::class, [
                     'choices' => array_flip($places),
                     'choices_as_values' => true,
-                    'help' => "Permet d'affecter le menu à un emplacement du thème"
+                    'help' => "Permet d'affecter le menu à un emplacement du thème",
+                    'required' => false,
+                    'placeholder' => '...'
                 ])
             ->end()
         ;
