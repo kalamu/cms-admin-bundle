@@ -67,7 +67,6 @@
                     }
                 });
 
-
                 $(window).on('kalamu.dashboard.row_added '
                             + 'kalamu.dashboard.section_added '
                             + 'kalamu.dashboard.widget_added ', function(){
@@ -76,6 +75,8 @@
 
                 if($('#{{id}}').val().length){
                     $('#wysiwyg_dashboard_{{uuid}}').kalamuDashboard('import', JSON.parse($('#{{id}}').val()));
+                }else{
+                    $('#wysiwyg_dashboard_{{uuid}}').kalamuDashboard('save');
                 }
             });
         </script>
