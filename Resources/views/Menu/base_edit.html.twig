@@ -24,7 +24,7 @@ file that was distributed with this source code.
                 </h4>
             </div>
             <div class="box-body">
-                <em>Ajoutez des éléments au menu depuis la colonne de gauche, puis déplacez les pour les organiser.</em>
+                <em>Ajoutez des éléments au menu depuis la colonne de droite, puis déplacez les pour les organiser.</em>
                 <ul id="node_menu"></ul>
 
             </div>
@@ -32,10 +32,11 @@ file that was distributed with this source code.
     </div>
 
     <div class="col-md-3">
-        <div class="panel-group accordion accordion-lg" id="accordion">
+        <div class="panel-group accordion accordion-lg accordion-picker" id="accordion">
                 <div class="panel mn" id="content-picker-direct-link">
                     <div class="panel-heading">
                         <a aria-expanded="false" class="accordion-toggle accordion-icon link-unstyled collapsed" data-toggle="collapse" data-parent="#accordion" href="#content-picker-direct-link-content">
+                            <i class="fa pull-right"></i>
                             Lien direct
                         </a>
                     </div>
@@ -64,6 +65,7 @@ file that was distributed with this source code.
                 <div class="panel mn" id="content-picker-{{name}}">
                     <div class="panel-heading">
                         <a aria-expanded="false" class="accordion-toggle accordion-icon link-unstyled collapsed" data-toggle="collapse" data-parent="#accordion" href="#content-picker-{{name}}-content">
+                            <i class="fa pull-right"></i>
                             {{label}}
                         </a>
                     </div>
@@ -215,4 +217,19 @@ $(function(){
 
 });
 </script>
+<style>
+    .accordion-picker .panel-heading{
+        padding: 0;
+    }
+    .accordion-picker .panel-heading a{
+        padding: 10px 15px;
+        display:block;
+    }
+    .accordion-picker .panel-heading .fa::before{
+        content: "\f0d7";
+    }
+    .accordion-picker .panel-heading .collapsed .fa::before{
+        content: "\f0d9";
+    }
+</style>
 {% endblock javascripts %}
