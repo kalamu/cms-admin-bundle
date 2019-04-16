@@ -19,7 +19,7 @@ Kalamu\CmsAdminBundle\Entity\Actualite:
                 - versioned
         slug:
             type: string
-            length: 512
+            length: 255
             gedmo:
                 versioned: ~
                 slug:

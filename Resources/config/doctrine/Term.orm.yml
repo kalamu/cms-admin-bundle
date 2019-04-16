@@ -12,7 +12,7 @@ Kalamu\CmsAdminBundle\Entity\Term:
             type: string
         slug:
             type: string
-            length: 512
+            length: 255
             gedmo:
                 slug:
                     separator: -

@@ -9,7 +9,8 @@ Kalamu\CmsAdminBundle\Entity\ContextPublication:
 
     fields:
         name:
-            type: text
+            type: string
             unique: true
+            length: 255
         title:
             type: text
