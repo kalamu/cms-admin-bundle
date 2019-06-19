@@ -1,7 +1,7 @@
 
 Kalamu\CmsAdminBundle\Entity\Actualite:
     type: entity
-    table: roho_actualite
+    table: kalamu_actualite
     gedmo:
         loggable: true
     lifecycleCallbacks:
@@ -108,7 +108,7 @@ Kalamu\CmsAdminBundle\Entity\Actualite:
         context_publication:
             targetEntity: Kalamu\CmsAdminBundle\Entity\ContextPublication
             joinTable:
-                name: roho_actualite_context
+                name: kalamu_actualite_context
                 joinColumns:
                     ref_actualite:
                         referencedColumnName: id

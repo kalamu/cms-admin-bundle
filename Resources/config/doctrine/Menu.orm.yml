@@ -1,7 +1,7 @@
 
 Kalamu\CmsAdminBundle\Entity\Menu:
     type: entity
-    table: roho_menu
+    table: kalamu_menu
     id:
         id:
             type: integer

@@ -60,7 +60,7 @@ class MenuAdmin extends AbstractAdmin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $places = $this->getConfigurationPool()->getContainer()->getParameter('roho_cms.menus');
+        $places = $this->getConfigurationPool()->getContainer()->getParameter('kalamu_cms_core.menus');
 
         $formMapper
             ->with('Menu', ['class' => 'col-md-9'])

@@ -1,7 +1,7 @@
 
 Kalamu\CmsAdminBundle\Entity\Page:
     type: entity
-    table: roho_page
+    table: kalamu_page
     gedmo:
         loggable: true
     lifecycleCallbacks:
@@ -94,7 +94,7 @@ Kalamu\CmsAdminBundle\Entity\Page:
         context_publication:
             targetEntity: Kalamu\CmsAdminBundle\Entity\ContextPublication
             joinTable:
-                name: roho_page_context
+                name: kalamu_page_context
                 joinColumns:
                     ref_page:
                         referencedColumnName: id

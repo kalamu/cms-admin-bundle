@@ -2,9 +2,9 @@
 
 namespace Kalamu\CmsAdminBundle\Twig;
 
-use Roho\CmsBundle\Manager\ContentTypeManager;
-use Roho\CmsBundle\Manager\ContextManager;
-use Roho\DynamiqueConfigBundle\Container\ParameterContainer;
+use Kalamu\CmsCoreBundle\Manager\ContentTypeManager;
+use Kalamu\CmsCoreBundle\Manager\ContextManager;
+use Kalamu\DynamiqueConfigBundle\Container\ParameterContainer;
 
 /**
  * Extension Twig pour ajouter les fonctions du CMS
@@ -26,7 +26,7 @@ class CmsExtension extends \Twig_Extension
 
     /**
      * Container des paramètres de configuration dynamique
-     * @var \Roho\DynamiqueConfigBundle\Container\ParameterContainer
+     * @var \Kalamu\DynamiqueConfigBundle\Container\ParameterContainer
      */
     protected $parameterContainer;
 

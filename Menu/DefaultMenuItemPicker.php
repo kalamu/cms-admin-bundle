@@ -3,7 +3,7 @@
 namespace Kalamu\CmsAdminBundle\Menu;
 
 use Kalamu\CmsAdminBundle\Menu\Interfaces\MenuItemPickerInterface;
-use Roho\CmsBundle\Manager\Interfaces\ContentManagerInterface;
+use Kalamu\CmsCoreBundle\Manager\Interfaces\ContentManagerInterface;
 
 /**
  * Item picker par défaut pour l'éditeur de menu

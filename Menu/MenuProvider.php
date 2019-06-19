@@ -7,7 +7,7 @@ use Knp\Menu\FactoryInterface;
 use Knp\Menu\Provider\MenuProviderInterface;
 use Knp\Menu\ItemInterface;
 use Knp\Menu\MenuItem;
-use Kalamu\CmsAdminBundle\Entity\MenuItem as RohoMenuItem;
+use Kalamu\CmsAdminBundle\Entity\MenuItem as KalamuMenuItem;
 
 /**
  * Service de génération des menus pour KNP
@@ -61,21 +61,21 @@ class MenuProvider implements MenuProviderInterface
         return $menu ? true : false;
     }
 
-    protected function createItem(ItemInterface $KnpMenu, RohoMenuItem $RohoMenuItem){
-        $Item = new MenuItem('item-'.$RohoMenuItem->getId(), $this->factory);
+    protected function createItem(ItemInterface $KnpMenu, KalamuMenuItem $KalamuMenuItem){
+        $Item = new MenuItem('item-'.$KalamuMenuItem->getId(), $this->factory);
 
-        $Item->setLabel($RohoMenuItem->getTitle());
-        if($RohoMenuItem->getIcon()){
-            $Item->setAttribute('icon', 'fa fa-fw '.$RohoMenuItem->getIcon());
+        $Item->setLabel($KalamuMenuItem->getTitle());
+        if($KalamuMenuItem->getIcon()){
+            $Item->setAttribute('icon', 'fa fa-fw '.$KalamuMenuItem->getIcon());
         }
-        if($RohoMenuItem->getCssClass()){
-            $Item->setAttribute('class', $RohoMenuItem->getCssClass());
+        if($KalamuMenuItem->getCssClass()){
+            $Item->setAttribute('class', $KalamuMenuItem->getCssClass());
         }
 
-        $Item->setUri($RohoMenuItem->getUrl());
+        $Item->setUri($KalamuMenuItem->getUrl());
 
-        if($RohoMenuItem->getChildren()->count()){
-            foreach($RohoMenuItem->getChildren() as $child){
+        if($KalamuMenuItem->getChildren()->count()){
+            foreach($KalamuMenuItem->getChildren() as $child){
                 $this->createItem($Item, $child);
             }
         }

@@ -39,7 +39,7 @@ EOT
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $contexts = $this->getContainer()->getParameter('roho_cms.contexts');
+        $contexts = $this->getContainer()->getParameter('kalamu_cms_core.contexts');
         $em = $this->getContainer()->get('doctrine')->getManager();
 
         foreach($contexts as $name => $config){

@@ -10,7 +10,7 @@ services:
     # Twig
     kalamu_cms.twig.extension:
         class: Kalamu\CmsAdminBundle\Twig\CmsExtension
-        arguments: ['@roho_cms.content_type.manager', '@roho_cms.manager.context', '@roho_dynamique_config']
+        arguments: ['@kalamu_cms_core.content_type.manager', '@kalamu_cms_core.manager.context', '@kalamu_dynamique_config']
         public: false
         tags:
             - { name: twig.extension }

@@ -3,7 +3,7 @@
 namespace Kalamu\CmsAdminBundle\Admin;
 
 use Kalamu\CmsAdminBundle\Form\Filter\CaseInsensitiveStringFilter;
-use Roho\CmsBundle\ContentType\Interfaces\PublishStatusInterface;
+use Kalamu\CmsCoreBundle\ContentType\Interfaces\PublishStatusInterface;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;

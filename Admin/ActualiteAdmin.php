@@ -66,7 +66,7 @@ class ActualiteAdmin extends AbstractAdmin
     {
         $admin = $this;
 
-        $ContentTypeManager = $this->getConfigurationPool()->getContainer()->get('roho_cms.content_type.manager');
+        $ContentTypeManager = $this->getConfigurationPool()->getContainer()->get('kalamu_cms_core.content_type.manager');
         $managerType = $ContentTypeManager->getType('actualite');
 
         if(($templates = $managerType->getTemplates())){

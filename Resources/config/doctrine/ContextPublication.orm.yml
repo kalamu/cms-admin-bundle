@@ -1,7 +1,7 @@
 
 Kalamu\CmsAdminBundle\Entity\ContextPublication:
     type: entity
-    table: roho_context_publication
+    table: kalamu_context_publication
     id:
         id:
             type: integer

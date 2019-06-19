@@ -1,7 +1,7 @@
 
 Kalamu\CmsAdminBundle\Entity\Taxonomy:
     type: entity
-    table: roho_taxonomy
+    table: kalamu_taxonomy
     id:
         id:
             type: integer

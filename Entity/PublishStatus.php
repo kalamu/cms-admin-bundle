@@ -2,7 +2,7 @@
 
 namespace Kalamu\CmsAdminBundle\Entity;
 
-use Roho\CmsBundle\Model\PublishStatusInterface;
+use Kalamu\CmsCoreBundle\Model\PublishStatusInterface;
 
 /**
  * PublishStatus

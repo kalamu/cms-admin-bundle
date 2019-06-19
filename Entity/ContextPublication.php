@@ -2,7 +2,7 @@
 
 namespace Kalamu\CmsAdminBundle\Entity;
 
-use Roho\CmsBundle\Model\ContextPublicationInterface;
+use Kalamu\CmsCoreBundle\Model\ContextPublicationInterface;
 
 /**
  * ContextPublication

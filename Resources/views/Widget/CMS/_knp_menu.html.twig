@@ -37,8 +37,8 @@
         {%- set attributes = attributes|merge({'class': classes|join(' ')}) %}
     {%- endif %}
 {# displaying the item #}
-    {% import _self as roho %}
-    <li{{ roho.attributes(attributes) }}>
+    {% import _self as kalamu %}
+    <li{{ kalamu.attributes(attributes) }}>
         {%- if item.uri is not empty and (not matcher.isCurrent(item) or options.currentAsLink) %}
         {{ block('linkElement') }}
         {%- else %}

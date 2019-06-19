@@ -1,7 +1,7 @@
 
 Kalamu\CmsAdminBundle\Entity\PublishStatus:
     type: entity
-    table: roho_publish_status
+    table: kalamu_publish_status
     gedmo:
         loggable: true
     id:

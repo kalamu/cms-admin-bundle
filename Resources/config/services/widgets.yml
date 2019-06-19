@@ -24,7 +24,7 @@ services:
     # Widgets
     kalamu_cms.element.cms.last_content:
         class: Kalamu\CmsAdminBundle\Widget\LastContentWidget
-        arguments: ['@roho_cms.content_type.manager', %kalamu_cms.element.cms.last_content.template%]
+        arguments: ['@kalamu_cms_core.content_type.manager', %kalamu_cms.element.cms.last_content.template%]
         tags:
             - { name: dashboard.widget }
 

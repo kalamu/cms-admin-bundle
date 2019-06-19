@@ -2,13 +2,13 @@
 
 namespace Kalamu\CmsAdminBundle\Entity;
 
-use Roho\CmsBundle\ContentType\Interfaces\NestableInterface;
-use Roho\CmsBundle\ContentType\Interfaces\CaracterizableInterface;
-use Roho\CmsBundle\ContentType\Interfaces\IllustrableInterface;
+use Kalamu\CmsCoreBundle\ContentType\Interfaces\NestableInterface;
+use Kalamu\CmsCoreBundle\ContentType\Interfaces\CaracterizableInterface;
+use Kalamu\CmsCoreBundle\ContentType\Interfaces\IllustrableInterface;
 
-use Roho\CmsBundle\ContentType\Traits\NestableTrait;
-use Roho\CmsBundle\ContentType\Traits\CaracterizableTrait;
-use Roho\CmsBundle\ContentType\Traits\IllustrableTrait;
+use Kalamu\CmsCoreBundle\ContentType\Traits\NestableTrait;
+use Kalamu\CmsCoreBundle\ContentType\Traits\CaracterizableTrait;
+use Kalamu\CmsCoreBundle\ContentType\Traits\IllustrableTrait;
 
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 

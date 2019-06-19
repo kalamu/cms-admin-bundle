@@ -2,7 +2,7 @@
 
 namespace Kalamu\CmsAdminBundle\Admin\Extension;
 
-use Roho\CmsBundle\Manager\ContentTypeManager;
+use Kalamu\CmsCoreBundle\Manager\ContentTypeManager;
 use Sonata\AdminBundle\Admin\AbstractAdminExtension;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 

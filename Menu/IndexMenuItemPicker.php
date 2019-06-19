@@ -4,7 +4,7 @@ namespace Kalamu\CmsAdminBundle\Menu;
 
 use Kalamu\CmsAdminBundle\Menu\Interfaces\MenuItemPickerInterface;
 use Doctrine\Common\Persistence\ManagerRegistry;
-use Roho\CmsBundle\Manager\ContentTypeManager;
+use Kalamu\CmsCoreBundle\Manager\ContentTypeManager;
 
 /**
  * Menu picker pour sélectionner les index des types de contenu

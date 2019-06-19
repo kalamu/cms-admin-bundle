@@ -3,20 +3,20 @@
 namespace Kalamu\CmsAdminBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Roho\CmsBundle\ContentType\Interfaces\ClassifiableInterface;
-use Roho\CmsBundle\ContentType\Interfaces\ContextualizableInterface;
-use Roho\CmsBundle\ContentType\Interfaces\IllustrableInterface;
-use Roho\CmsBundle\ContentType\Interfaces\PublishStatusInterface;
-use Roho\CmsBundle\ContentType\Interfaces\PublishTimestampInterface;
-use Roho\CmsBundle\ContentType\Interfaces\PublishUntilTimestampInterface;
-use Roho\CmsBundle\ContentType\Interfaces\TemplateableInterface;
-use Roho\CmsBundle\ContentType\Traits\ClassifiableTrait;
-use Roho\CmsBundle\ContentType\Traits\ContextualizableTrait;
-use Roho\CmsBundle\ContentType\Traits\IllustrableTrait;
-use Roho\CmsBundle\ContentType\Traits\PublishTimestampTrait;
-use Roho\CmsBundle\ContentType\Traits\PublishUntilTimestampTrait;
-use Roho\CmsBundle\ContentType\Traits\TemplateableTrait;
-use Roho\CmsBundle\Model\ContentTypeInterface;
+use Kalamu\CmsCoreBundle\ContentType\Interfaces\ClassifiableInterface;
+use Kalamu\CmsCoreBundle\ContentType\Interfaces\ContextualizableInterface;
+use Kalamu\CmsCoreBundle\ContentType\Interfaces\IllustrableInterface;
+use Kalamu\CmsCoreBundle\ContentType\Interfaces\PublishStatusInterface;
+use Kalamu\CmsCoreBundle\ContentType\Interfaces\PublishTimestampInterface;
+use Kalamu\CmsCoreBundle\ContentType\Interfaces\PublishUntilTimestampInterface;
+use Kalamu\CmsCoreBundle\ContentType\Interfaces\TemplateableInterface;
+use Kalamu\CmsCoreBundle\ContentType\Traits\ClassifiableTrait;
+use Kalamu\CmsCoreBundle\ContentType\Traits\ContextualizableTrait;
+use Kalamu\CmsCoreBundle\ContentType\Traits\IllustrableTrait;
+use Kalamu\CmsCoreBundle\ContentType\Traits\PublishTimestampTrait;
+use Kalamu\CmsCoreBundle\ContentType\Traits\PublishUntilTimestampTrait;
+use Kalamu\CmsCoreBundle\ContentType\Traits\TemplateableTrait;
+use Kalamu\CmsCoreBundle\Model\ContentTypeInterface;
 
 /**
  * Actualite

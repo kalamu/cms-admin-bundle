@@ -3,8 +3,8 @@
 namespace Kalamu\CmsAdminBundle\Widget;
 
 use Kalamu\DashboardBundle\Model\AbstractConfigurableElement;
-use Roho\CmsBundle\ContentType\Interfaces\PublishStatusInterface;
-use Roho\CmsBundle\Manager\ContentTypeManager;
+use Kalamu\CmsCoreBundle\ContentType\Interfaces\PublishStatusInterface;
+use Kalamu\CmsCoreBundle\Manager\ContentTypeManager;
 use Symfony\Bundle\TwigBundle\TwigEngine;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;

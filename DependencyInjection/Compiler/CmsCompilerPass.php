@@ -27,7 +27,7 @@ class CmsCompilerPass implements CompilerPassInterface
      * Gère les services de MenuItemPicker
      */
     protected function registerMenuItemPicker(ContainerBuilder $container){
-        $activated_types = $container->getParameter('roho_cms.activated_types');
+        $activated_types = $container->getParameter('kalamu_cms_core.activated_types');
 
         foreach ($activated_types as $type) {
             if(!$type['default_menu_item_picker']){ // l'utilisateur ne veux pas du picker par défaut
@@ -56,9 +56,9 @@ class CmsCompilerPass implements CompilerPassInterface
         }
 
         // Enregistrement de la route vers la Home si existante
-        if($container->hasParameter('roho_cms.home_route')){
+        if($container->hasParameter('kalamu_cms_core.home_route')){
             $indexPicker = $container->findDefinition('kalamu_cms_admin.menu_item.index_picker');
-            $indexPicker->addMethodCall('registerCustomIndex', array(array('route' => new Parameter('roho_cms.home_route'), 'label' => 'Accueil du site')));
+            $indexPicker->addMethodCall('registerCustomIndex', array(array('route' => new Parameter('kalamu_cms_core.home_route'), 'label' => 'Accueil du site')));
         }
     }
 

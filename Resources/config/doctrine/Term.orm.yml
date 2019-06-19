@@ -1,7 +1,7 @@
 
 Kalamu\CmsAdminBundle\Entity\Term:
     type: entity
-    table: roho_term
+    table: kalamu_term
     id:
         id:
             type: integer

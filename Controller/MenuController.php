@@ -6,17 +6,16 @@ use Sonata\AdminBundle\Controller\CRUDController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-
-
 class MenuController extends CRUDController
 {
 
-    public function render($view, array $parameters = array(), Response $response = null) {
+    public function renderWithExtraParams($view, array $parameters = [], Response $response = null)
+    {
         if(in_array($parameters['action'], ['create', 'edit'])){
             $parameters['items_pickers_manager'] = $this->get('kalamu_cms_admin.menu_item.manager');
         }
 
-        return parent::render($view, $parameters, $response);
+        return parent::renderWithExtraParams($view, $parameters, $response);
     }
 
     /**
