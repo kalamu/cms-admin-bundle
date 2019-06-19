@@ -12,7 +12,7 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "git@gitlab.etic.yt:kalamu/cms-admin-bundle.git"
+            "url": "https://github.com/kalamu/cms-admin-bundle.git"
         }
     ],
     "require": {
