@@ -24,7 +24,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
-class ActualiteAdmin extends AbstractAdmin
+class PostAdmin extends AbstractAdmin
 {
 
     protected $translationDomain = 'kalamu';
@@ -76,7 +76,7 @@ class ActualiteAdmin extends AbstractAdmin
         $admin = $this;
 
         $ContentTypeManager = $this->getConfigurationPool()->getContainer()->get('kalamu_cms_core.content_type.manager');
-        $managerType = $ContentTypeManager->getType('actualite');
+        $managerType = $ContentTypeManager->getType('post');
 
         if(($templates = $managerType->getTemplates())){
             foreach($managerType->getContexts() as $context){
@@ -85,7 +85,7 @@ class ActualiteAdmin extends AbstractAdmin
         }
 
         $formMapper
-            ->with("Actualité", ['class' => 'col-md-9'])
+            ->with("Post", ['class' => 'col-md-9'])
                 ->add('title', TextType::class)
                 ->add('slug', TextType::class, ['required' => false])
                 ->add('resume')
@@ -131,7 +131,7 @@ class ActualiteAdmin extends AbstractAdmin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->with('Actualité', ['class' => 'col-md-9'])
+            ->with('Post', ['class' => 'col-md-9'])
                 ->add('title')
                 ->add('slug')
                 ->add('resume')

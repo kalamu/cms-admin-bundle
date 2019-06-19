@@ -25,11 +25,11 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: cms, label: Taxonomy }
 
-    kalamu_cms_admin.admin.actualite:
-        class: Kalamu\CmsAdminBundle\Admin\ActualiteAdmin
-        arguments: [~, Kalamu\CmsAdminBundle\Entity\Actualite, SonataAdminBundle:CRUD]
+    kalamu_cms_admin.admin.post:
+        class: Kalamu\CmsAdminBundle\Admin\PostAdmin
+        arguments: [~, Kalamu\CmsAdminBundle\Entity\Post, SonataAdminBundle:CRUD]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: cms, label: Actualite }
+            - { name: sonata.admin, manager_type: orm, group: cms, label: Post }
 
     kalamu_cms_admin.admin.menu:
         class: Kalamu\CmsAdminBundle\Admin\MenuAdmin

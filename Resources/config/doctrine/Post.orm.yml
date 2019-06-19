@@ -1,7 +1,7 @@
 
-Kalamu\CmsAdminBundle\Entity\Actualite:
+Kalamu\CmsAdminBundle\Entity\Post:
     type: entity
-    table: kalamu_actualite
+    table: kalamu_post
     gedmo:
         loggable: true
     lifecycleCallbacks:
@@ -95,9 +95,9 @@ Kalamu\CmsAdminBundle\Entity\Actualite:
         terms:
             targetEntity: Kalamu\CmsAdminBundle\Entity\Term
             joinTable:
-                name: actualite_aff_term
+                name: post_aff_term
                 joinColumn:
-                    ref_actualite:
+                    ref_post:
                         referencedColumnName: id
                         onDelete: CASCADE
                 inversedJoinColumn:
@@ -108,9 +108,9 @@ Kalamu\CmsAdminBundle\Entity\Actualite:
         context_publication:
             targetEntity: Kalamu\CmsAdminBundle\Entity\ContextPublication
             joinTable:
-                name: kalamu_actualite_context
+                name: kalamu_post_context
                 joinColumns:
-                    ref_actualite:
+                    ref_post:
                         referencedColumnName: id
                         onDelete: CASCADE
                 inverseJoinColumns:

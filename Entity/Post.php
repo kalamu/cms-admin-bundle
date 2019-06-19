@@ -28,9 +28,9 @@ use Kalamu\CmsCoreBundle\ContentType\Traits\TemplateableTrait;
 use Kalamu\CmsCoreBundle\Model\ContentTypeInterface;
 
 /**
- * Actualite
+ * Post
  */
-class Actualite implements ContentTypeInterface, PublishStatusInterface, TemplateableInterface, IllustrableInterface, ClassifiableInterface, PublishTimestampInterface, PublishUntilTimestampInterface, ContextualizableInterface
+class Post implements ContentTypeInterface, PublishStatusInterface, TemplateableInterface, IllustrableInterface, ClassifiableInterface, PublishTimestampInterface, PublishUntilTimestampInterface, ContextualizableInterface
 {
 
     use TemplateableTrait;
@@ -119,7 +119,7 @@ class Actualite implements ContentTypeInterface, PublishStatusInterface, Templat
      *
      * @param string $title
      *
-     * @return Actualite
+     * @return Post
      */
     public function setTitle($title)
     {
@@ -143,7 +143,7 @@ class Actualite implements ContentTypeInterface, PublishStatusInterface, Templat
      *
      * @param string $slug
      *
-     * @return Actualite
+     * @return Post
      */
     public function setSlug($slug)
     {
@@ -167,7 +167,7 @@ class Actualite implements ContentTypeInterface, PublishStatusInterface, Templat
      *
      * @param string $contenu
      *
-     * @return Actualite
+     * @return Post
      */
     public function setContenu($contenu)
     {
@@ -191,7 +191,7 @@ class Actualite implements ContentTypeInterface, PublishStatusInterface, Templat
      *
      * @param \DateTime $createdAt
      *
-     * @return Actualite
+     * @return Post
      */
     public function setCreatedAt($createdAt)
     {
@@ -215,7 +215,7 @@ class Actualite implements ContentTypeInterface, PublishStatusInterface, Templat
      *
      * @param \DateTime $updatedAt
      *
-     * @return Actualite
+     * @return Post
      */
     public function setUpdatedAt($updatedAt)
     {
@@ -239,7 +239,7 @@ class Actualite implements ContentTypeInterface, PublishStatusInterface, Templat
      *
      * @param string $createdBy
      *
-     * @return Actualite
+     * @return Post
      */
     public function setCreatedBy($createdBy)
     {
@@ -263,7 +263,7 @@ class Actualite implements ContentTypeInterface, PublishStatusInterface, Templat
      *
      * @param string $updatedBy
      *
-     * @return Actualite
+     * @return Post
      */
     public function setUpdatedBy($updatedBy)
     {
@@ -287,7 +287,7 @@ class Actualite implements ContentTypeInterface, PublishStatusInterface, Templat
      *
      * @param array $metas
      *
-     * @return Actualite
+     * @return Post
      */
     public function setMetas($metas)
     {
@@ -311,7 +311,7 @@ class Actualite implements ContentTypeInterface, PublishStatusInterface, Templat
      *
      * @param string $resume
      *
-     * @return Actualite
+     * @return Post
      */
     public function setResume($resume)
     {
