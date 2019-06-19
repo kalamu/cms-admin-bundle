@@ -65,9 +65,9 @@ class CmsCompilerPass implements CompilerPassInterface
         }
 
         // Add the specific route for homepage
-        if($container->hasParameter('kalamu_cms_core.home_route')){
+        if($container->hasDefinition('kalamu_cms_admin.menu_item.index_picker')){
             $indexPicker = $container->findDefinition('kalamu_cms_admin.menu_item.index_picker');
-            $indexPicker->addMethodCall('registerCustomIndex', array(array('route' => new Parameter('kalamu_cms_core.home_route'), 'label' => 'Homepage')));
+            $indexPicker->addMethodCall('registerCustomIndex', [['route' => 'cms_homepage', 'label' => 'Homepage']]);
         }
     }
 
