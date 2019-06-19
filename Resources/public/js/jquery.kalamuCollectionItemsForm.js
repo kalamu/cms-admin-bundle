@@ -1,3 +1,13 @@
+
+/*
+ * This file is part of the kalamu/cms-admin-bundle package.
+ *
+ * (c) ETIC Services
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 $.widget( "kalamu.kalamuCollectionItemsForm", {
 
     options: {
@@ -24,7 +34,7 @@ $.widget( "kalamu.kalamuCollectionItemsForm", {
     },
 
     refresh: function(){
-        
+
         this.element.find('a[data-collection-remove-btn]').each(function(){
             $(this).text("Supprimer cet élément").removeClass('btn-default').addClass('btn-warning');
         });

@@ -1,4 +1,13 @@
 
+/*
+ * This file is part of the kalamu/cms-admin-bundle package.
+ *
+ * (c) ETIC Services
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 .menuBuilder, .contenu-picker-inner ul{margin-left:0; padding-left: 0}
 #node_menu li, .contenu-picker-inner li{ list-style-type: none;}
 #node_menu .item-handler {
