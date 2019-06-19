@@ -21,16 +21,13 @@ use Kalamu\CmsAdminBundle\Entity\ContextPublication;
 
 class ImportContextCommand extends ContainerAwareCommand {
 
-    /**
-     * Configuration de la commande
-     */
     protected function configure() {
         $this
                 ->setDefinition(array( ))
-                ->setDescription("Importe les contextes de publication dans la base")
+                ->setDescription("Create publication contexts in the database")
                 ->setHelp(<<<EOT
-La commande <info>kalamu:context:import</info> importe dans la base de donnée les
-contextes de publication.
+The <info>kalamu:context:import</info> command import in the database the
+publication contexts that have been configured in the CMS.
 
 <info>php app/console kalamu:context:import</info>
 EOT
@@ -39,9 +36,6 @@ EOT
         ;
     }
 
-    /**
-     * Coeur de la commande
-     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $contexts = $this->getContainer()->getParameter('kalamu_cms_core.contexts');

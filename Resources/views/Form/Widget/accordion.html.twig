@@ -16,7 +16,7 @@
 
     </div>
     {% set addLinkId = 'addItem-'~uniqid() %}
-    <a href="#" class="clearfix btn btn-info" id="{{addLinkId}}"><i class="fa fa-arrow-up"></i> Ajouter un élément</a>
+    <a href="#" class="clearfix btn btn-info" id="{{addLinkId}}"><i class="fa fa-arrow-up"></i> Add an element</a>
     <div class="clearfix mb15"></div>
     {{ form_row(form.display_mode) }}
     {{ form_rest(form) }}
@@ -32,14 +32,14 @@ $(function(){
         nb_items++;
 
         $('#{{addLinkId}}').parent().find('.collection-items>.col-md-12').append( newItem );
-        newItem.find('a[data-collection-remove-btn]').text("Supprimer cet élément").toggleClass('btn-default btn-warning').click(function(e){
+        newItem.find('a[data-collection-remove-btn]').text("Remove this element").toggleClass('btn-default btn-warning').click(function(e){
             e.preventDefault();
             $(e.target).parents('.collection-item').remove();
         });
     });
 {#    console.log($('#{{addLinkId}}').parent().find('a[data-collection-remove-btn]'));#}
     $('#{{addLinkId}}').parent().find('a[data-collection-remove-btn]').each(function(){
-        $(this).text("Supprimer cet élément").toggleClass('btn-default btn-warning');
+        $(this).text("Remove this element").toggleClass('btn-default btn-warning');
         $(this).click(function(e){
             console.log($(this).parents('.collection-item'));
             e.preventDefault();

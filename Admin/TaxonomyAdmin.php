@@ -87,7 +87,7 @@ class TaxonomyAdmin extends AbstractAdmin
     }
 
     /**
-     * Retourne les entités du CMS qui implémentes l'interface Classificable
+     * Get list of classifiable entities that are registered in the CMS
      * @return array
      */
     protected function getClassificationInterfaces(){

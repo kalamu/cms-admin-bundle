@@ -12,7 +12,6 @@
 namespace Kalamu\CmsAdminBundle\Widget;
 
 use Kalamu\CmsAdminBundle\Form\Type\FormContactType;
-use Kalamu\CmsAdminBundle\Model\RequestAwareWidgetInterface;
 use Kalamu\DashboardBundle\Model\AbstractConfigurableElement;
 use Symfony\Bundle\TwigBundle\TwigEngine;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
@@ -22,9 +21,9 @@ use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Validator\Constraints;
 
 /**
- * Widget affichant un formulaire de contact
+ * Widget that show a form contact
  */
-class FormContactWidget extends AbstractConfigurableElement implements RequestAwareWidgetInterface
+class FormContactWidget extends AbstractConfigurableElement
 {
 
     /**
@@ -73,7 +72,6 @@ class FormContactWidget extends AbstractConfigurableElement implements RequestAw
     }
 
     /**
-     * Génère le widget qui doit être affiché dans le tableau de bord
      * @return string
      */
     public function render(TwigEngine $templating, $intention = 'publish'){
@@ -88,25 +86,24 @@ class FormContactWidget extends AbstractConfigurableElement implements RequestAw
 
                 $mail = \Swift_Message::newInstance();
 
-                if($this->parameters['selectable_destinataire']){
-                    $destinataires = $this->parameters['choix_destinataire'][$datas['destinataire']]['emails'];
-                    $destinataires = explode(';', $destinataires);
+                if($this->parameters['selectable_recipient']){
+                    $recipients = $this->parameters['recipient_choice'][$datas['recipient']]['emails'];
+                    $recipients = explode(';', $recipients);
                 }else{
-                    $destinataires = $this->parameters['destinataire_simple'];
+                    $recipients = $this->parameters['simple_recipient'];
                 }
-                foreach($destinataires as $destinataire){
-                    $mail->addTo($destinataire);
+                foreach($recipients as $recipient){
+                    $mail->addTo($recipient);
                 }
 
                 $mail->setSubject( $datas['objet'] );
-                $mail->setFrom( current($destinataires), $datas['nom']);
+                $mail->setFrom( current($recipients), $datas['nom']);
                 $mail->setReplyTo($datas['email']);
 
                 $body = <<<EOL
-Le message suivant a été envoyé depuis le formulaire de contact du site.
-Nom prénom : {$datas['nom']}
-Email: {$datas['email']}
-
+The following message has been sent from the contact form of the website.
+Name : {$datas['nom']}
+Email : {$datas['email']}
 
 {$datas['message']}
 EOL;
@@ -132,14 +129,14 @@ EOL;
     }
 
     /**
-     * Crée le formulaire de contact
+     * Create the form
      * @return type
      */
     protected function createFormContact(){
         $form = $this->formFactory->createBuilder();
 
         $form->add("nom", 'text', array(
-            'label' => 'Nom prénom',
+            'label' => 'Name',
             'required' => true,
             'constraints' => array(
                 new Constraints\NotBlank(),
@@ -147,7 +144,7 @@ EOL;
             )
         ));
         $form->add("email", 'email', array(
-            'label' => 'Adresse Email',
+            'label' => 'Email address',
             'required' => true,
             'constraints' => array(
                 new Constraints\NotBlank(),
@@ -155,26 +152,26 @@ EOL;
             )
         ));
 
-        if($this->parameters['selectable_destinataire']){
+        if($this->parameters['selectable_recipient']){
 
             $choice_list = array();
-            foreach($this->parameters['choix_destinataire'] as $i => $choix){
+            foreach($this->parameters['recipient_choice'] as $i => $choix){
                 $choice_list[$choix['label']] = $i;
             }
 
-            $form->add('destinataire', 'choice', array(
+            $form->add('recipient', 'choice', array(
                 'choices' => $choice_list,
                 'choices_as_values' => true,
                 'expanded'  => false,
                 'required'  => true,
-                'label' => $this->parameters['label_choix_destinataire'],
+                'label' => $this->parameters['recipient_choice_label'],
                 'placeholder' => '...'
             ));
 
         }
 
         $form->add("objet", 'text', array(
-            'label' => 'Objet',
+            'label' => 'Object',
             'required' => true,
             'constraints' => array(
                 new Constraints\NotBlank(),

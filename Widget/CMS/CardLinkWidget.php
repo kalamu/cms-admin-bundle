@@ -18,7 +18,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Form;
 
 /**
- * Widget permettant d'afficher un lien sous forme de card
+ * Widget that display a card inside a link
  */
 class CardLinkWidget extends AbstractConfigurableElement
 {
@@ -38,14 +38,13 @@ class CardLinkWidget extends AbstractConfigurableElement
     }
 
     public function getForm(Form $form){
-        $form->add("title", TextType::class, array('label' => 'Titre', 'required' => true, 'horizontal'=>false, 'label_attr' => array('class' => 'center-block text-left')));
+        $form->add("title", TextType::class, array('label' => 'Title', 'required' => true, 'horizontal'=>false, 'label_attr' => array('class' => 'center-block text-left')));
         $form->add("image", ElfinderType::class, array('label' => 'Image', 'instance' => 'img_cms', 'elfinder_select_mode' => 'image', 'required' => false, 'horizontal'=>false, 'label_attr' => array('class' => 'center-block text-left')));
         $form->add("url", ElfinderType::class, array('label' => 'Document', 'instance' => 'docs_cms', 'elfinder_select_mode' => 'url', 'required' => true, 'horizontal'=>false, 'label_attr' => array('class' => 'center-block text-left')));
         return $form;
     }
 
     /**
-     * Génère le widget qui doit être affiché dans le tableau de bord
      * @return string
      */
     public function render(TwigEngine $templating, $intention = 'edit'){

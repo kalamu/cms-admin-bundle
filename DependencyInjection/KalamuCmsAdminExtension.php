@@ -17,11 +17,6 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 
-/**
- * This is the class that loads and manages your bundle configuration
- *
- * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html}
- */
 class KalamuCmsAdminExtension extends Extension implements PrependExtensionInterface
 {
     /**
@@ -41,24 +36,23 @@ class KalamuCmsAdminExtension extends Extension implements PrependExtensionInter
         $config = $this->processConfiguration(new Configuration(), $configs);
         $bundles = $container->getParameter('kernel.bundles');
 
-        // Configuration de Twig
+        // Twig configuration
         if (isset($bundles['TwigBundle'])) {
             $this->prependConfig($container, 'twig', $this->getTwigConfig());
         }
 
-        // Configuration de Tinymce
+        // Tinymce configuration
         if (isset($bundles['StfalconTinymceBundle'])) {
             $this->prependConfig($container, 'stfalcon_tinymce', $this->getStfalconTinymceConfig());
         }
 
-        // Configuration de FMElfinderBundle
+        // FMElfinderBundle configuration
         if(isset($bundles['FMElfinderBundle'])){
             $container->setParameter('twig.form.resources', "KalamuCmsAdminBundle:Form:elfinder.html.twig");
         }
     }
 
     /**
-     * Retourne la config de Twig
      * @return array
      */
     protected function getTwigConfig(){
@@ -77,7 +71,6 @@ class KalamuCmsAdminExtension extends Extension implements PrependExtensionInter
     }
 
     /**
-     * Retourne la config de StfalconTinymce
      * @return array
      */
     protected function getStfalconTinymceConfig(){
@@ -102,7 +95,7 @@ class KalamuCmsAdminExtension extends Extension implements PrependExtensionInter
     }
 
     /**
-     * Met à jour la config pour un bundle
+     * Update the configuration for a bundle
      *
      * @param ContainerBuilder $container
      * @param string $config_root

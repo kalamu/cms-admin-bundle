@@ -19,7 +19,7 @@ use Knp\Menu\MenuItem;
 use Kalamu\CmsAdminBundle\Entity\MenuItem as KalamuMenuItem;
 
 /**
- * Service de génération des menus pour KNP
+ * Menu generator with knp menu
  */
 class MenuProvider implements MenuProviderInterface
 {
@@ -43,7 +43,7 @@ class MenuProvider implements MenuProviderInterface
     public function get($name, array $options = array()){
         $KnpMenu = $this->factory->createItem('root');
 
-        // Permet de différentier les menu appelés par la place de ceux appelés par le slug
+        // used to distinguish wen $name is the slug or the place
         if(false === strpos($name, 'slug:')){
             $attr = 'place';
         }else{

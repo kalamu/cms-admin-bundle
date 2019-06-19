@@ -17,7 +17,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Formulaire permettant de sélectionner les entitées implémentant l'interface PublishStatusInterface
+ * FormType to select entities that implements PublishStatusInterface
  */
 class PublishStatusInterfacesType extends AbstractType
 {

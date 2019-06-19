@@ -10,13 +10,13 @@
 
 (function($) {
     /**
-     * Widget chargé de récupérer des items à ajouter dans le menu
+     * Widget to show available content for menu edition
      */
     $.widget("custom.MenuPickerApi", {
         options: {
-            label: '', // label du picker
-            name: '', // name du picker
-            type: '', // type de contenu du CMS
+            label: '', // label of the picker
+            name: '', // name of the picker
+            type: '', // Content type
             url: '',
             context: '',
             page: 1,
@@ -102,7 +102,7 @@
                 },
                 error: function(){
                     this.element.find('.panel-controls .fa-spinner').remove();
-                    alert("Une erreur est survenue. Merci de recharger la page si le problème persiste.");
+                    alert("An error occured. Try to reload the page if the problem persist.");
                 }
             });
         },
@@ -182,7 +182,7 @@
             this._refresh();
         },
 
-        // éviter d'envoyer le formulaire lorsqu'on fait "Entrer" sur le champ de changement de page
+        // Prevent to send the form if press "Enter"
         preventSubmit: function(e){
             if(e.which == 13){
                 e.preventDefault();

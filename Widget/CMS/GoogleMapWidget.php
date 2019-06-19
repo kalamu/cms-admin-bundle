@@ -19,7 +19,7 @@ use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Form;
 
 /**
- * Widget pour afficher une GoogleMap
+ * Widget to display a google map with optional markers
  */
 class GoogleMapWidget extends AbstractConfigurableElement
 {
@@ -55,7 +55,7 @@ class GoogleMapWidget extends AbstractConfigurableElement
     }
 
     /**
-     * Gère l'affichage du formulaire
+     * customize the admin form
      * @param TwigEngine $templating
      * @param type $form
      */
@@ -64,7 +64,6 @@ class GoogleMapWidget extends AbstractConfigurableElement
     }
 
     /**
-     * Génère le widget qui doit être affiché dans le tableau de bord
      * @return string
      */
     public function render(TwigEngine $templating, $intention = 'publish'){

@@ -49,17 +49,17 @@ class Menu
     }
 
     /**
-     * Retourne la représentation JSON des items du menu
+     * Get first level items as JSON sting
      *
      * @return string
      */
     public function getJsonItems(){
-        // Le array_values est nécessaire car le tableau est associatif et donc transformé en objet plutôt de array
         return json_encode(array_values($this->getTopMenuItems()->toArray()), JSON_PRETTY_PRINT);
     }
 
     /**
-     * Défini les items en fonction d'une chaine JSON
+     * Set menu items from a JSON string
+     *
      * @param string $json
      */
     public function setJsonItems($json){
@@ -71,14 +71,10 @@ class Menu
         foreach($datas as $item_data){
             $this->addItem( $this->generateMenuItem($item_data) );
         }
+        // TODO : watch this...
         foreach($this->old_items as $old_item){
             if($old_item->getId() && !$this->items->contains($old_item)){
-                /* c'est un élément qui doit être supprimé de la base.
-                 * On supprime sa relation avec le menu, et on le rajoute dans
-                 * la collection pour qu'il soit mis à jour. Un post-traitement
-                 * permettra de supprimer le éléments qui ne sont pas liés à un menu.
-                 */
-                $old_item->setTitle('Doit être supprimé');
+                $old_item->setTitle('Must be deleted');
                 $old_item->setMenu(null);
                 $old_item->setParent(null);
                 $this->items->add($old_item);
@@ -123,7 +119,7 @@ class Menu
     }
 
     /**
-     * Retourne les items de niveau 0
+     * Get the top level items
      */
     public function getTopMenuItems(){
         return $this->getItems()->filter(function ($item){

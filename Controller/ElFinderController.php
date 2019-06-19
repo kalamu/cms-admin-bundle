@@ -14,12 +14,12 @@ namespace Kalamu\CmsAdminBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
- * Controller pour afficher le sélecteur Elfinder dans TinyMCE
+ * Controller to show elfinder selector in TinyMCE
  */
 class ElFinderController extends Controller {
 
     /**
-     * Ouvre une fenêtre elfinder
+     * Open an elfinder window
      */
     public function showAction(){
         $efParameters = $this->container->getParameter('fm_elfinder');

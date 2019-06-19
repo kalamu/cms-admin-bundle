@@ -16,7 +16,7 @@ use Doctrine\Common\Persistence\ManagerRegistry;
 use Kalamu\CmsCoreBundle\Manager\ContentTypeManager;
 
 /**
- * Menu picker pour sélectionner les index des types de contenu
+ * ItemPicker for index page of each types
  */
 class IndexMenuItemPicker implements MenuItemPickerInterface
 {
@@ -52,7 +52,6 @@ class IndexMenuItemPicker implements MenuItemPickerInterface
     }
 
     /**
-     * Retourne une page d'items pour l'Item picker
      * @param int $page
      * @param int $limit
      * @return array
@@ -72,7 +71,7 @@ class IndexMenuItemPicker implements MenuItemPickerInterface
             $manager = $this->ContentTypeManager->getType($name);
             if($manager->hasIndex()){
                 $infos[] = array(
-                    'title' => 'Index des '.$label,
+                    'title' => 'Index page of '.$label,
                     'url'   => $manager->getPublicIndexLink(),
                     'type'  => $name
                 );
@@ -84,7 +83,7 @@ class IndexMenuItemPicker implements MenuItemPickerInterface
                 }
                 $Context = $this->doctrine->getManager()->getRepository('KalamuCmsAdminBundle:ContextPublication')->findOneByName($context);
                 $infos[] = array(
-                    'title' => 'Index des '.$label.' du context '.$Context,
+                    'title' => 'Index page of '.$label.' in '.$Context.' context',
                     'url'   => $manager->getPublicIndexLink(array('_context' => $context)),
                     'type'  => $name,
                     'context' => $context

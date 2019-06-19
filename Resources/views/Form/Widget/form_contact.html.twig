@@ -5,19 +5,19 @@
     {{ form_start(form) }}
     {{ form_errors(form) }}
 
-    {{form_row(form.selectable_destinataire)}}
-    <div id="destinataire_simple">
-        {{form_row(form.destinataire_simple)}}
+    {{form_row(form.selectable_recipient)}}
+    <div id="simple_recipient">
+        {{form_row(form.simple_recipient)}}
     </div>
-    <div id="choix_destinataire">
-        {{form_row(form.label_choix_destinataire)}}
-        {{form_row(form.choix_destinataire)}}
+    <div id="recipient_choice">
+        {{form_row(form.recipient_choice_label)}}
+        {{form_row(form.recipient_choice)}}
     </div>
     {{form_row(form.success)}}
     {{form_row(form.error)}}
 
     <hr />
-    <div><button type="submit" class="btn btn-success">Ajouter</button></div>
+    <div><button type="submit" class="btn btn-success">Add</button></div>
 
     {{ form_rest(form) }}
     {{ form_end(form) }}
@@ -25,13 +25,13 @@
 
 <script type="text/javascript">
 $(function(){
-    $('#{{form.selectable_destinataire.vars.id}}').change(function(e){
+    $('#{{form.selectable_recipient.vars.id}}').change(function(e){
         if($(this).val() == 1){
-            $('#destinataire_simple').hide();
-            $('#choix_destinataire').show();
+            $('#simple_recipient').hide();
+            $('#recipient_choice').show();
         }else{
-            $('#destinataire_simple').show();
-            $('#choix_destinataire').hide();
+            $('#simple_recipient').show();
+            $('#recipient_choice').hide();
         }
     }).trigger('change');
 
@@ -42,5 +42,5 @@ $(function(){
 .collection-item, .collection-item .control-label{text-align: left; clear: both;}
 .collection-item label{text-align: left;}
 .collection-item .control-label.col-sm-3{width: 100%}
-#collectionform_choix_destinataire_form_group .col-md-10.col-md-offset-1.col-xs-12{width:100%}
+#collectionform_recipient_choice_form_group .col-md-10.col-md-offset-1.col-xs-12{width:100%}
 </style>

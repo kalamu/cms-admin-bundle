@@ -18,7 +18,7 @@ use Symfony\Component\DependencyInjection\Parameter;
 use Symfony\Component\DependencyInjection\Reference;
 
 /**
- * CompilerPass pour l'enregistrement des types de contenu
+ * CompilerPass to register content types
  */
 class CmsCompilerPass implements CompilerPassInterface
 {
@@ -33,13 +33,13 @@ class CmsCompilerPass implements CompilerPassInterface
     }
 
     /**
-     * Gère les services de MenuItemPicker
+     * Generate the MenuItemPicker service for each content type
      */
     protected function registerMenuItemPicker(ContainerBuilder $container){
         $activated_types = $container->getParameter('kalamu_cms_core.activated_types');
 
         foreach ($activated_types as $type) {
-            if(!$type['default_menu_item_picker']){ // l'utilisateur ne veux pas du picker par défaut
+            if(!$type['default_menu_item_picker']){ // used to overwrite the default service
                 continue;
             }
 
@@ -64,10 +64,10 @@ class CmsCompilerPass implements CompilerPassInterface
             $menuItemManager->addMethodCall('registerPickerProvider', array(new Reference($service)));
         }
 
-        // Enregistrement de la route vers la Home si existante
+        // Add the specific route for homepage
         if($container->hasParameter('kalamu_cms_core.home_route')){
             $indexPicker = $container->findDefinition('kalamu_cms_admin.menu_item.index_picker');
-            $indexPicker->addMethodCall('registerCustomIndex', array(array('route' => new Parameter('kalamu_cms_core.home_route'), 'label' => 'Accueil du site')));
+            $indexPicker->addMethodCall('registerCustomIndex', array(array('route' => new Parameter('kalamu_cms_core.home_route'), 'label' => 'Homepage')));
         }
     }
 

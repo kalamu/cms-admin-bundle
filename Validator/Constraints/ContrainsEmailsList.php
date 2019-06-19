@@ -16,5 +16,5 @@ use Symfony\Component\Validator\Constraint;
 
 class ContrainsEmailsList extends Constraint
 {
-    public $message = "Ce champ ne doit contenir que des adresses email valide séparées par des point-virgule.";
+    public $message = "This field must content only valid email address sparated by semi-colom.";
 }

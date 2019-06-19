@@ -15,7 +15,7 @@ use Kalamu\CmsAdminBundle\Menu\Interfaces\MenuItemPickerInterface;
 use Kalamu\CmsCoreBundle\Manager\Interfaces\ContentManagerInterface;
 
 /**
- * Item picker par défaut pour l'éditeur de menu
+ * Default ItemPicker
  */
 class DefaultMenuItemPicker implements MenuItemPickerInterface
 {
@@ -35,7 +35,8 @@ class DefaultMenuItemPicker implements MenuItemPickerInterface
     }
 
     /**
-     * Injecteur du manageur de type de contenu
+     * Set the content manager
+     *
      * @param ContentManagerInterface $manager
      */
     public function setManager(ContentManagerInterface $manager){
@@ -43,7 +44,8 @@ class DefaultMenuItemPicker implements MenuItemPickerInterface
     }
 
     /**
-     * Retourne le manager
+     * Get the content manager
+     *
      * @return \Kalamu\CmsAdminBundle\Manager\Interfaces\ContentManagerInterface
      */
     public function getManager() {
@@ -51,7 +53,8 @@ class DefaultMenuItemPicker implements MenuItemPickerInterface
     }
 
     /**
-     * Retourne une page d'items pour l'Item picker
+     * Get a list of items
+     *
      * @param int $page
      * @param int $limit
      * @return array
@@ -95,7 +98,8 @@ class DefaultMenuItemPicker implements MenuItemPickerInterface
     }
 
     /**
-     * Format un contenu pour avoir les infos nécessaire pour l'édition du menu
+     * Format the informations for an item
+     *
      * @param type $content
      * @param type $context
      * @return type

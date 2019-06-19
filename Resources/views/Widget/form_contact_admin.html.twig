@@ -1,18 +1,18 @@
 
 <div class="col-md-12">
     <div class="jumbotron text-center">
-        <p>Formulaire de contact</p>
-        {% if parameters.selectable_destinataire %}
+        <p>Contact form</p>
+        {% if parameters.selectable_recipient %}
             <div class="col-md-12 text-left">
-            <strong>Destinataires sélectionnables :</strong>
+            <strong>Selectable recipients :</strong>
             <ul>
-                {% for choix in parameters.choix_destinataire %}
-                    <li><strong>{{choix.label}}</strong> : {{choix.emails}}</li>
+                {% for choice in parameters.recipient_choice %}
+                    <li><strong>{{choice.label}}</strong> : {{choice.emails}}</li>
                 {% endfor %}
             </ul>
             </div>
         {% else %}
-            <span class="text-muted">Destinataire{{(parameters.destinataire_simple|length) > 1 ? 's' : '' }} : {{parameters.destinataire_simple|join('; ')}}</span>
+            <span class="text-muted">Recipent{{(parameters.simple_recipient|length) > 1 ? 's' : '' }} : {{parameters.simple_recipient|join('; ')}}</span>
         {% endif %}
     </div>
 </div>

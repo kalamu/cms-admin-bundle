@@ -15,7 +15,7 @@ use Kalamu\CmsAdminBundle\Menu\Interfaces\MenuItemPickerInterface;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
 /**
- * Item picker par défaut pour l'éditeur de menu
+ * ItemPicker for taxonomies
  */
 class BaseTaxonomyItemPicker implements MenuItemPickerInterface
 {
@@ -46,7 +46,6 @@ class BaseTaxonomyItemPicker implements MenuItemPickerInterface
     }
 
     /**
-     * Retourne une page d'items pour l'Item picker
      * @param int $page
      * @param int $limit
      * @return array

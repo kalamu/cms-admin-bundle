@@ -1,23 +1,23 @@
 
 services:
 
-    ## Provider de menu pour KNP
+    ## Menu provider for knp
     kalamu_cms_admin.menu_provider:
         class: Kalamu\CmsAdminBundle\Menu\MenuProvider
         arguments: [%kalamu_cms_core.menus%, '@knp_menu.factory', '@doctrine']
         tags:
             - { name: knp_menu.provider }
 
-    # Abstract service pour les ItemPicker
+    # Abstract service for ItemPicker
     kalamu_cms_admin.item_picker.base_manager:
         abstract: true
         class: Kalamu\CmsAdminBundle\Menu\DefaultMenuItemPicker
 
-    # Manager de référence pour les itemPicker de menu
+    # Manager for itemPickers
     kalamu_cms_admin.menu_item.manager:
         class: Kalamu\CmsAdminBundle\Manager\MenuItemPickerManager
 
-    # MenuItemPicker dynamique pour les taxonomies
+    # dynamique MenuItemPicker for taxonomies
     kalamu_cms_admin.menu_item.taxonomie_picker:
         class: Kalamu\CmsAdminBundle\Menu\TaxonomieMenuItemProvider
         arguments: ['@doctrine', '@knp_paginator', '@kalamu_cms_core.content_type.manager']
@@ -28,4 +28,4 @@ services:
         class: Kalamu\CmsAdminBundle\Menu\IndexMenuItemPicker
         arguments: ['@doctrine', '@knp_paginator', '@kalamu_cms_core.content_type.manager', '@router']
         tags:
-            - { name: kalamu_cms_admin.menu_item_picker, alias: index, label: Pages Index }
+            - { name: kalamu_cms_admin.menu_item_picker, alias: index, label: Index Pages }

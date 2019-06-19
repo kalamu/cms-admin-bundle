@@ -126,7 +126,7 @@ class PageAdmin extends AbstractAdmin
                 ->add('parent', EntityType::class, [
                     'class' => 'KalamuCmsAdminBundle:Page',
                     'required' => false,
-                    'label' => 'Page parent',
+                    'label' => 'Parent page',
                     'query_builder' => function($repository) use ($admin){
                         $base = $repository->createQueryBuilder('p')
                                 ->orderBy('p.title', 'ASC');
@@ -148,7 +148,6 @@ class PageAdmin extends AbstractAdmin
                     }
                 ])
                 ->add('published_at', DateTimePickerType::class, ['required' => false])
-//                ->add('metas')
             ->end()
         ;
     }

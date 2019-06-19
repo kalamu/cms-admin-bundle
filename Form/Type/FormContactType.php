@@ -19,25 +19,24 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Callback;
-use Symfony\Component\Validator\Constraints\Count;
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\ExecutionContextInterface;
 
 /**
- * Formulaire pour administrer le widget "Formulaire de contact"
+ * Contact form
  */
 class FormContactType extends AbstractType {
 
     public function buildForm(FormBuilderInterface $builder, array $options) {
-        $builder->add('selectable_destinataire', ChoiceType::class, array(
-            'label' => 'Destinataire sélectionnable',
-            'choices'   => array('Oui' => true, 'Non' => false),
+        $builder->add('selectable_recipient', ChoiceType::class, array(
+            'label' => 'Selectable recipient',
+            'choices'   => array('Yes' => true, 'No' => false),
             'choices_as_values' => true,
             'data'  => false,
-            'sonata_help'    => "Permettre à l'utilisateur de sélectionner le destinataire du message"
+            'sonata_help'    => "Allow the user to select the recipient"
         ));
-        $builder->add("destinataire_simple", CollectionType::class, array(
+        $builder->add("simple_recipient", CollectionType::class, array(
             'type' => EmailType::class,
             'options' => array(
                 'required' => true,
@@ -48,31 +47,31 @@ class FormContactType extends AbstractType {
             ),
             'allow_add' => true,
             'allow_delete' => true,
-            'label' => 'Adresses de destination',
-            'sonata_help'    => "Adresse de destination pour les mails qui seront envoyés depuis ce formulaire.",
+            'label' => 'Email address',
+            'sonata_help'    => "Destination email address for this form.",
         ));
-        $builder->add("label_choix_destinataire", TextType::class, array(
-            'label' => 'Label du sélecteur de destinataire',
-            'data'  => "Sélectionnez la personne que vous souhaitez contacter",
+        $builder->add("recipient_choice_label", TextType::class, array(
+            'label' => 'Display name for recipeint selector',
+            'data'  => "Select you contact",
             'required' => true));
-        $builder->add("choix_destinataire", CollectionType::class, array(
+        $builder->add("recipient_choice", CollectionType::class, array(
             'type' => ContactFormContactType::class,
-            'label' => 'Liste des destinataires',
+            'label' => 'Recipeint list',
             'allow_add' => true,
             'allow_delete' => true));
 
 
         $builder->add("success", TextType::class, array(
-            'label' => 'Message en cas de succès de l\'envoie',
-            'data'  => "Votre message a bien été envoyé.",
+            'label' => 'Message for success sending',
+            'data'  => "Your message has been send.",
             'required' => true,
             'constraints' => array(
                 new NotBlank(),
             )
         ));
         $builder->add("error", TextType::class, array(
-            'label' => "Message en cas d'erreur de l'envoie",
-            'data'  => "Nous sommes désolés, un problème technique est survenue et votre mail n'a pu être envoyé.",
+            'label' => "Message for failed sending",
+            'data'  => "We are sorry, the sending has failed.",
             'required' => true,
             'constraints' => array(
                 new NotBlank(),
@@ -88,16 +87,16 @@ class FormContactType extends AbstractType {
     }
 
     public function validator($datas, ExecutionContextInterface $context){
-        if($datas['selectable_destinataire']){
-            if(!count($datas['choix_destinataire'])){
-                $context->buildViolation('Il doit y avoir au minimum une adresse de destination.')
-                    ->atPath('choix_destinataire')
+        if($datas['selectable_recipient']){
+            if(!count($datas['recipient_choice'])){
+                $context->buildViolation('You must define at least one destination address.')
+                    ->atPath('recipient_choice')
                     ->addViolation();
             }
         }else{
-            if(!count($datas['destinataire_simple'])){
-                $context->buildViolation('Il doit y avoir au minimum une adresse de destination.')
-                    ->atPath('destinataire_simple')
+            if(!count($datas['simple_recipient'])){
+                $context->buildViolation('You must define at least one destination address.')
+                    ->atPath('simple_recipient')
                     ->addViolation();
             }
         }

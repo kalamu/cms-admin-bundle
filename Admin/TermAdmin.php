@@ -69,7 +69,6 @@ class TermAdmin extends AbstractAdmin
             ->add('image', ElfinderType::class, ['instance' => 'img_cms', 'required' => false, 'elfinder_select_mode' => 'image'])
             ->add('resume', TextareaType::class, ['required' => false])
             ->add('description', WysiwygDashboardType::class, ['required' => false])
-//            ->add('metas')
         ;
     }
 
@@ -85,7 +84,6 @@ class TermAdmin extends AbstractAdmin
             ->add('image')
             ->add('resume')
             ->add('description')
-//            ->add('metas')
         ;
     }
 }

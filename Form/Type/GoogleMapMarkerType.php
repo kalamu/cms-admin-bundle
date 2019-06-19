@@ -31,11 +31,11 @@ class GoogleMapMarkerType extends AbstractType
         $builder
                 ->add('latitude', HiddenType::class, array('required' => true))
                 ->add('longitude', HiddenType::class, array('required' => true))
-                ->add('titre', TextType::class, array('required' => false, 'label' => 'Titre'))
+                ->add('titre', TextType::class, array('required' => false, 'label' => 'Title'))
                 ->add('description', TextareaType::class, array('required' => false))
                 ->add('default_open', ChoiceType::class, array(
-                    'label'     => "Ouvert par défaut",
-                    'choices'   => array('Oui' => true, 'Non' => false),
+                    'label'     => "Open by default",
+                    'choices'   => array('Yes' => true, 'No' => false),
                     'choices_as_values' => true,
                     'expanded'  => true,
                     'data'      => true,

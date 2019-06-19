@@ -16,7 +16,7 @@ use Kalamu\DashboardBundle\Model\AbstractConfigurableElement;
 use Symfony\Bundle\TwigBundle\TwigEngine;
 use Symfony\Component\Form\Form;
 /**
- * Widget affichant un formulaire WYSIWYG
+ * Widget that display a WYSIWYG editor
  */
 class WysiwygWidget extends AbstractConfigurableElement
 {
@@ -36,13 +36,12 @@ class WysiwygWidget extends AbstractConfigurableElement
     }
 
     public function getForm(Form $form){
-        $form->add("content", WysiwygType::class, array('label' => 'Contenu', 'label_attr' => array('class' => 'center-block text-left')));
+        $form->add("content", WysiwygType::class, array('label' => 'Content', 'label_attr' => array('class' => 'center-block text-left')));
 
         return $form;
     }
 
     /**
-     * Génère le widget qui doit être affiché dans le tableau de bord
      * @return string
      */
     public function render(TwigEngine $templating){

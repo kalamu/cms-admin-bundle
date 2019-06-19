@@ -11,21 +11,21 @@
 (function($) {
 
     /**
-     * Widget de gestion du menu
+     * Widget for menu edition
      */
     $.widget("etic.menuBuilder", {
         options: {
-            field: null // destination du menu serializé
+            field: null // Destination for serialised menu
         },
 
         /**
-         * Création du Widget
+         * Create the widget
          * @returns {undefined}
          */
         _create: function() {
             this.element.addClass('menuBuilder');
 
-            // initialisation du menu sortable
+            // initialisation of sortable menu
             this.element.nestedSortable({
                 listType: 'ul',
                 placeholder: "ui-state-highlight",
@@ -50,8 +50,8 @@
         },
 
         /**
-         * Evenement lancé lorsqu'un item est déplacé dans le menu
-         * Met à jour les item en fonction de leur position
+         * Triggered when an item is moved in the menu.
+         * It update items by they position
          */
         updateField: function(){
             items = [];
@@ -63,7 +63,7 @@
         },
 
         /**
-         * Ajout d'un nouveau item dans le menu (en fin)
+         * Add a new item in the bottom of the menu
          */
         addItem: function(item){
             $('<li></li>').menuItem(item).appendTo(this.element);
@@ -88,7 +88,7 @@
 
 
     /**
-     * Widget de gestion d'un node du menu
+     * Widget to handle one item of the menu
      */
     $.widget("etic.menuItem", {
         options: {
@@ -122,25 +122,25 @@
                     .append('<div class="pull-right toggler"><span class="item-context"></span><span class="item-type"></span><i class="fa fa-caret-down"></i></div>');
 
             $form = $('<div class="item-form"></div>');
-            $form.append('<div class="col-md-12"><label class="control-label">Titre* </label>' +
+            $form.append('<div class="col-md-12"><label class="control-label">Title* </label>' +
                     '<input type="text" class="form-control" name="title" value="" /></div>');
-            $form.append('<div class="col-md-'+(this.options.context_enabled ? 9 : 12)+'"><label class="control-label">Adresse* </label>' +
+            $form.append('<div class="col-md-'+(this.options.context_enabled ? 9 : 12)+'"><label class="control-label">Address* </label>' +
                     '<input type="text" class="form-control" name="url" value="" />' +
-                    '<a href="#" class="item-url" target="_blank"><i class="fa fa-external-link"></i> Ouvrir</a></div>');
+                    '<a href="#" class="item-url" target="_blank"><i class="fa fa-external-link"></i> Open</a></div>');
             if(this.options.context_enabled){
                 $form.append('<div class="col-md-3"><label class="control-label">Context* </label>' +
                     '<select class="form-control" name="context"></select></div>');
             }
 
-            $form.append('<div class="col-md-6 icon-selector"><label class="control-label text-muted">Icône </label><br />' +
+            $form.append('<div class="col-md-6 icon-selector"><label class="control-label text-muted">Icon </label><br />' +
                     '<span class="btn btn-default"><i class="fa fa-fw item-icon"></i></span><input type="text" class="form-control pull-left" name="icon" value="" style="width: auto" /></div>'+
                     '<div class="col-md-6"><label class="control-label text-muted">Class (CSS) </label>'+
                     '<input type="text" class="form-control" name="class" value="" /></div>');
             $form.append('<span class="clearfix"></span>');
             $form.append('<div class="mt20 text-center form-buttons"></div>');
 
-            editButton = $('<a class="btn btn-sm btn-success m5" href="#"><i class="fa fa-save"></i> Enregistrer</a> ');
-            removeButton = $('<a class="btn btn-sm btn-danger m5" href="#"><i class="fa fa-close"></i> Supprimer</a> ');
+            editButton = $('<a class="btn btn-sm btn-success m5" href="#"><i class="fa fa-save"></i> Save</a> ');
+            removeButton = $('<a class="btn btn-sm btn-danger m5" href="#"><i class="fa fa-close"></i> Remove</a> ');
             $form.find('.form-buttons').append(editButton).append(removeButton).append('<span class="clearfix"></span>');
             $form.hide();
             this.element.find('.item-handler').append($form);
@@ -192,9 +192,9 @@
             }
         },
 
-        // Met à jours les infos du content
+        // Update content informations
         _refreshContentInfos: function(){
-            // récupération de la réponse
+            // Get the response
             $(window).one('menu-item-'+this.options.content_type+'-'+this.options.content_id, $.proxy(function(e, data){
                 if(typeof data.contexts === 'object'){
                     this.options.context_enabled = true;
@@ -204,7 +204,7 @@
                 this._refresh();
             }, this));
 
-            // envoi d'une demande de réactualisation
+            // Ask a refresh
             $(window).trigger('refresh-menu-item-'+this.options.content_type, this.options);
 
         },
@@ -230,7 +230,7 @@
             this.toggle();
         },
 
-        // éviter d'envoyer le formulaire lorsqu'on fait "Entrer"
+        // Prevent to send the form when the user press "Enter"
         preventSubmit: function(e){
             if(e.which == 13){
                 e.preventDefault();

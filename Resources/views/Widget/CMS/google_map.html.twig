@@ -34,7 +34,7 @@
             {% endfor %}
         });
 
-        // mécanisme pour s'assurer que google map n'est chargé qu'une seule fois.
+        // solution to prevent loading the library twice
         if(typeof google === 'undefined' && 'true' !== $('body').attr('data-google-map-requested')){
             $('body').attr('data-google-map-requested', 'true');
 

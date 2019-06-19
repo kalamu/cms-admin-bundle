@@ -19,7 +19,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
- * Formulaire pour définir différents contacts sur le formulaire de contact
+ * Form to define many contacts (used in contact form)
  */
 class ContactFormContactType extends AbstractType {
 
@@ -28,7 +28,7 @@ class ContactFormContactType extends AbstractType {
             ->add('label', TextType::class, array('label' => 'Label', 'required' => true))
             ->add('emails', TextType::class, array(
                 'required' => true,
-                'sonata_field_description'    => "Pour définir plusieurs destinataire vous pouvez les séparer par des point-virgule.",
+                'sonata_field_description'    => "To define multiple recipient, you have to separate them with semi-colon ';'",
                 'constraints'   => array(
                     new NotBlank(),
                     new ContrainsEmailsList()

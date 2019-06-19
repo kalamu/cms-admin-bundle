@@ -33,13 +33,6 @@
     background: #e5e5e5 !important;
 }
 
-/*.visible-editing-row{
-    position: absolute;
-    left: 12px;
-    text-align: left !important;
-    padding: 0;
-    width: 25px;
-}*/
 .visible-editing-row>a{
     display: block;
 }

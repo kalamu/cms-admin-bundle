@@ -14,16 +14,14 @@ namespace Kalamu\CmsAdminBundle\Widget\CMS;
 use Kalamu\DashboardBundle\Model\AbstractConfigurableElement;
 use Symfony\Bundle\TwigBundle\TwigEngine;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\Form;
 use Symfony\Component\Validator\Constraints\Callback;
-use Symfony\Component\Validator\Constraints\Time;
 use Symfony\Component\Validator\ExecutionContextInterface;
 
 /**
- * Widget pour afficher des Vidéos Youtube
+ * Widget that display a Youtube video
  */
 class YoutubeWidget extends AbstractConfigurableElement {
 
@@ -44,35 +42,35 @@ class YoutubeWidget extends AbstractConfigurableElement {
     public function getForm(Form $form) {
         $form
             ->add("url", UrlType::class, array(
-                'label' => 'Adresse de la video',
+                'label' => 'Address of the video',
                 'attr' => ['placeholder' => "https://www.youtube.com/watch?v=CODEVIDEO"],
-                'sonata_help' => "Copiez-collez l'URL de la video ici.",
+                'sonata_help' => "Copy-past the URL here.",
                 'label_attr' => array('class' => 'center-block text-left'),
                 'constraints' => new Callback(['callback' => [$this, 'validYoutubeUrl']]),
                 ))
             ->add("start_video", TextType::class, [
-                'label' => 'Démarrer à',
+                'label' => 'Start at',
                 'attr' => ["placeholder" => '0:00'],
-                'sonata_help' => "Par exemple 1:29  pour démarrer la video à 1m 29s",
+                'sonata_help' => "For example, '1:29' will start the video at 1m and 29s",
                 'constraints' => new Callback(['callback' => [$this, 'validTime']]),
                 'required' => false,
             ])
             ->add('ref', ChoiceType::class, [
-                'label' => 'Afficher les suggestions',
-                'sonata_help' => 'Afficher les suggestions de vidéos à la fin de la lecture',
-                'choices' => ['Oui' => true, "Non" => false],
+                'label' => 'Show suggestions',
+                'sonata_help' => 'Show the suggestions at the end of the video',
+                'choices' => ['Yes' => true, "No" => false],
                 'choices_as_values' => true,
                 'data' => false
             ])
             ->add("command", ChoiceType::class, [
-                'label' => 'Afficher les commandes du lecteur',
-                'choices' => ['Oui' => true, "non" => false],
+                'label' => 'Display the controls on the player',
+                'choices' => ['Yes' => true, "No" => false],
                 'choices_as_values' => true,
                 'data' => true
             ])
             ->add("title", ChoiceType::class, [
-                'label' => 'Afficher le titre de la vidéo',
-                'choices' => ['Oui' => true, "non" => false],
+                'label' => 'Display the video title',
+                'choices' => ['Yes' => true, "No" => false],
                 'choices_as_values' => true,
                 'data' => true
             ])
@@ -83,7 +81,6 @@ class YoutubeWidget extends AbstractConfigurableElement {
     }
 
     /**
-     * Génère le widget qui doit être affiché dans le tableau de bord
      * @return string
      */
     public function render(TwigEngine $templating, $intention = "edit") {
@@ -120,7 +117,7 @@ class YoutubeWidget extends AbstractConfigurableElement {
     }
 
     /**
-     * Valide que l'adresse fournie contient bien l'ID de vidéo nécessaire
+     * Check that the URL of the video is valid
      * @param string $string
      * @param ExecutionContextInterface $context
      */
@@ -133,7 +130,7 @@ class YoutubeWidget extends AbstractConfigurableElement {
     }
 
     /**
-     * Valide que le démarrage de la vidéo à un format MM:SS
+     * Check the format for start_at argument
      * @param string $string
      * @param ExecutionContextInterface $context
      */
@@ -142,19 +139,19 @@ class YoutubeWidget extends AbstractConfigurableElement {
             return;
         }
         if(!preg_match('/\d{1,2}\:\d{2}/', $string)){
-            $context->addViolation("Le format ne correspond pas à mm:ss");
+            $context->addViolation("The format is invalid. It must be 'mm:ss'");
             return ;
         }
 
         $time = explode(':', $string);
         if($time[1] >=60){
-            $context->addViolation("Le format ne correspond pas à mm:ss");
+            $context->addViolation("The format is invalid. It must be 'mm:ss'");
             return ;
         }
     }
 
     /**
-     * Extrait l'identifiant de la vidéo contenu dans une URL
+     * Parse the URL to get the video ID
      * @param string $url
      * @return string
      * @throws \InvalidArgumentException
@@ -162,7 +159,7 @@ class YoutubeWidget extends AbstractConfigurableElement {
     protected function getVideoId($url){
         parse_str(parse_url($url, PHP_URL_QUERY), $originParams);
         if(!isset($originParams['v'])){
-            throw new \InvalidArgumentException("L'URL fournie n'est pas reconnu comme une adresse de vidéo valide");
+            throw new \InvalidArgumentException("The URL is not recognized as a valid video URL.");
         }
         return $originParams['v'];
     }

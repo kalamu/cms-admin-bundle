@@ -18,7 +18,7 @@ $.widget( "kalamu.googleMapMarkerWidgetEditor", {
 
     _create: function() {
         if('undefined' === typeof google.maps){
-            console.error("La google.maps n'est pas disponible");
+            console.error("The Google Maps library is not loaded");
         }
 
         this.options.marker = new google.maps.Marker({
@@ -30,10 +30,10 @@ $.widget( "kalamu.googleMapMarkerWidgetEditor", {
         });
 
         this.options.content = $('<div style="width: 360px; margin-right: 25px;">'
-                    +'<div class="form-group"><input type="text" name="title" placeholder="Titre du marker" class="form-control" /></div>'
+                    +'<div class="form-group"><input type="text" name="title" placeholder="Marker title" class="form-control" /></div>'
                     +'<div class="form-group"><textarea name="description" class="form-control" placeholder="Description"></textarea></div>'
-                    +'<div class="checkbox text-left"><label><input type="checkbox" name="default_open" value="1" /> Fenêtre d\'information ouverte par défaut</label></div>'
-                    +'<p><a href="#" class="btn btn-danger btn-xs delete-marker"><i class="fa fa-trash"></i> Supprimer ce marker</a></p>'
+                    +'<div class="checkbox text-left"><label><input type="checkbox" name="default_open" value="1" /> Open the window by default</label></div>'
+                    +'<p><a href="#" class="btn btn-danger btn-xs delete-marker"><i class="fa fa-trash"></i> Remove this marker</a></p>'
                     +'</div>');
         this.options.content.find('input[name=title]').val( this.element.find('input[name*=titre]').val() );
         this.options.content.find('textarea').val( this.element.find('textarea[name*="description"]').val() );
@@ -76,9 +76,9 @@ $.widget( "kalamu.googleMapMarkerWidgetEditor", {
         this.element.find('input[name*="default_open"][value='+($(e.target).prop('checked') ? '1' : '0')+']').prop('checked', true);
     },
 
-    // Met à jour le formulaire de la page
+    // update the form
     removeMarker: function(){
-        if(!confirm("Êtes-vous sûr de vouloir supprimer ce marker ?")){
+        if(!confirm("Are you sure to remove this marker ?")){
             return;
         }
 
@@ -109,7 +109,7 @@ $.widget( "kalamu.googleMapWidgetEditor", {
     },
 
     implements: function(){
-        if(typeof google === 'undefined'){ console.log("Google Map n'est pas encore chargé"); return; }
+        if(typeof google === 'undefined'){ console.log("Google Map is not loaded"); return; }
 
         this.options.map = new google.maps.Map(this.element.get()[0], {
             center: this.options.center,

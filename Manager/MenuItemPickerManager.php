@@ -15,7 +15,7 @@ use Kalamu\CmsAdminBundle\Menu\Interfaces\MenuItemPickerInterface;
 use Kalamu\CmsAdminBundle\Menu\Interfaces\ItemPickerProviderInterface;
 
 /**
- * Manager en charge de fournir les infos pour la page de création des menus
+ * Manager service that provide informations items for menu builder
  */
 class MenuItemPickerManager
 {
@@ -29,7 +29,8 @@ class MenuItemPickerManager
     protected $providers_loaded = false;
 
     /**
-     * Enregistre un service ItemPicker
+     * add a new ItemPicker service
+     *
      * @param string $name
      * @param string $label
      * @param MenuItemPickerInterface $service
@@ -40,7 +41,7 @@ class MenuItemPickerManager
     }
 
     /**
-     * Enregistre un service provider d'ItemPicker
+     * Add a new ItemPicker service provider
      */
     public function registerPickerProvider(ItemPickerProviderInterface $provider){
         $this->providers[] = $provider;
@@ -48,7 +49,8 @@ class MenuItemPickerManager
     }
 
     /**
-     * Retourne les labels des item pickers
+     * Get the labels of item pickers
+     *
      * @return array
      */
     public function getItemPickers(){
@@ -57,7 +59,8 @@ class MenuItemPickerManager
     }
 
     /**
-     * Retourne le service picker
+     * Get the item picker requested
+     *
      * @param string $name
      * @return \Kalamu\CmsAdminBundle\Menu\Interfaces\MenuItemPickerInterface
      */
@@ -67,7 +70,8 @@ class MenuItemPickerManager
     }
 
     /**
-     * Retourne les items d'un type
+     * Get items of a certain type
+     *
      * @param string $name nom du picker
      * @param int $page
      * @param int $limit
@@ -84,7 +88,8 @@ class MenuItemPickerManager
     }
 
     /**
-     * Importe les providers
+     * Imports ItemPickers from providers
+     * 
      * @return type
      */
     protected function importProviders(){

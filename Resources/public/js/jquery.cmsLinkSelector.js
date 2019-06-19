@@ -9,7 +9,7 @@
  */
 
 /**
- * Widget pour sélectionner des pages du CMS
+ * Widget to select CMS pages
  */
 $.widget("kalamu.cmsLinkSelector", {
     options: {
@@ -23,16 +23,16 @@ $.widget("kalamu.cmsLinkSelector", {
     },
 
     /**
-     * Création du Widget
+     * Create the widget
      * @returns {undefined}
      */
     _create: function() {
         this.element.addClass('cmsLinkSelector');
 
         this.options.label = $('<div class="btn btn-default">...</div>');
-        this.options.editLink = $('<a href="#" class="mr10"><i class="fa fa-external-link"></i> Modifier</a>');
+        this.options.editLink = $('<a href="#" class="mr10"><i class="fa fa-external-link"></i> Edit</a>');
         if(!this.options.required){
-            this.options.removeLink = $('<a href="#" class="mr10"><i class="fa fa-trash"></i> Retirer</a>');
+            this.options.removeLink = $('<a href="#" class="mr10"><i class="fa fa-trash"></i> Remove</a>');
         }
 
         this.element.append('<div class="clearfix"></div>');
@@ -45,10 +45,10 @@ $.widget("kalamu.cmsLinkSelector", {
 
         tmplModalContent = '<div class="modal-header">'
                                 +'<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>'
-                                +'<h4 class="modal-title">Sélectionner un contenu</h4>'
+                                +'<h4 class="modal-title">Select a content</h4>'
                             +'</div>'
-                            +'<div class="modal-body"><i class="fa fa-spin fa-spinner"></i> Chargement...</div>'
-                            +'<div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button></div>';
+                            +'<div class="modal-body"><i class="fa fa-spin fa-spinner"></i> Loading...</div>'
+                            +'<div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>';
 
         if(this.element.parents('.modal').length){
             this.options.embedModal = true;
@@ -63,12 +63,12 @@ $.widget("kalamu.cmsLinkSelector", {
             this.options.modalContent = this.options.modal.find('.modal-content');
         }
 
-        // charge l'interface Link Picker uniquement une fois
+        // Load the LinkPicker only once
         this.element.one('do-load-picker', $.proxy(function(){
             this.options.modalContent.find('.modal-body').load(this.options.picker_api);
         }, this));
 
-        // lorsque l'utilisateur clique sur "Modifier"
+        // When the user clic "edit"
         this._on( this.options.editLink, {
             click: "displayPicker"
         });
@@ -97,7 +97,7 @@ $.widget("kalamu.cmsLinkSelector", {
     },
 
     /**
-     * Affiche la page de sélection de lien
+     * Show the page to select a link
      * @param {type} e
      * @returns {undefined}
      */
@@ -108,7 +108,7 @@ $.widget("kalamu.cmsLinkSelector", {
 
         if(this.options.embedModal){
 
-            // On masque la modal d'origine et on remplace par la notre
+            // hide the original modal and create a new one
             this.options.modal.find('.modal-content')
                     .addClass('original-content')
                     .hide()
@@ -124,7 +124,7 @@ $.widget("kalamu.cmsLinkSelector", {
         this.element.trigger('do-load-picker');
     },
 
-    // Dans le cas où on est dans une modal imbriqué, la fermeture est remplacé par la bascule vers l'ancienne modal
+    // If there is a modal inside an other, closing the modal means, get back to the previous
     preventCloseModal: function(e){
         e.preventDefault();
 

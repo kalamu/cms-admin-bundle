@@ -16,7 +16,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\TwigBundle\TwigEngine;
 use Symfony\Component\Form\Form;
 /**
- * Widget permettant de sélectionner un menu
+ * Widget that display a menu
  */
 class MenuWidget extends AbstractConfigurableElement
 {
@@ -44,7 +44,6 @@ class MenuWidget extends AbstractConfigurableElement
     }
 
     /**
-     * Génère le widget qui doit être affiché dans le tableau de bord
      * @return string
      */
     public function render(TwigEngine $templating){

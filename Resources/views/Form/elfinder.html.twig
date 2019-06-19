@@ -17,8 +17,8 @@
                     {% set id_displayer = form.vars.id~'_url' %}
                     elDisplayer = $('<a class="btn btn-info mb15" id="{{ id_displayer }}" {% if value is not empty %}href="{{ value }}" {% endif %} target="_blank"><i class="fa fa-file fa-3x fa-fw"></i> <strong></strong></a><br />');
                 {% endif %}
-                editLink = $('<a href="#" class="mr15"><i class="fa fa-exchange"></i> Changer</a>');
-                removeLink = $('<a href="#"><i class="fa fa-trash"></i> Retirer</a>');
+                editLink = $('<a href="#" class="mr15"><i class="fa fa-exchange"></i> Edit</a>');
+                removeLink = $('<a href="#"><i class="fa fa-trash"></i> Remove</a>');
                 divShow = $('<div class="text-center"></div>').append(elDisplayer).append(editLink).append(removeLink).hide();
                 $('#{{ form.vars.id }}').after(elDiv);
                 $('#{{ form.vars.id }}').after(divShow);

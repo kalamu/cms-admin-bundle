@@ -28,9 +28,11 @@ class MenuController extends CRUDController
     }
 
     /**
-     * Methode utilisé pour explorer les contenus disponibles pour la construction d'un menu
+     * This action is used to browse contents in content selectors (for menu or
+     * link picker)
+     *
      * @param Request $request
-     * @param type $type
+     * @param type $name
      */
     public function exploreContentAction(Request $request, $name){
         $infos = $this->get('kalamu_cms_admin.menu_item.manager')->getItems($name,
@@ -45,9 +47,10 @@ class MenuController extends CRUDController
     }
 
     /**
-     * Méthode utilisée pour récupérer les infos d'un contenu pour la construction d'un menu
+     * This action return datas about one content
+     *
      * @param Request $request
-     * @param string $type
+     * @param string $name
      * @param int $id
      */
     public function getContentAction(Request $request, $name, $id){

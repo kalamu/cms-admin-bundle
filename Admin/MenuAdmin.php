@@ -80,7 +80,7 @@ class MenuAdmin extends AbstractAdmin
                 ->add('place', ChoiceType::class, [
                     'choices' => array_flip($places),
                     'choices_as_values' => true,
-                    'help' => "Permet d'affecter le menu à un emplacement du thème",
+                    'help' => "Define where the menu must appear in the theme",
                     'required' => false,
                     'placeholder' => '...'
                 ])

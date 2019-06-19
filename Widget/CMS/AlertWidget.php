@@ -18,7 +18,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Form;
 
 /**
- * Widget affichant un block alert bootstrap
+ * Widget that display a bootstrap block alert
  */
 class AlertWidget extends AbstractConfigurableElement
 {
@@ -39,23 +39,19 @@ class AlertWidget extends AbstractConfigurableElement
 
     public function getForm(Form $form){
         $form->add('type', ChoiceType::class, array(
-            'choices' => ['Vert' => 'success', 'Orange' => 'warning', 'Rouge' => 'danger'],
+            'choices' => ['Green' => 'success', 'Orange' => 'warning', 'Red' => 'danger'],
             'choices_as_values' => true,
-            'label' => "Type d'affichage",
+            'label' => "Color",
             'required' => true
         ));
-        $form->add('contenu', WysiwygType::class, [
-            'label' => 'Contenu',
+        $form->add('content', WysiwygType::class, [
+            'label' => 'Content',
             'required' => true
         ]);
 
         return $form;
     }
 
-    /**
-     * Génère le widget qui doit être affiché dans le tableau de bord
-     * @return string
-     */
     public function render(TwigEngine $templating, $intention = 'edit'){
         $this->parameters['intention'] = $intention;
 

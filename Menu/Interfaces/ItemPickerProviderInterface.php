@@ -14,13 +14,14 @@ namespace Kalamu\CmsAdminBundle\Menu\Interfaces;
 use Kalamu\CmsAdminBundle\Manager\MenuItemPickerManager;
 
 /**
- * Interface des providers de MenuItemPicker
+ * Interface for MenuItemPicker providers
  */
 interface ItemPickerProviderInterface
 {
 
     /**
-     * Méthode appelée pour enregistrer les pickers
+     * This method is called to register ItemPickers 
+     *
      * @param MenuItemPickerManager $manager
      */
     public function registerMenuItemPickers(MenuItemPickerManager $manager);

@@ -82,7 +82,7 @@ class PublishStatusAdmin extends AbstractAdmin
         $formMapper
             ->add('title')
             ->add('class', ChoiceType::class, [
-                'label' => 'Entité',
+                'label' => 'Entity',
                 'choices' => $choices,
                 'choices_as_values' => true
             ])

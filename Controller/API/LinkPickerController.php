@@ -14,14 +14,13 @@ namespace Kalamu\CmsAdminBundle\Controller\API;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
- * Controller pour sélectionner des liens depuis le Wysiwyg
+ * API for link selection from the WYSIWYG editor
  */
 class LinkPickerController extends Controller
 {
 
     /**
-     * Linkpicker complet avec édition du text, des class, etc...
-     * Utilisé pour faire des liens dans le WYDIWYG
+     * Full link picker with capabilities to edit displayed text, class, ...
      * @return type
      */
     public function indexAction(){
@@ -32,7 +31,7 @@ class LinkPickerController extends Controller
     }
 
     /**
-     * Picker minimalise pour récupérer uniquement l'adresse d'un contenu
+     * Minimal link picker without configuration option
      */
     public function baseAction(){
 

@@ -20,7 +20,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Form;
 
 /**
- * Widget affichant un accordion
+ * Widget that display as an accordion
  */
 class AccordionWidget extends AbstractConfigurableElement
 {
@@ -29,7 +29,7 @@ class AccordionWidget extends AbstractConfigurableElement
 
     protected $default_display_modes = array(
         'accordion'     => array(
-            'title'     => 'Accordéon déroulant',
+            'title'     => 'Sliding accordion',
             'template'  => 'KalamuCmsAdminBundle:Widget/CMS:accordion.html.twig'),
         'blocks'     => array(
             'title'     => 'Blocks',
@@ -49,7 +49,7 @@ class AccordionWidget extends AbstractConfigurableElement
     }
 
     public function getForm(Form $form){
-        $form->add('title', TextType::class, array('label' => 'Titre'));
+        $form->add('title', TextType::class, array('label' => 'Title'));
         $form->add("elements", CollectionType::class, array(
             'type'  => AccordionItemType::class,
             'label_render' => false,
@@ -70,14 +70,14 @@ class AccordionWidget extends AbstractConfigurableElement
         $form->add('display_mode', ChoiceType::class, array(
             'choices' => $choices,
             'choices_as_values' => true,
-            'label' => "Type d'affichage"
+            'label' => "Display mode"
         ));
 
         return $form;
     }
 
     /**
-     * Gère l'affichage du formulaire
+     * Customize the form template
      * @param TwigEngine $templating
      * @param type $form
      */
@@ -86,7 +86,7 @@ class AccordionWidget extends AbstractConfigurableElement
     }
 
     /**
-     * Génère le widget qui doit être affiché dans le tableau de bord
+     * Handle the public rendering of the widget
      * @return string
      */
     public function render(TwigEngine $templating, $intention = 'edit'){

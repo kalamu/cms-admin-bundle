@@ -20,7 +20,7 @@ $.widget( "kalamu.kalamuCollectionItemsForm", {
     _create: function() {
         this.element.addClass('kalamu-collection-items-widget');
 
-        this.options.addLink = $('<a href="#" class="clearfix btn btn-info"><i class="fa fa-arrow-up"></i> Ajouter un '+this.options.item_label+'</a>');
+        this.options.addLink = $('<a href="#" class="clearfix btn btn-info"><i class="fa fa-arrow-up"></i> Add a '+this.options.item_label+'</a>');
         this.element.after( this.options.addLink );
         this._on( this.options.addLink, {
             click: "addItem"
@@ -36,7 +36,7 @@ $.widget( "kalamu.kalamuCollectionItemsForm", {
     refresh: function(){
 
         this.element.find('a[data-collection-remove-btn]').each(function(){
-            $(this).text("Supprimer cet élément").removeClass('btn-default').addClass('btn-warning');
+            $(this).text("Remove this element").removeClass('btn-default').addClass('btn-warning');
         });
 
         this.element.find('.collection-item>label').each($.proxy(function(i, item){
@@ -62,7 +62,7 @@ $.widget( "kalamu.kalamuCollectionItemsForm", {
         this.options.nb_elements++;
         this.element.find('>.col-md-12').append( newItem );
 
-        newItem.find('a[data-collection-remove-btn]').text("Supprimer cet élément").toggleClass('btn-default btn-warning').click(function(e){
+        newItem.find('a[data-collection-remove-btn]').text("Remove this element").toggleClass('btn-default btn-warning').click(function(e){
             e.preventDefault();
             $(e.target).parents('.collection-item').remove();
         });

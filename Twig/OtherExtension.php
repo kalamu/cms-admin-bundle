@@ -12,9 +12,6 @@
 namespace Kalamu\CmsAdminBundle\Twig;
 
 
-/**
- * Autres extentions twig utilisés
- */
 class OtherExtension extends \Twig_Extension
 {
 

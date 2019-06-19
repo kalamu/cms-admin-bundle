@@ -12,13 +12,14 @@
 namespace Kalamu\CmsAdminBundle\Menu\Interfaces;
 
 /**
- * Interface des service de MenuItemPicker
+ * Interface for MenuItemPicker service
  */
 interface MenuItemPickerInterface
 {
 
     /**
-     * Retourne une liste d'item pour le picker
+     * Get the list of items
+     *
      * @param type $page
      * @param type $limit
      * @param type $context
@@ -27,14 +28,15 @@ interface MenuItemPickerInterface
     public function getItems($page, $limit = 10, $context = null, $search = '');
 
     /**
-     * Retourne les détails d'un item
+     * Get on specific item
+     *
      * @param type $id
      * @param type $context
      */
     public function getItem($id, $context = null);
 
     /**
-     * Retourne le manager de contenu utilisé
+     * Get the associated content manager
      */
     public function getManager();
 

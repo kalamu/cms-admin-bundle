@@ -20,7 +20,7 @@ use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Form;
 use Symfony\Component\Validator\Constraints\Range;
 /**
- * Widget affichant les derniers contenus publiés
+ * Widget that show the last published contents
  */
 class LastContentWidget extends AbstractConfigurableElement
 {
@@ -48,7 +48,7 @@ class LastContentWidget extends AbstractConfigurableElement
         $form->add("type", ChoiceType::class, array(
             'choices' => array_flip($this->manager->getLabels()),
             'choices_as_values' => true,
-            'label' => 'Type de contenu',
+            'label' => 'Content type',
         ));
         $form->add("max", IntegerType::class, array(
             'constraints' => array(
@@ -57,7 +57,7 @@ class LastContentWidget extends AbstractConfigurableElement
                     'max'   => 30
                 ))
             ),
-            'label' => 'Nombre à afficher',
+            'label' => 'Number of element to display',
             'data'  => 10
         ));
 
@@ -65,7 +65,6 @@ class LastContentWidget extends AbstractConfigurableElement
     }
 
     /**
-     * Génère le widget qui doit être affiché dans le tableau de bord
      * @return string
      */
     public function render(TwigEngine $templating){

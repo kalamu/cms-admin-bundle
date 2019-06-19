@@ -1,65 +1,14 @@
 
 services:
 
-#    kalamu_cms.form_type.wysiwyg:
-#        class: Kalamu\CmsAdminBundle\Form\Type\WysiwygType
-#        tags:
-#            - { name: form.type, alias: wysiwyg }
-#
-#    kalamu_cms.form_type.wysiwyg_dashboard:
-#        class: Kalamu\CmsAdminBundle\Form\Type\WysiwygDashboardType
-#        tags:
-#            - { name: form.type, alias: wysiwyg_dashboard }
-
     kalamu_cms.form_type.publish_status_interfaces:
         class: Kalamu\CmsAdminBundle\Form\Type\PublishStatusInterfacesType
         arguments: ['@doctrine']
         tags:
             - { name: form.type, alias: publish_status_interfaces }
 
-#    kalamu_cms.form_type.accordion_item:
-#        class: Kalamu\CmsAdminBundle\Form\Type\AccordionItemType
-#        tags:
-#            - { name: form.type, alias: accordion_item }
-#
-#    kalamu_cms.form_type.isotope_item:
-#        class: Kalamu\CmsAdminBundle\Form\Type\IsotopeItemType
-#        tags:
-#            - { name: form.type, alias: isotope_item }
-
     kalamu_cms.form_type.classifiable:
         class: Kalamu\CmsAdminBundle\Form\Type\ClassifiableType
         arguments: ['@doctrine']
         tags:
             - { name: form.type, alias: classifiable }
-
-#    kalamu_cms.form_type.cms_metas:
-#        class: Kalamu\CmsAdminBundle\Form\Type\CmsMetasType
-#        tags:
-#            - { name: form.type, alias: cms_metas }
-#
-#    kalamu_cms.form_type.cms_metas_group:
-#        class: Kalamu\CmsAdminBundle\Form\Type\CmsMetasGroupType
-#        tags:
-#            - { name: form.type, alias: cms_metas_group }
-#
-#    kalamu_cms.form_type.cms_contact_form_contact:
-#        class: Kalamu\CmsAdminBundle\Form\Type\ContactFormContactType
-#        tags:
-#            - { name: form.type, alias: cms_contact_form_contact }
-#
-#    kalamu_cms.form_type.google_map_marker:
-#        class: Kalamu\CmsAdminBundle\Form\Type\GoogleMapMarkerType
-#        tags:
-#            - { name: form.type, alias: google_map_marker }
-#
-#
-#    kalamu_cms.form_type.cms_link_selector:
-#        class: Kalamu\CmsAdminBundle\Form\Type\CmsLinkSelectorType
-#        tags:
-#            - { name: form.type, alias: cms_link_selector }
-#
-#    kalamu_cms.form_type.geolocalisation_map:
-#        class: Kalamu\CmsAdminBundle\Form\Type\GeolocalisationMapType
-#        tags:
-#            - { name: form.type, alias: geolocalisation_map }

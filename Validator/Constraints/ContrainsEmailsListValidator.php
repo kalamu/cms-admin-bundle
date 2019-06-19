@@ -15,7 +15,7 @@ use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 
 /**
- * Validateur permettant de valider une liste d'email séparée par des points virgules
+ * Validator to check that each email of a string separated with semi-colom are valid
  */
 class ContrainsEmailsListValidator extends ConstraintValidator
 {
@@ -37,7 +37,7 @@ class ContrainsEmailsListValidator extends ConstraintValidator
     protected function validateEmail($value){
         $valid = filter_var($value, FILTER_VALIDATE_EMAIL);
         if (!$valid) {
-            $this->context->addViolation("L'email '{{ value }}' est invalide.", array(
+            $this->context->addViolation("The email '{{ value }}' is not valid.", array(
                 '{{ value }}' => $this->formatValue($value),
             ));
         }

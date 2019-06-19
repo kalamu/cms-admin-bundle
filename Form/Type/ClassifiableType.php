@@ -19,7 +19,7 @@ use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Formulaire pour sélectionner les termes d'une entitiée classifiable
+ * Form type to select terms liked to a classifiable entity
  */
 class ClassifiableType extends AbstractType
 {

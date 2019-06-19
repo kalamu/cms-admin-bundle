@@ -66,12 +66,6 @@ services:
         tags:
             - { name: dashboard.widget }
 
-    kalamu_cms.element.cms.isotope_cards:
-        class: Kalamu\CmsAdminBundle\Widget\CMS\IsotopeCardsWidget
-        arguments: [%kalamu_cms.element.cms.isotope_cards.template%]
-        tags:
-            - { name: dashboard.widget }
-
     kalamu_cms.element.cms.youtube:
         class: Kalamu\CmsAdminBundle\Widget\CMS\YoutubeWidget
         arguments: [%kalamu_cms.element.cms.youtube.template%]
