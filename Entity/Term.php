@@ -14,6 +14,7 @@ namespace Kalamu\CmsAdminBundle\Entity;
 use Kalamu\CmsCoreBundle\ContentType\Interfaces\NestableInterface;
 use Kalamu\CmsCoreBundle\ContentType\Interfaces\CaracterizableInterface;
 use Kalamu\CmsCoreBundle\ContentType\Interfaces\IllustrableInterface;
+use Kalamu\CmsCoreBundle\Model\ContentTypeInterface;
 
 use Kalamu\CmsCoreBundle\ContentType\Traits\NestableTrait;
 use Kalamu\CmsCoreBundle\ContentType\Traits\CaracterizableTrait;
@@ -24,7 +25,7 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
 /**
  * Term
  */
-class Term implements NestableInterface, CaracterizableInterface, IllustrableInterface
+class Term implements ContentTypeInterface, NestableInterface, CaracterizableInterface, IllustrableInterface
 {
 
     use NestableTrait;
@@ -79,6 +80,11 @@ class Term implements NestableInterface, CaracterizableInterface, IllustrableInt
             }
         }
 
+    }
+
+    public function getTitle()
+    {
+        return $this->getLibelle();
     }
 
 

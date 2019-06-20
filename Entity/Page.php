@@ -12,16 +12,15 @@
 namespace Kalamu\CmsAdminBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Kalamu\CmsCoreBundle\ContentType\Interfaces\ContextualizableInterface;
+use Kalamu\CmsCoreBundle\ContentType\Interfaces\NestableInterface;
 use Kalamu\CmsCoreBundle\ContentType\Interfaces\PublishStatusInterface;
 use Kalamu\CmsCoreBundle\ContentType\Interfaces\PublishTimestampInterface;
 use Kalamu\CmsCoreBundle\ContentType\Interfaces\TemplateableInterface;
-use Kalamu\CmsCoreBundle\ContentType\Interfaces\NestableInterface;
 use Kalamu\CmsCoreBundle\ContentType\Traits\ContextualizableTrait;
+use Kalamu\CmsCoreBundle\ContentType\Traits\NestableTrait;
 use Kalamu\CmsCoreBundle\ContentType\Traits\PublishTimestampTrait;
 use Kalamu\CmsCoreBundle\ContentType\Traits\TemplateableTrait;
-use Kalamu\CmsCoreBundle\ContentType\Traits\NestableTrait;
 use Kalamu\CmsCoreBundle\Model\ContentTypeInterface;
 
 /**
