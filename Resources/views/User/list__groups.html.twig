@@ -1,0 +1,8 @@
+
+
+{% extends admin.getTemplate('base_list_field') %}
+{% block field %}
+    {% for group in object.groups %}
+        <a href="{{path('admin_app_group_show', {id: group.id})}}">{{group}}</a>{{loop.last ? '' : ', '}}
+    {% endfor %}
+{% endblock %}

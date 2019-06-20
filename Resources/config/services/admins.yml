@@ -38,3 +38,17 @@ services:
             - { name: sonata.admin, manager_type: orm, group: cms, label: Menu }
 
 
+
+    kalamu_cms.admin.user:
+        class: Kalamu\CmsAdminBundle\Admin\UserAdmin
+        arguments: [~, Kalamu\CmsAdminBundle\Entity\User, SonataAdminBundle:CRUD]
+        calls:
+            - [setFosUserManager, ['@fos_user.user_manager']]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: User }
+
+    kalamu_cms.admin.group:
+        class: Kalamu\CmsAdminBundle\Admin\GroupAdmin
+        arguments: [~, Kalamu\CmsAdminBundle\Entity\Group, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Group }

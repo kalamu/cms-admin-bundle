@@ -1,0 +1,25 @@
+Kalamu\CmsAdminBundle\Entity\User:
+    type:  entity
+    table: kalamu_user
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+
+    fields:
+        attrs:
+            type: array
+            nullable: true
+
+    manyToMany:
+        groups:
+            targetEntity: Group
+            joinTable:
+                name: fos_user_group
+                joinColumns:
+                    user_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    group_id:
+                        referencedColumnName: id

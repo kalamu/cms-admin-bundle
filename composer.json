@@ -23,7 +23,8 @@
         "gibilogic/tinymce-bundle": "1.3.*",
         "knplabs/knp-paginator-bundle": "~2.4",
         "helios-ag/fm-elfinder-bundle": "^6.0.2",
-        "sonata-project/intl-bundle": "^2.3"
+        "sonata-project/intl-bundle": "^2.3",
+        "friendsofsymfony/user-bundle": "~2.0.0"
     },
     "autoload": {
          "psr-4": { "Kalamu\\CmsAdminBundle\\": "" }

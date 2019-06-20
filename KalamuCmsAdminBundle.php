@@ -12,6 +12,7 @@
 namespace Kalamu\CmsAdminBundle;
 
 use Kalamu\CmsAdminBundle\DependencyInjection\Compiler\CmsCompilerPass;
+use Kalamu\CmsAdminBundle\DependencyInjection\Compiler\RoleProviderCompilerPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -22,6 +23,7 @@ class KalamuCmsAdminBundle extends Bundle
         parent::build($container);
 
         $container->addCompilerPass(new CmsCompilerPass());
+        $container->addCompilerPass(new RoleProviderCompilerPass());
     }
 
 }

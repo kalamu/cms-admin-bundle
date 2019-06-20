@@ -1,0 +1,29 @@
+
+services:
+
+    # --- ROLE BUILDER --- #
+    kalamu.security.editable_roles_builder:
+        class: Kalamu\CmsAdminBundle\Security\EditableRolesBuilder
+
+
+    # --- ROLE PROVIDERS --- #
+    kalamu.security.sonata_role_provider:
+        class: Kalamu\CmsAdminBundle\Security\SonataRoleProvider
+        arguments: ['@sonata.admin.pool', '@translator']
+        tags:
+            - { name: security.role_provider }
+
+    kalamu.security.custom_role_provider:
+        class: Kalamu\CmsAdminBundle\Security\CustomRoleProvider
+        tags:
+            - { name: security.role_provider }
+
+
+
+    # --- FORM --- #
+    kalamu.form.security_roles:
+        class: Kalamu\CmsAdminBundle\Form\Type\SecurityRolesType
+        arguments: ['@kalamu.security.editable_roles_builder']
+        tags:
+            - { name: form.type }
+        public: true

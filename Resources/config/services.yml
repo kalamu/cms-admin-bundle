@@ -4,6 +4,7 @@ imports:
     - { resource: services/forms.yml }
     - { resource: services/widgets.yml }
     - { resource: services/menus.yml }
+    - { resource: services/security.yml }
 
 services:
 
