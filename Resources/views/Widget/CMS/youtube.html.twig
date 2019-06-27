@@ -1,3 +1,5 @@
+{% trans_default_domain 'kalamu' %}
+
 {% if intention == "publish" %}
     <div class="embed-responsive embed-responsive-4by3">
         <iframe
@@ -8,6 +10,6 @@
         </iframe>
     </div>
 {% else %}
-    Youtube video : <a href="{{url|escape('html_attr')}}" target="_blank">{{url}}</a>
+    {{ 'Youtube video'|trans }} : <a href="{{url|escape('html_attr')}}" target="_blank">{{url}}</a>
     <img src="{{thumbnail}}" class="img-responsive">
 {% endif %}

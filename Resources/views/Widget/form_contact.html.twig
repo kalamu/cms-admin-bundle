@@ -1,9 +1,11 @@
+{% trans_default_domain 'kalamu' %}
+
 <div class="col-md-12">
     {% if status and message %}
         <div class="alert alert-{{status == 'success' ? 'success' : 'danger'}}">{{message}}</div>
     {% endif %}
     {{form_start(form)}}
     {{form_rest(form)}}
-    <button type='submit'>Submit</button>
+    <button type='submit'>{{ 'Submit'|trans }}</button>
     {{form_end(form)}}
 </div>

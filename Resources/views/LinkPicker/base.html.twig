@@ -1,3 +1,5 @@
+{% trans_default_domain 'kalamu' %}
+
 {% set uid = uniqid() %}
 <div class="tab-block mb25">
     <ul class="nav tabs-left tabs-border link-pickers">
@@ -15,7 +17,7 @@
                 <table class="table mbn tc-bold-first">
                     <thead>
                         <tr class="hidden">
-                            <th>Title</th>
+                            <th>{{ 'Title'|trans }}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -32,7 +34,7 @@
 
                             {% if loop.length > 2 and loop.first %}
                                 <li class="dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" role="menu" href="#">Other <i class="fa fa-caret-down pl5"></i></a>
+                                    <a class="dropdown-toggle" data-toggle="dropdown" role="menu" href="#">{{ 'Other'|trans }} <i class="fa fa-caret-down pl5"></i></a>
                                     <ul class="dropdown-menu">
                                     {% endif %}
 
@@ -53,10 +55,10 @@
                     </div>
                 </div>
 
-                <span class="text-muted">Total: <strong class="total-count"></strong></span>
+                <span class="text-muted">{{ 'Total'|trans }}: <strong class="total-count"></strong></span>
                 <div class="pull-right">
                     <a href="#" class="btn btn-xs btn-default page-previous"><i class="fa fa-arrow-left"></i></a>
-                    Page <input type="number" value="" class="page-input" style="width: 50px" /> /<span class="page-count"></span>
+                    {{ 'Page'|trans }} <input type="number" value="" class="page-input" style="width: 50px" /> /<span class="page-count"></span>
                     <a href="#" class="btn btn-xs btn-default page-next"><i class="fa fa-arrow-right"></i></a>
                 </div>
                 <span class="clearfix"></span>

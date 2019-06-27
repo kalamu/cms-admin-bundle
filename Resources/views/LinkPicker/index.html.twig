@@ -1,41 +1,43 @@
+{% trans_default_domain 'kalamu' %}
+
 <div class="col-md-12">
-    <h3 class="mn mb15 text-center"><i class="fa fa-link"></i> Add/Edit a link</h3>
+    <h3 class="mn mb15 text-center"><i class="fa fa-link"></i> {{ 'Add/Edit a link'|trans }}</h3>
 
     <div class="row">
         <div class="col-md-8">
             <div class="form-group">
-                <label for="link-text">Link text</label>
-                <input type="text" placeholder="Link text" id="link-text" class="form-control">
+                <label for="link-text">{{ 'Link text'|trans }}</label>
+                <input type="text" placeholder="{{ 'Link text'|trans }}" id="link-text" class="form-control">
             </div>
             <div class="form-group">
-                <label for="link-url">Address</label>
+                <label for="link-url">{{ 'Address'|trans }}</label>
                 <input type="text" placeholder="http://" id="link-url" class="form-control">
             </div>
             <div class="form-group">
-                <label for="link-title">Title</label>
-                <input type="text" placeholder="Title on hover" id="link-title" class="form-control">
+                <label for="link-title">{{ 'Title'|trans }}</label>
+                <input type="text" placeholder="{{ 'Title on hover'|trans }}" id="link-title" class="form-control">
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
-                <label for="link-class">Class CSS</label>
+                <label for="link-class">{{ 'Class CSS'|trans }}</label>
                 <input type="text" placeholder="" id="link-class" class="form-control">
             </div>
             <div class="form-group">
-                <label for="link-id">ID</label>
+                <label for="link-id">{{ 'Id'|trans }}</label>
                 <input type="text" placeholder="" id="link-id" class="form-control">
             </div>
             <div class="form-group">
-                <label for="link-target">Opening</label>
+                <label for="link-target">{{ 'Opening'|trans }}</label>
                 <select class="form-control" id="link-target">
-                    <option value="">Current window</option>
-                    <option value="_blank">New window</option>
+                    <option value="">{{ 'Current window'|trans }}</option>
+                    <option value="_blank">{{ 'New window'|trans }}</option>
                 </select>
             </div>
         </div>
         <div class="col-md-12 mb25">
-            <button class="btn btn-sm btn-info pull-right ml10" id="add-link" type="submit">Add</button>
-            <button class="btn btn-sm btn-default pull-right" id="cancel-link" type="submit">Cancel</button>
+            <button class="btn btn-sm btn-info pull-right ml10" id="add-link" type="submit">{{ 'Add'|trans }}</button>
+            <button class="btn btn-sm btn-default pull-right" id="cancel-link" type="submit">{{ 'Cancel'|trans }}</button>
         </div>
     </div>
 

@@ -1,3 +1,5 @@
+{% trans_default_domain 'kalamu' %}
+
 <div class="widget-form">
     {{ form_start(form) }}
 
@@ -16,7 +18,7 @@
 
     </div>
     {% set addLinkId = 'addItem-'~uniqid() %}
-    <a href="#" class="clearfix btn btn-info" id="{{addLinkId}}"><i class="fa fa-arrow-up"></i> Add an element</a>
+    <a href="#" class="clearfix btn btn-info" id="{{addLinkId}}"><i class="fa fa-arrow-up"></i> {{ 'Add an element'|trans }}</a>
     <div class="clearfix mb15"></div>
     {{ form_row(form.display_mode) }}
     {{ form_rest(form) }}

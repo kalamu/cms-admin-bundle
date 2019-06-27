@@ -1,5 +1,6 @@
+{% trans_default_domain 'kalamu' %}
 
-<th>Image</th>
+<th>{{ 'cms.image.title'|trans }}</th>
 <td>
-    <img src="{{object.image}}" class="img-responsive" />
+    <img src="{{ object.image }}" class="img-responsive" />
 </td>

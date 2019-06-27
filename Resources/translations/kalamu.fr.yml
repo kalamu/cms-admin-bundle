@@ -69,3 +69,36 @@ Updated By: Mis à jour par
 Visible: Visible
 Published Until: Publié jusqu'au
 Page Create: Nouvelle page
+
+#################################################
+
+Add an element: Ajouter un élément
+Add: Ajouter
+Cancel: Annuler
+Other: Autre
+Others: Autres
+Total: Total
+Add/Edit a link: Ajouter/Modifier un lien
+Link text: Lien texte
+Direct link: Lien direct
+Link title: Titre du lien
+Address: Adresse
+Title on hover: Titre au survole
+Class CSS: Class CSS
+Opening: Ouverture
+Current window: Fenêtre actuelle
+New window: Nouvelle fenêtre
+Menu elements: Éléments du menu
+Append: Ajouter
+All: Tout
+See the result: Voir le résultat
+Submit: Soumettre
+Last published contents: Dernier contenu publié
+Publication date: Date de publication
+Youtube video: Vidéo Youtube
+
+cms_admin.ElFinder.show:
+  File_selector: Sélecteur de fichier
+
+cms_admin.Menu.base_edit:
+  menu_elements_help: Ajouter un élément au menu avec la colonne de droite. Ensuite, faites glisser les éléments pour les réorganiser.

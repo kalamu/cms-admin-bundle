@@ -1,8 +1,9 @@
+{% trans_default_domain 'kalamu' %}
 
 <td></td>
 <td>
     <a href="{{cms_link('read', 'page', {identifier: object.slug})}}" target="_blanck" class="btn btn-sm btn-default view_link pull-right" title="{{ 'action_show'|trans({}, 'SonataAdminBundle') }}">
         <i class="fa fa-eye" aria-hidden="true"></i>
-        See the result
+        {{ 'See the result'|trans }}
     </a>
 </td>

@@ -1,5 +1,6 @@
+{% trans_default_domain 'kalamu' %}
 
-<th>Content</th>
+<th>{{ 'Contenu'|trans }}</th>
 <td>
     <section class="container">
         <div class="row">
@@ -8,21 +9,21 @@
             {% set datas = object.contenu|json_decode %}
             {% for child in datas.childs if child is not empty %}
                 {% if child.type == 'row' %}
-                    {%set row = child.datas %}
-                    <div{{kalamu_id_class(row.responsive, {class: 'row'})}}>
+                    {% set row = child.datas %}
+                    <div{{ kalamu_id_class(row.responsive, {class: 'row'}) }}>
                         {% for col in row.cols %}
-                            <div{{kalamu_id_class(col.responsive)}}>
+                            <div{{ kalamu_id_class(col.responsive) }}>
                                 {% for widget in col.widgets %}
-                                    {{render_dashboard_element('cms', widget.type, widget.identifier, widget.params)}}
+                                    {{ render_dashboard_element('cms', widget.type, widget.identifier, widget.params) }}
                                 {% endfor %}
                             </div>
                         {% endfor %}
                     </div>
                 {% elseif child.type == 'section' %}
-                    {{render_dashboard_element('cms', child.datas.type, child.datas.identifier, child.datas.params, {
+                    {{ render_dashboard_element('cms', child.datas.type, child.datas.identifier, child.datas.params, {
                         _content: (child.datas._content is defined ? child.datas._content : null),
                         _responsive: (child.datas.responsive is defined ? child.datas.responsive : null)
-                    })}}
+                    }) }}
                 {% endif %}
             {% endfor %}
 
