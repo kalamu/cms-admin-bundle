@@ -69,9 +69,6 @@ Updated By: Mis à jour par
 Visible: Visible
 Published Until: Publié jusqu'au
 Page Create: Nouvelle page
-
-#################################################
-
 Add an element: Ajouter un élément
 Add: Ajouter
 Cancel: Annuler
@@ -92,13 +89,11 @@ Menu elements: Éléments du menu
 Append: Ajouter
 All: Tout
 See the result: Voir le résultat
-Submit: Soumettre
+Submit: Enregistrer
 Last published contents: Dernier contenu publié
 Publication date: Date de publication
 Youtube video: Vidéo Youtube
-
-cms_admin.ElFinder.show:
-  File_selector: Sélecteur de fichier
-
-cms_admin.Menu.base_edit:
-  menu_elements_help: Ajouter un élément au menu avec la colonne de droite. Ensuite, faites glisser les éléments pour les réorganiser.
+Main image: Image principale
+File selector: Sélecteur de fichier
+menu_configuration_helper: Ajouter un élément au menu avec la colonne de droite. Ensuite, faites glisser les éléments pour les réorganiser.
+Content: Contenu
