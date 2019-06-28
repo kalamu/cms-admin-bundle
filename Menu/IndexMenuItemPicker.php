@@ -102,9 +102,9 @@ class IndexMenuItemPicker implements MenuItemPickerInterface
         $paginator = $this->knp_paginator->paginate($infos, $page, $limit);
 
         return array(
-            'nb_contenu'    => $paginator->getTotalItemCount(),
+            'nb_content'    => $paginator->getTotalItemCount(),
             'nb_pages'      => $paginator->getPageCount(),
-            'contenus'      => array_slice($infos, (($page-1)*$limit), $limit)
+            'contents'      => array_slice($infos, (($page-1)*$limit), $limit)
         );
     }
 

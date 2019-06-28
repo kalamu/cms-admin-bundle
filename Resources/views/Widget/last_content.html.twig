@@ -15,10 +15,10 @@
                 </tr>
             </thead>
             <tbody>
-                {% for contenu in contenus %}
+                {% for content in contents %}
                 <tr>
-                    <td class="va-m fw600 text-muted"><a href="{{manager.getPublicReadLink(contenu)}}">{{contenu}}</a></td>
-                    <td class="text-right"><span class="label label-success">{{contenu.publishedAt ? contenu.publishedAt|date('d-m-Y H:i') : ''}}</span></td>
+                    <td class="va-m fw600 text-muted"><a href="{{manager.getPublicReadLink(content)}}">{{content}}</a></td>
+                    <td class="text-right"><span class="label label-success">{{content.publishedAt ? content.publishedAt|date('d-m-Y H:i') : ''}}</span></td>
                 </tr>
                 {% endfor %}
             </tbody>

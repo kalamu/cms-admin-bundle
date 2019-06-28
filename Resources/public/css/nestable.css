@@ -8,8 +8,8 @@
  * file that was distributed with this source code.
  */
 
-.menuBuilder, .contenu-picker-inner ul{margin-left:0; padding-left: 0}
-#node_menu li, .contenu-picker-inner li{ list-style-type: none;}
+.menuBuilder, .content-picker-inner ul{margin-left:0; padding-left: 0}
+#node_menu li, .content-picker-inner li{ list-style-type: none;}
 #node_menu .item-handler {
     background: #ffffff; /* Old browsers */
     background: -moz-linear-gradient(top,  #ffffff 0%, #f6f6f6 50%, #f0ece9 100%); /* FF3.6+ */
@@ -46,7 +46,7 @@
     padding: 0.5em;
 }
 
-.contenu-picker{
+.content-picker{
     background: #ffffff; /* Old browsers */
     background: -moz-linear-gradient(top,  #ffffff 0%, #f6f6f6 50%, #f0ece9 100%); /* FF3.6+ */
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(50%,#f6f6f6), color-stop(100%,#f0ece9)); /* Chrome,Safari4+ */
@@ -63,7 +63,7 @@
     margin: 2px;
 }
 
-.contenu-picker-inner{
+.content-picker-inner{
     max-height: 250px;
     overflow: auto;
     background: #fff;
@@ -76,18 +76,18 @@
     color:red;
 }
 
-.contenu-picker .add-link{
+.content-picker .add-link{
     display: none;
     float:right;
     cursor:pointer;
 }
 
-.contenu-picker-inner li{
+.content-picker-inner li{
     padding: 3px 5px;
     border-bottom: 1px solid #eee;
 }
 
-.contenu-picker-inner li:hover{
+.content-picker-inner li:hover{
     background: #FAFAFA;
 }
 

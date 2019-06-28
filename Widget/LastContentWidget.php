@@ -75,11 +75,11 @@ class LastContentWidget extends AbstractConfigurableElement
             $baseQuery->orderBy('c.published_at', 'DESC');
         }
 
-        $contenus = $baseQuery->setMaxResults($this->parameters['max'])
+        $contents = $baseQuery->setMaxResults($this->parameters['max'])
                 ->getQuery()
                 ->getResult();
 
-        return $templating->render($this->template, array('contenus' => $contenus, 'manager' => $typeManager));
+        return $templating->render($this->template, array('contents' => $contents, 'manager' => $typeManager));
     }
 
 }

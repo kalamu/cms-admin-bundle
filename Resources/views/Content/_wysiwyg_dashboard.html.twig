@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-md-12">
 
-            {% set datas = object.contenu|json_decode %}
+            {% set datas = object.content|json_decode %}
             {% for child in datas.childs if child is not empty %}
                 {% if child.type == 'row' %}
                     {% set row = child.datas %}

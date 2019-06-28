@@ -9,7 +9,7 @@
  */
 
 /**
- * Plugin Link pour kalamu
+ * Plugin Link for kalamu
  */
 $.widget("kalamu.tinyMceLinkPicker", {
     options: {
@@ -23,7 +23,7 @@ $.widget("kalamu.tinyMceLinkPicker", {
     },
 
     /**
-     * Création du Widget
+     * Widget creation
      * @returns {undefined}
      */
     _create: function() {
@@ -93,7 +93,7 @@ tinymce.PluginManager.add('kalamuLink', function (editor) {
 
     var openLinkModal = function (){
         if(typeof link_api_url === 'undefined'){
-            alert("Vous devez configurer l'adresse de l'API en définissant la varible 'link_api_url'.");
+            alert("You must configure the API address via the 'link_api_url' parameter.");
             return false;
         }
 
@@ -172,14 +172,14 @@ tinymce.PluginManager.add('kalamuLink', function (editor) {
 
     editor.addButton('kalamuLink', {
         image: '/bundles/kalamucmsadmin/image/internal_link.png',
-        tooltip: 'Lien contenu interne',
+        tooltip: 'Internal content link',
         onclick: openLinkModal,
         stateSelector: 'a[href]'
     });
 
     editor.addMenuItem('kalamuLink', {
         image: '/bundles/kalamucmsadmin/image/internal_link.png',
-        text: 'Lien contenu interne',
+        text: 'Internal content link',
         onclick: openLinkModal,
         stateSelector: 'a[href]',
         context: 'insert',

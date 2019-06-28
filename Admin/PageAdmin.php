@@ -46,7 +46,7 @@ class PageAdmin extends AbstractAdmin
         $datagridMapper
             ->add('title', CaseInsensitiveStringFilter::class)
             ->add('slug', CaseInsensitiveStringFilter::class)
-            ->add('contenu', CaseInsensitiveStringFilter::class)
+            ->add('content', CaseInsensitiveStringFilter::class)
             ->add('created_at')
             ->add('published_at')
             ->add('created_by')
@@ -103,7 +103,7 @@ class PageAdmin extends AbstractAdmin
             ->with("Page", ['class' => 'col-md-9'])
                 ->add('title', TextType::class)
                 ->add('slug', TextType::class, ['required' => false])
-                ->add('contenu', WysiwygDashboardType::class)
+                ->add('content', WysiwygDashboardType::class)
             ->end()
             ->with("Infos", ['class' => 'col-md-3']);
 
@@ -161,7 +161,7 @@ class PageAdmin extends AbstractAdmin
             ->with('Page', ['class' => 'col-md-9'])
                 ->add('title')
                 ->add('slug')
-                ->add('contenu', null, ['template' => 'KalamuCmsAdminBundle:Content:_wysiwyg_dashboard.html.twig'])
+                ->add('content', null, ['template' => 'KalamuCmsAdminBundle:Content:_wysiwyg_dashboard.html.twig'])
             ->end()
             ->with('Infos', ['class' => 'col-md-3'])
                 ->add('template')

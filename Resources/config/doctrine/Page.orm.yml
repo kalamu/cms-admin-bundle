@@ -30,7 +30,7 @@ Kalamu\CmsAdminBundle\Entity\Page:
                     fields:
                         - title
             unique: true
-        contenu:
+        content:
             type: text
             nullable: true
             gedmo:

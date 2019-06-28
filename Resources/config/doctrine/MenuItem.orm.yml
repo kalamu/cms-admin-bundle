@@ -24,18 +24,17 @@ Kalamu\CmsAdminBundle\Entity\MenuItem:
             type: string
             nullable: false
             options:
-                comment: Le label du type de contenu. Ne pas confondre avec content_type qui est le type du ContentTypeManager.
-
+                comment: Label of the content type. Do not confuse with the content_type.
         content_type:
             type: string
             nullable: true
             options:
-                comment: name permettant de sélectionner le ContentTypeManager
+                comment: name to select the ContentTypeManager
         content_id:
             type: string
             nullable: true
             options:
-                comment: id de l'entitée dans le ContentTypeManager
+                comment: id of the entity in the ContentTypeManager
         content_context:
             type: string
             nullable: true

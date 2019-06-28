@@ -47,7 +47,7 @@ class Page implements ContentTypeInterface, PublishStatusInterface, Templateable
     /**
      * @var string
      */
-    private $contenu;
+    private $content;
 
     /**
      * @var array
@@ -152,27 +152,27 @@ class Page implements ContentTypeInterface, PublishStatusInterface, Templateable
     }
 
     /**
-     * Set contenu
+     * Set content
      *
-     * @param string $contenu
+     * @param string $content
      *
      * @return Page
      */
-    public function setContenu($contenu)
+    public function setContent($content)
     {
-        $this->contenu = $contenu;
+        $this->content = $content;
 
         return $this;
     }
 
     /**
-     * Get contenu
+     * Get content
      *
      * @return string
      */
-    public function getContenu()
+    public function getContent()
     {
-        return $this->contenu;
+        return $this->content;
     }
 
     /**

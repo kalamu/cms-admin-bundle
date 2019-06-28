@@ -60,13 +60,13 @@ class BaseTaxonomyItemPicker implements MenuItemPickerInterface
         $paginator = $this->knp_paginator->paginate($baseQuery, $page, $limit);
 
         $infos = array(
-            'nb_contenu'    => $paginator->getTotalItemCount(),
+            'nb_content'    => $paginator->getTotalItemCount(),
             'nb_pages'      => $paginator->getPageCount(),
-            'contenus'      => array()
+            'contents'      => array()
         );
 
         foreach($paginator as $term){
-            $infos['contenus'][] = $this->formatItem($term);
+            $infos['contents'][] = $this->formatItem($term);
         }
 
         return $infos;

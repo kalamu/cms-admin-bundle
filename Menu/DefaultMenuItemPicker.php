@@ -71,13 +71,13 @@ class DefaultMenuItemPicker implements MenuItemPickerInterface
         $paginator = $this->knp_paginator->paginate($baseQuery, $page, $limit);
 
         $infos = array(
-            'nb_contenu'    => $paginator->getTotalItemCount(),
+            'nb_content'    => $paginator->getTotalItemCount(),
             'nb_pages'      => $paginator->getPageCount(),
-            'contenus'      => array()
+            'contents'      => array()
         );
 
         foreach($paginator as $content){
-            $infos['contenus'][] = $this->formatItem($content, $context);
+            $infos['contents'][] = $this->formatItem($content, $context);
         }
 
         return $infos;

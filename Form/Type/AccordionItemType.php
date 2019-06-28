@@ -30,7 +30,7 @@ class AccordionItemType extends AbstractType
         $builder
                 ->add('title', TextType::class, array('required' => true))
                 ->add('icon', TextType::class, array('required' => false))
-                ->add('contenu', TextareaType::class, array('required' => false));
+                ->add('content', TextareaType::class, array('required' => false));
 
     }
 

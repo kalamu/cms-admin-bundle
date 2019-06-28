@@ -35,7 +35,7 @@ Kalamu\CmsAdminBundle\Entity\Post:
             nullable: true
             gedmo:
                 versioned: ~
-        contenu:
+        content:
             type: text
             nullable: true
             gedmo:

@@ -6,7 +6,7 @@
         <div class="col-md-4 col m4">
             {% if element.icon %}<span class="fa fa-fw {{element.icon|escape('html_attr')}} fa-3x pull-left"></span>{% endif %}
             <strong>{{element.title}}</strong>
-            {{element.contenu|nl2br}}
+            {{element.content|nl2br}}
         </div>
         {% endfor %}
     </div>

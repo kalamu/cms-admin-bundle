@@ -71,7 +71,7 @@
                 success: function(obj){
                     this.options.nb_pages = obj.nb_pages;
 
-                    this.element.find('.total-count').text(obj.nb_contenu);
+                    this.element.find('.total-count').text(obj.nb_content);
                     this.element.find('.page-count').text(obj.nb_pages);
                     this.element.find('.page-input').val(this.options.page);
 
@@ -96,7 +96,7 @@
                     this.element.find('.content-picker tbody tr').remove();
 
                     disaply_method = typeof this.options.displayItem === 'function' ? this.options.displayItem : this._displayItem;
-                    $(obj.contenus).each($.proxy(disaply_method, this));
+                    $(obj.contents).each($.proxy(disaply_method, this));
 
                     this.element.find('.panel-controls .fa-spinner').remove();
                 },
