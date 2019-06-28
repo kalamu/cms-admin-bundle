@@ -1,0 +1,92 @@
+category.standard: Standard
+category.media: Media
+category.other: Other
+category.default: Default
+cms.wysiwyg.title: 'Text editor'
+cms.wysiwyg.description: 'Put your text and you can enhance it like in a real text editor.'
+cms.image.title: Image
+cms.image.description: 'Select an image to put on your content.'
+cms.youtube.title: Video
+cms.youtube.description: 'Put a YouTube video on your page.'
+cms.menu.title: Menu
+cms.menu.description: 'Select an existing menu to insert in your content.'
+cms.google_map.title: 'Google Maps'
+cms.google_map.description: 'Move on the desired zone then clic on the map to add markers.'
+cms.form_contact.title: 'Contact form'
+cms.form_contact.description: 'Add a configurable contact form to get messages by email.'
+cms.section.section_standard.title: 'Standard section'
+cms.section.section_standard.description: 'Standard section'
+cms.alert.title: 'Alert block'
+cms.alert.description: 'Show an alert bloc on a colored background'
+Action: Action
+Post: Post
+'Post Create': 'New post'
+'Post List': 'Post list'
+'Apply On': 'Apply on'
+Class: Classe
+Classification: Classification
+Content: Content
+'Context Publication': 'Publication context'
+'Created At': 'Created at'
+'Created By': Creator
+Default: Default
+Description: Description
+Id: ID
+Image: Image
+Infos: Informations
+Libelle: Libelle
+Menu: Menu
+'Menu Create': 'New menu'
+'Menu List': 'Menu list'
+Metas: Metadatas
+Page: Page
+'Page List': 'Page list'
+Parent: Parent
+Place: Place
+'Published At': 'Published at'
+PublishStatus: 'Publication status'
+'Publish Status': 'Publication status'
+'Publish Status Create': 'New publication status'
+'Publish Status List': 'Publication status list'
+Resume: Resume
+Slug: Slug
+Taxonomy: Taxonomie
+'Taxonomy Create': 'New taxonomy'
+'Taxonomy List': 'Taxonomy list'
+Template: Template
+Term: Term
+'Term Create': 'New term'
+'Term List': 'Term list'
+Title: Title
+'Updated At': 'Updated at'
+'Updated By': Updator
+Visible: Visible
+'Published Until': 'Published util'
+'Page Create': 'New page'
+'Add an element': 'Add an element'
+Add: Add
+Cancel: Cancel
+Other: Other
+Others: Others
+Total: Total
+'Add/Edit a link': 'Add/Edit a link'
+'Link text': 'Text link'
+'Direct link': 'Direct link'
+'Link title': 'Link title'
+Address: Address
+'Title on hover': 'Title on hover'
+'Class CSS': 'CSS class'
+Opening: Opening
+'Current window': 'Current window'
+'New window': 'New window'
+'Menu elements': 'Menu elements'
+Append: Append
+All: All
+'See the result': 'See the result'
+Submit: Submit
+'Last published contents': 'Last published contents'
+'Publication date': 'Publication date'
+'Youtube video': 'Youtube video'
+'Main image': 'Main image'
+'File selector': 'File selector'
+menu_configuration_helper: 'Add element to the menu with right column. Then drag items to reoganise them.'

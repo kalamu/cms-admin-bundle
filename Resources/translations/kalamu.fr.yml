@@ -1,7 +1,6 @@
 category.standard: Standard
 category.media: Médias
 category.other: Autre
-category.tmp_aura: 'Thème Aura'
 category.default: Défaut
 cms.wysiwyg.title: 'Texte mis en forme'
 cms.wysiwyg.description: 'Saisissez votre texte et mettez le en forme comme sur un logiciel de traitement de texte.'
@@ -17,10 +16,6 @@ cms.form_contact.title: 'Formulaire de contact'
 cms.form_contact.description: 'Ajoutez un formulaire de contact configurable pour recevoir les messages par mail'
 cms.section.section_standard.title: Section standard
 cms.section.section_standard.description: Section standard
-cms.section.section_parallax.title: Section parallax
-cms.section.section_parallax.description: Section avec une image de fond et une couleur opaque
-cms.section.section_slider.title: Section slider
-cms.section.section_slider.description: Section pour contenir un slider
 cms.alert.title: Block alerte
 cms.alert.description: Affiche un block de type alerte sur un fond coloré
 Action: Action
@@ -30,13 +25,12 @@ Post List: Liste des actualités
 Apply On: S'applique à
 Class: Classe
 Classification: Classification
-Contenu: Contenu
+Content: Contenu
 Context Publication: Contexte de publication
 Created At: Créé le
 Created By: Créé par
 Default: Défaut
 Description: Description
-Entité: Entitée
 Id: ID
 Image: Image
 Infos: Informations
@@ -96,4 +90,3 @@ Youtube video: Vidéo Youtube
 Main image: Image principale
 File selector: Sélecteur de fichier
 menu_configuration_helper: Ajouter un élément au menu avec la colonne de droite. Ensuite, faites glisser les éléments pour les réorganiser.
-Content: Contenu
