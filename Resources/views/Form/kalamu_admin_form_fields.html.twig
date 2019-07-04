@@ -1,0 +1,11 @@
+{% extends 'SonataAdminBundle:Form:form_admin_fields.html.twig' %}
+
+{% trans_default_domain 'kalamu' %}
+
+{% block sonata_help %}
+{% spaceless %}
+{% if sonata_help is defined and sonata_help %}
+    <span class="help-block sonata-ba-field-widget-help">{{ sonata_help|raw|trans }}</span>
+{% endif %}
+{% endspaceless %}
+{% endblock %}
