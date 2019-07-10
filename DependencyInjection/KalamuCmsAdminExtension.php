@@ -50,6 +50,11 @@ class KalamuCmsAdminExtension extends Extension implements PrependExtensionInter
         if(isset($bundles['FMElfinderBundle'])){
             $container->setParameter('twig.form.resources', "KalamuCmsAdminBundle:Form:elfinder.html.twig");
         }
+
+        // KalamuDynamiqueConfigBundle configuration
+        if (isset($bundles['KalamuDynamiqueConfigBundle'])) {
+            $this->prependConfig($container, 'kalamu_dynamique_config', $this->getKalamuDynamiqueConfig());
+        }
     }
 
     /**
@@ -89,6 +94,28 @@ class KalamuCmsAdminExtension extends Extension implements PrependExtensionInter
                         'toolbar1'  => 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist | outdent indent ',
                         'toolbar2'  => 'kalamuLink link unlink | forecolor backcolor | code'
                     )
+                )
+            )
+        );
+    }
+
+    /**
+     * @return array
+     */
+    protected function getKalamuDynamiqueConfig()
+    {
+        return array(
+            'base_configurator_template' => "KalamuCmsAdminBundle:Config:base.html.twig",
+            'configurator' => array(
+                'default_template' => array(
+                    'label'      => '<i class="fa fa-eye fa-fw"></i> Template configuration',
+                    'controller' => 'KalamuCmsAdminBundle:Admin\Config:template',
+                    'priority'   => 10
+                ),
+                'cms_main' => array(
+                    'label'      => '<i class="fa fa-gears fa-fw"></i> CMS configuration',
+                    'controller' => 'KalamuCmsAdminBundle:Admin\Config:main',
+                    'priority'   => 5
                 )
             )
         );

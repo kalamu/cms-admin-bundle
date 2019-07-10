@@ -90,3 +90,15 @@ Youtube video: Vidéo Youtube
 Main image: Image principale
 File selector: Sélecteur de fichier
 menu_configuration_helper: Ajouter un élément au menu avec la colonne de droite. Ensuite, faites glisser les éléments pour les réorganiser.
+'General parameters': 'Paramètres généraux'
+'CMS Configuration': 'Configuration du CMS'
+'Title shown in browser bar': 'Titre affiché dans la barre de navigation'
+'Short description of the website (mainly for search engines)': 'Brève description du site Web (principalement pour les moteurs de recherche)'
+'Home page': "Page d'accueil"
+'Content used as homepage': "Contenu utilisé comme page d'accueil"
+'Allow search engines indexation': "Autoriser l'indexation des moteurs de recherche"
+'Allow search engines to reference the content of the website.': "Autoriser les moteurs de recherche à référencer le contenu du site."
+'Google Analytics code': 'Code Google Analytics'
+'Traking code of Google Analytics to get advanced visitor statistics': "Code de suivi de Google Analytics pour obtenir des statistiques de visite avancées"
+'Footer of the pages': "Pied de page"
+Save: Enregistrer

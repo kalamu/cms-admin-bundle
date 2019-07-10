@@ -90,3 +90,15 @@ Submit: Submit
 'Main image': 'Main image'
 'File selector': 'File selector'
 menu_configuration_helper: 'Add element to the menu with right column. Then drag items to reoganise them.'
+'General parameters': 'General parameters'
+'CMS Configuration': 'CMS Configuration'
+'Title shown in browser bar': 'Title shown in browser bar'
+'Short description of the website (mainly for search engines)': 'Short description of the website (mainly for search engines)'
+'Home page': "Home page"
+'Content used as homepage': 'Content used as homepage'
+'Allow search engines indexation': "Allow search engines indexation"
+'Allow search engines to reference the content of the website.': "Allow search engines to reference the content of the website."
+'Google Analytics code': 'Google Analytics code'
+'Traking code of Google Analytics to get advanced visitor statistics': "Traking code of Google Analytics to get advanced visitor statistics"
+'Footer of the pages': "Footer of the pages"
+Save: Save
