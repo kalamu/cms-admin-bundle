@@ -8,6 +8,17 @@ imports:
 
 services:
 
+    # Registry of dashboard managers 
+    kalamu.dashboard_registry:
+        class: Kalamu\CmsAdminBundle\Manager\DashboardRegistry
+
+    # Stockage de dashboard sur utilisateur
+    kalamu.dashboard.manager.user:
+        class: Kalamu\CmsAdminBundle\Manager\DashboardUserManager
+        arguments: ['@doctrine', '@security.context']
+        tags:
+            - { name: dashboard_storage , alias: user }
+
     # block sonata for administration homepage (display the dashboard)
     kalamu.sonata_block.dashboard:
         class: Kalamu\CmsAdminBundle\SonataBlock\DashboardBlock
