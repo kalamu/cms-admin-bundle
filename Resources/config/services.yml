@@ -8,11 +8,27 @@ imports:
 
 services:
 
+    # block sonata for administration homepage (display the dashboard)
+    kalamu.sonata_block.dashboard:
+        class: Kalamu\CmsAdminBundle\SonataBlock\DashboardBlock
+        arguments:
+            - '@twig'
+        tags:
+            - { name: sonata.block }
+
     # Twig
     kalamu_cms.twig.extension:
         class: Kalamu\CmsAdminBundle\Twig\CmsExtension
         arguments: ['@kalamu_cms_core.content_type.manager', '@kalamu_cms_core.manager.context', '@kalamu_dynamique_config']
         public: false
+        tags:
+            - { name: twig.extension }
+
+    site.twig_extension:
+        class: Kalamu\CmsAdminBundle\Twig\SiteExtension
+        public: false
+        arguments:
+            - '@kalamu_dynamique_config'
         tags:
             - { name: twig.extension }
 
