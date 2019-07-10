@@ -11,3 +11,8 @@ KalamuCmsAdminBundle_link_picker_api:
 KalamuCmsAdminBundle_menu:
     resource: "@KalamuCmsAdminBundle/Resources/config/routing/menu.yml"
     prefix:   /menu
+
+# Route for the dashboards API (admin homepage and edition)
+kalamu_default_site_dashboard_api:
+    resource: "@KalamuCmsAdminBundle/Resources/config/routing/dashboard_api.yml"
+    prefix:   /dashboard_storage/api
