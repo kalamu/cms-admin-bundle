@@ -5,6 +5,7 @@ namespace Kalamu\CmsAdminBundle\Manager;
 use Kalamu\CmsAdminBundle\Manager\DashboardPersistenceInterface;
 use Kalamu\CmsAdminBundle\Entity\User;
 use Symfony\Bridge\Doctrine\ManagerRegistry;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 /**
  * Manager to persist user dashboards
@@ -12,16 +13,18 @@ use Symfony\Bridge\Doctrine\ManagerRegistry;
 class DashboardUserManager implements DashboardPersistenceInterface
 {
     /**
-     *
      * @var ManagerRegistry
      */
     protected $em;
 
-    protected $security_context;
+    /**
+     * @var TokenStorageInterface
+     */
+    protected $tokenStorage;
 
-    public function __construct(ManagerRegistry $ManagerRegistry, $security_context){
+    public function __construct(ManagerRegistry $ManagerRegistry, TokenStorageInterface $tokenStorage){
         $this->em = $ManagerRegistry->getManager();
-        $this->security_context = $security_context;
+        $this->tokenStorage = $tokenStorage;
     }
 
     /**
@@ -78,6 +81,6 @@ class DashboardUserManager implements DashboardPersistenceInterface
      * @return User
      */
     protected function getUser(){
-        return $this->security_context->getToken()->getUser();
+        return $this->tokenStorage->getToken()->getUser();
     }
 }

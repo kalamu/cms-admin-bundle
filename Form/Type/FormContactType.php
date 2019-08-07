@@ -37,8 +37,8 @@ class FormContactType extends AbstractType {
             'sonata_help'    => "Allow the user to select the recipient"
         ));
         $builder->add("simple_recipient", CollectionType::class, array(
-            'type' => EmailType::class,
-            'options' => array(
+            'entry_type' => EmailType::class,
+            'entry_options' => array(
                 'required' => true,
                 'constraints' => array(
                     new NotBlank(),
@@ -55,7 +55,7 @@ class FormContactType extends AbstractType {
             'data'  => "Select you contact",
             'required' => true));
         $builder->add("recipient_choice", CollectionType::class, array(
-            'type' => ContactFormContactType::class,
+            'entry_type' => ContactFormContactType::class,
             'label' => 'Recipeint list',
             'allow_add' => true,
             'allow_delete' => true));

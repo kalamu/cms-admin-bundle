@@ -15,7 +15,7 @@ services:
     # Stockage de dashboard sur utilisateur
     kalamu.dashboard.manager.user:
         class: Kalamu\CmsAdminBundle\Manager\DashboardUserManager
-        arguments: ['@doctrine', '@security.context']
+        arguments: ['@doctrine', '@security.token_storage']
         tags:
             - { name: dashboard_storage , alias: user }
 
