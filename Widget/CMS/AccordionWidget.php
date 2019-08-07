@@ -56,10 +56,8 @@ class AccordionWidget extends AbstractConfigurableElement
             'allow_add' => true,
             'allow_delete' => true,
             'delete_empty' => true,
-            'horizontal'=>false,
             'options' => array(
                 'required'  => false,
-                'horizontal'=>false,
             )
         ));
 

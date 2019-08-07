@@ -3,9 +3,7 @@ parameters:
     # Templates des widgets
     kalamu_cms.element.cms.last_content.template: KalamuCmsAdminBundle:Widget:last_content.html.twig
     kalamu_cms.element.cms.form_contact.template: KalamuCmsAdminBundle:Widget:form_contact.html.twig
-    kalamu_cms.element.cms.wysiwyg.template: KalamuCmsAdminBundle:Widget/CMS:wysiwyg.html.twig
-    kalamu_cms.element.cms.menu.template: KalamuCmsAdminBundle:Widget/CMS:menu.html.twig
-    kalamu_cms.element.cms.image.template: KalamuCmsAdminBundle:Widget/CMS:image.html.twig
+
     kalamu_cms.element.cms.card_link.template: KalamuCmsAdminBundle:Widget/CMS:card_link.html.twig
     kalamu_cms.element.cms.accordion.templates:
         accordion:
@@ -15,9 +13,6 @@ parameters:
             title: 'Blocks'
             template: 'KalamuCmsAdminBundle:Widget/CMS:blocks.html.twig'
     kalamu_cms.element.cms.isotope_cards.template: KalamuCmsAdminBundle:Widget/CMS:isotope_cards.html.twig
-    kalamu_cms.element.cms.youtube.template: KalamuCmsAdminBundle:Widget/CMS:youtube.html.twig
-    kalamu_cms.element.cms.google_map.template: KalamuCmsAdminBundle:Widget/CMS:google_map.html.twig
-    kalamu_cms.element.cms.alert.template: KalamuCmsAdminBundle:Widget/CMS:alert.html.twig
 
 services:
 
@@ -36,24 +31,6 @@ services:
         tags:
             - { name: dashboard.widget }
 
-    kalamu_cms.element.cms.wysiwyg:
-        class: Kalamu\CmsAdminBundle\Widget\CMS\WysiwygWidget
-        arguments: [%kalamu_cms.element.cms.wysiwyg.template%]
-        tags:
-            - { name: dashboard.widget }
-
-    kalamu_cms.element.cms.menu:
-        class: Kalamu\CmsAdminBundle\Widget\CMS\MenuWidget
-        arguments: [%kalamu_cms.element.cms.menu.template%]
-        tags:
-            - { name: dashboard.widget }
-
-    kalamu_cms.element.cms.image:
-        class: Kalamu\CmsAdminBundle\Widget\CMS\ImageWidget
-        arguments: [%kalamu_cms.element.cms.image.template%]
-        tags:
-            - { name: dashboard.widget }
-
     kalamu_cms.element.cms.accordion:
         class: Kalamu\CmsAdminBundle\Widget\CMS\AccordionWidget
         arguments: [%kalamu_cms.element.cms.accordion.templates%]
@@ -65,22 +42,3 @@ services:
         arguments: [%kalamu_cms.element.cms.card_link.template%]
         tags:
             - { name: dashboard.widget }
-
-    kalamu_cms.element.cms.youtube:
-        class: Kalamu\CmsAdminBundle\Widget\CMS\YoutubeWidget
-        arguments: [%kalamu_cms.element.cms.youtube.template%]
-        tags:
-            - { name: dashboard.widget }
-
-    kalamu_cms.element.cms.google_map:
-        class: Kalamu\CmsAdminBundle\Widget\CMS\GoogleMapWidget
-        arguments: [%kalamu_cms.element.cms.google_map.template%]
-        tags:
-            - { name: dashboard.widget }
-
-    kalamu_cms.element.cms.alert:
-        class: Kalamu\CmsAdminBundle\Widget\CMS\AlertWidget
-        arguments: [%kalamu_cms.element.cms.alert.template%]
-        tags:
-            - { name: dashboard.widget }
-

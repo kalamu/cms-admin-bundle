@@ -38,9 +38,9 @@ class CardLinkWidget extends AbstractConfigurableElement
     }
 
     public function getForm(Form $form){
-        $form->add("title", TextType::class, array('label' => 'Title', 'required' => true, 'horizontal'=>false, 'label_attr' => array('class' => 'center-block text-left')));
-        $form->add("image", ElfinderType::class, array('label' => 'Image', 'instance' => 'img_cms', 'elfinder_select_mode' => 'image', 'required' => false, 'horizontal'=>false, 'label_attr' => array('class' => 'center-block text-left')));
-        $form->add("url", ElfinderType::class, array('label' => 'Document', 'instance' => 'docs_cms', 'elfinder_select_mode' => 'url', 'required' => true, 'horizontal'=>false, 'label_attr' => array('class' => 'center-block text-left')));
+        $form->add("title", TextType::class, array('label' => 'Title', 'required' => true, 'label_attr' => array('class' => 'center-block text-left')));
+        $form->add("image", ElfinderType::class, array('label' => 'Image', 'instance' => 'img_cms', 'elfinder_select_mode' => 'image', 'required' => false, 'label_attr' => array('class' => 'center-block text-left')));
+        $form->add("url", ElfinderType::class, array('label' => 'Document', 'instance' => 'docs_cms', 'elfinder_select_mode' => 'url', 'required' => true, 'label_attr' => array('class' => 'center-block text-left')));
         return $form;
     }
 

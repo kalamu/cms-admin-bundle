@@ -26,6 +26,9 @@
         "sonata-project/intl-bundle": "^2.3",
         "friendsofsymfony/user-bundle": "~2.0.0"
     },
+    "suggest": {
+        "kalamu/default-bootstrap-elements-bundle": "Allows to design contents with the bootstrap elements"
+    },
     "autoload": {
          "psr-4": { "Kalamu\\CmsAdminBundle\\": "" }
     },
