@@ -4,7 +4,7 @@ services:
     ## Menu provider for knp
     kalamu_cms_admin.menu_provider:
         class: Kalamu\CmsAdminBundle\Menu\MenuProvider
-        arguments: [%kalamu_cms_core.menus%, '@knp_menu.factory', '@doctrine']
+        arguments: ['%kalamu_cms_core.menus%', '@knp_menu.factory', '@doctrine']
         tags:
             - { name: knp_menu.provider }
 
