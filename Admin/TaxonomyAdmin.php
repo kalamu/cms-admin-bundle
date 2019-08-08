@@ -33,7 +33,7 @@ class TaxonomyAdmin extends AbstractAdmin
         $datagridMapper
             ->add('libelle')
             ->add('slug')
-            ->add('apply_on')
+            ->add('content_type')
         ;
     }
 
@@ -63,12 +63,13 @@ class TaxonomyAdmin extends AbstractAdmin
         $formMapper
             ->add('libelle')
             ->add('slug', TextType::class, ['required' => false])
-            ->add('apply_on', ChoiceType::class, [
-                'required'  => true,
+            ->add('content_type', ChoiceType::class, [
+                'required'  => false,
                 'choices'   => $this->getClassificationInterfaces(),
                 'choices_as_values' => true,
-                'multiple'  => true,
-                'expanded'  => true
+                'multiple'  => false,
+                'expanded'  => true,
+                'label' => 'Apply On'
             ])
         ;
     }
@@ -82,7 +83,7 @@ class TaxonomyAdmin extends AbstractAdmin
             ->add('id')
             ->add('libelle')
             ->add('slug')
-            ->add('apply_on', 'array')
+            ->add('content_type')
         ;
     }
 

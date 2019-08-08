@@ -22,8 +22,8 @@ Kalamu\CmsAdminBundle\Entity\Taxonomy:
                     fields:
                         - libelle
             unique: true
-        apply_on:
-            type: json_array
+        content_type:
+            type: string
             nullable: true
 
     oneToMany:

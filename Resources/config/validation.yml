@@ -1,6 +1,6 @@
 Kalamu\CmsAdminBundle\Entity\Term:
     constraints:
-        - Callback: [validate]
+        - Callback: validate
 
 
 Kalamu\CmsAdminBundle\Entity\Menu:

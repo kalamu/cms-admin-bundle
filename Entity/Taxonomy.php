@@ -32,9 +32,9 @@ class Taxonomy
     private $slug;
 
     /**
-     * @var array
+     * @var string
      */
-    private $apply_on;
+    private $content_type;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -112,37 +112,37 @@ class Taxonomy
     }
 
     /**
-     * Set applyOn
+     * Set contentType
      *
-     * @param array $applyOn
+     * @param string $contentType
      *
      * @return Taxonomy
      */
-    public function setApplyOn($applyOn)
+    public function setContentType($contentType)
     {
-        $this->apply_on = $applyOn;
+        $this->content_type = $contentType;
 
         return $this;
     }
 
     /**
-     * Get applyOn
+     * Get contentType
      *
-     * @return array
+     * @return string
      */
-    public function getApplyOn()
+    public function getContentType()
     {
-        return $this->apply_on;
+        return $this->content_type;
     }
 
     /**
      * Add term
      *
-     * @param \Kalamu\CmsAdminBundle\Entity\Term $term
+     * @param Term $term
      *
      * @return Taxonomy
      */
-    public function addTerm(\Kalamu\CmsAdminBundle\Entity\Term $term)
+    public function addTerm(Term $term)
     {
         $this->terms[] = $term;
 
@@ -152,9 +152,9 @@ class Taxonomy
     /**
      * Remove term
      *
-     * @param \Kalamu\CmsAdminBundle\Entity\Term $term
+     * @param Term $term
      */
-    public function removeTerm(\Kalamu\CmsAdminBundle\Entity\Term $term)
+    public function removeTerm(Term $term)
     {
         $this->terms->removeElement($term);
     }
