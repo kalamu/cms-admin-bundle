@@ -1,0 +1,2 @@
+error_two_menu_on_same_place: An other menu is already set on this emplacement.
+no_super_admin_left: You cannot remove this role as there would be no super admin left.

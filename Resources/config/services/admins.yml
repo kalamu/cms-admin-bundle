@@ -44,6 +44,7 @@ services:
         arguments: [~, Kalamu\CmsAdminBundle\Entity\User, SonataAdminBundle:CRUD]
         calls:
             - [setFosUserManager, ['@fos_user.user_manager']]
+            - [setEntityManager, ['@doctrine.orm.entity_manager']]
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, label: User }
 
