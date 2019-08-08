@@ -102,3 +102,12 @@ menu_configuration_helper: 'Add element to the menu with right column. Then drag
 'Traking code of Google Analytics to get advanced visitor statistics': "Traking code of Google Analytics to get advanced visitor statistics"
 'Footer of the pages': "Footer of the pages"
 Save: Save
+Error: Error
+'Go to homepage': 'Go to homepage'
+'Last connection': 'Last connection'
+'You are super administrator !': 'You are super administrator !'
+'Edit my profile': 'Edit my profile'
+'Access groups': 'Access groups'
+'Your are in no group': 'Your are in no group'
+'Password strength': 'Password strength'
+password_strength_help: "The strength of your password depends on it's length and diversity of used characters. Think to use letters, numbers and special characters."

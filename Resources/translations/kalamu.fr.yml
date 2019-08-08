@@ -102,3 +102,12 @@ menu_configuration_helper: Ajouter un élément au menu avec la colonne de droit
 'Traking code of Google Analytics to get advanced visitor statistics': "Code de suivi de Google Analytics pour obtenir des statistiques de visite avancées"
 'Footer of the pages': "Pied de page"
 Save: Enregistrer
+Error: Erreur
+'Go to homepage': "Aller à la page d'accueil"
+'Last connection': 'Dernière connexion'
+'You are super administrator !': 'Vous êtes super administrateur !'
+'Edit my profile': 'Éditer mon profil'
+'Access groups': "Groupes d'accès"
+'Your are in no group': "Vous n'êtes dans aucun groupe"
+'Password strength': 'Fiabilité du mot de passe'
+password_strength_help: "La force de votre mot de passe dépends de la diversité des caractères. Pensez à utiliser des lettres, chiffres et caractères spéciaux."

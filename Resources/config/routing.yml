@@ -16,3 +16,8 @@ KalamuCmsAdminBundle_menu:
 kalamu_default_site_dashboard_api:
     resource: "@KalamuCmsAdminBundle/Resources/config/routing/dashboard_api.yml"
     prefix:   /dashboard_storage/api
+
+# Routes for login / check login / logout
+fos_user_security:
+    resource: "@KalamuCmsAdminBundle/Resources/config/routing/security.yml"
+    prefix: /
