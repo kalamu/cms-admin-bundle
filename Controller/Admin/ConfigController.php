@@ -30,7 +30,7 @@ class ConfigController extends Controller {
 
         $form = $this->createForm(MainConfigType::class, $config);
         $form->handleRequest($Request);
-        if ($form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $this->get('kalamu_dynamique_config')->set('cms_main_config', $form->getData());
             return $this->redirectToRoute('dynamique_configurator', ['part' => 'cms_main']);
         }
@@ -58,7 +58,7 @@ class ConfigController extends Controller {
         $form = $this->createForm(TemplateConfigType::class, $config);
 
         $form->handleRequest($Request);
-        if ($form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $this->get('kalamu_dynamique_config')->set('default_template', $form->getData());
         }
 
